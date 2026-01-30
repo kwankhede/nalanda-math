@@ -328,7 +328,7 @@
         }
 
         .homework-section {
-            background: linear-gradient(135deg, var(--purple) 0%, #8E44AD 100%);
+            background: linear-gradient(135deg, var(--blue) 0%, #357ABD 100%);
             color: white;
             padding: 3rem 2rem;
             margin: 3rem -2rem;
@@ -366,7 +366,7 @@
         .homework-card h3 {
             font-size: 1.5rem;
             font-variation-settings: 'opsz' 24, 'wdth' 100, 'wght' 600;
-            color: var(--purple);
+            color: var(--blue);
             margin-bottom: 1rem;
         }
 
@@ -376,7 +376,7 @@
         }
 
         .download-btn {
-            background: var(--purple);
+            background: var(--blue);
             color: white;
             border: none;
             padding: 0.8rem 1.5rem;
@@ -389,7 +389,7 @@
         }
 
         .download-btn:hover {
-            background: #8E44AD;
+            background: #357ABD;
         }
 
         footer {
@@ -746,3 +746,304 @@
 
                 <div class="question-card">
                     <h4>Question 2: Subtract</h4>
+                    <p>(a) 8.5 - 3.2<br>
+                        (b) 10.0 - 4.75<br>
+                        (c) 15.6 - 7.8<br>
+                        (d) 20 - 8.45<br>
+                        (e) 12.5 - 9.75<br>
+                        (f) 50 - 23.67</p>
+                </div>
+
+                <div class="question-card">
+                    <h4>Question 3: Multiply</h4>
+                    <p>(a) 2.5 × 3<br>
+                        (b) 4.2 × 5<br>
+                        (c) 1.5 × 2.4<br>
+                        (d) 3.6 × 2.5<br>
+                        (e) 0.75 × 4<br>
+                        (f) 2.25 × 3.2</p>
+                </div>
+
+                <div class="question-card">
+                    <h4>Question 4: Divide</h4>
+                    <p>(a) 6.4 ÷ 2<br>
+                        (b) 12.5 ÷ 5<br>
+                        (c) 7.2 ÷ 0.8<br>
+                        (d) 15.6 ÷ 1.2<br>
+                        (e) 20 ÷ 2.5<br>
+                        (f) 45.5 ÷ 3.5</p>
+                </div>
+
+                <div class="question-card">
+                    <h4>Question 5: Word Problems</h4>
+                    <p>(a) A pen costs ₹12.50 and a notebook costs ₹35.75. What is the total cost?<br>
+                        (b) Rahul had ₹500. He spent ₹237.50. How much money is left?<br>
+                        (c) One meter of cloth costs ₹45.50. What is the cost of 3.5 meters?<br>
+                        (d) A 10.5 kg bag of rice is divided equally among 3 people. How much does each get?</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="practice-arena" id="practice">
+            <div class="arena-container">
+                <h2>Interactive Practice Arena | 100 Problems</h2>
+
+                <div class="arena-stats">
+                    <div>Decimals Mastery Challenge</div>
+                    <div id="stats">
+                        Correct: <span id="score" style="color:var(--green);">0</span> |
+                        Attempted: <span id="totalAttempted">0</span> / 100
+                    </div>
+                </div>
+
+                <div id="questionWrapper"></div>
+
+                <div
+                    style="display:flex; justify-content:center; align-items:center; gap:2rem; margin-top:2rem; flex-wrap: wrap;">
+                    <button onclick="prevPage()" id="prevBtn"
+                        style="background:var(--dark); color:white; border:none; padding:1rem 2rem; cursor:pointer; font-family:inherit; font-variation-settings:'wght' 600; border-radius:4px;">←
+                        Previous 50</button>
+                    <span id="pageIndicator" style="font-variation-settings:'wght' 600; color:white;">Page 1 of 2</span>
+                    <button onclick="nextPage()" id="nextBtn"
+                        style="background:var(--dark); color:white; border:none; padding:1rem 2rem; cursor:pointer; font-family:inherit; font-variation-settings:'wght' 600; border-radius:4px;">Next
+                        50 →</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="homework-section" id="homework">
+            <div style="max-width: 1200px; margin: 0 auto;">
+                <h2>Homework Assignments | गृहपाठ</h2>
+                <p style="text-align: center; margin-bottom: 2rem; font-size: 1.1rem;">Complete these assignments to
+                    master
+                    decimals. Download the PDFs below.</p>
+
+                <div class="homework-grid">
+                    <div class="homework-card">
+                        <h3>📝 Homework 1</h3>
+                        <p>Basic decimal concepts: place value identification, converting fractions to decimals, reading
+                            and
+                            writing decimals, and comparing decimal numbers.</p>
+                        <a href="homework/Chapter_8_HW1.pdf" class="download-btn" download>📥 Download PDF</a>
+                    </div>
+
+                    <div class="homework-card">
+                        <h3>📝 Homework 2</h3>
+                        <p>Operations on decimals: addition, subtraction with decimal alignment, solving word problems
+                            involving money and measurements.</p>
+                        <a href="homework/Chapter_8_HW2.pdf" class="download-btn" download>📥 Download PDF</a>
+                    </div>
+
+                    <div class="homework-card">
+                        <h3>📝 Homework 3</h3>
+                        <p>Advanced operations: multiplication and division of decimals, real-world applications, and
+                            mixed
+                            problems combining all operations.</p>
+                        <a href="homework/Chapter_8_HW3.pdf" class="download-btn" download>📥 Download PDF</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            const fullQuestionBank = [];
+
+            function generate100Questions() {
+                // Decimal to Fraction (15 questions)
+                for (let i = 0; i < 15; i++) {
+                    const decimals = [
+                        { d: "0.5", f: "1/2", o: ["1/2", "1/5", "5/1"] },
+                        { d: "0.25", f: "1/4", o: ["1/4", "1/25", "25/100"] },
+                        { d: "0.75", f: "3/4", o: ["3/4", "75/100", "7/5"] },
+                        { d: "0.2", f: "1/5", o: ["1/5", "2/10", "1/2"] },
+                        { d: "0.6", f: "3/5", o: ["3/5", "6/10", "2/3"] }
+                    ];
+                    let item = decimals[i % decimals.length];
+                    fullQuestionBank.push({
+                        q: `Convert <strong>${item.d}</strong> to simplest fraction`,
+                        a: item.f,
+                        options: item.o
+                    });
+                }
+
+                // Fraction to Decimal (15 questions)
+                for (let i = 0; i < 15; i++) {
+                    const fractions = [
+                        { f: "1/2", d: "0.5", o: ["0.5", "0.12", "0.2"] },
+                        { f: "1/4", d: "0.25", o: ["0.25", "0.14", "0.4"] },
+                        { f: "3/4", d: "0.75", o: ["0.75", "0.34", "0.43"] },
+                        { f: "1/5", d: "0.2", o: ["0.2", "0.15", "0.5"] },
+                        { f: "2/5", d: "0.4", o: ["0.4", "0.25", "0.2"] }
+                    ];
+                    let item = fractions[i % fractions.length];
+                    fullQuestionBank.push({
+                        q: `Convert <strong>${item.f}</strong> to decimal`,
+                        a: item.d,
+                        options: item.o
+                    });
+                }
+
+                // Compare Decimals (15 questions)
+                for (let i = 0; i < 15; i++) {
+                    let a = (Math.random() * 5 + 1).toFixed(2);
+                    let b = (Math.random() * 5 + 1).toFixed(2);
+                    let ans = parseFloat(a) > parseFloat(b) ? ">" : parseFloat(a) < parseFloat(b) ? "<" : "=";
+                    fullQuestionBank.push({
+                        q: `<strong>${a}</strong> ___ <strong>${b}</strong>`,
+                        a: ans,
+                        options: [">", "<", "="]
+                    });
+                }
+
+                // Addition (15 questions)
+                for (let i = 0; i < 15; i++) {
+                    let a = (Math.random() * 10 + 1).toFixed(1);
+                    let b = (Math.random() * 10 + 1).toFixed(1);
+                    let sum = (parseFloat(a) + parseFloat(b)).toFixed(1);
+                    fullQuestionBank.push({
+                        q: `What is <strong>${a} + ${b}</strong>?`,
+                        a: sum,
+                        options: [sum, (parseFloat(sum) + 1).toFixed(1), (parseFloat(sum) - 1).toFixed(1)]
+                    });
+                }
+
+                // Subtraction (15 questions)
+                for (let i = 0; i < 15; i++) {
+                    let a = (Math.random() * 15 + 5).toFixed(1);
+                    let b = (Math.random() * 5 + 1).toFixed(1);
+                    let diff = (parseFloat(a) - parseFloat(b)).toFixed(1);
+                    fullQuestionBank.push({
+                        q: `What is <strong>${a} - ${b}</strong>?`,
+                        a: diff,
+                        options: [diff, (parseFloat(diff) + 1).toFixed(1), (parseFloat(diff) - 1).toFixed(1)]
+                    });
+                }
+
+                // Multiplication (10 questions)
+                for (let i = 0; i < 10; i++) {
+                    let a = (Math.random() * 5 + 1).toFixed(1);
+                    let b = Math.floor(Math.random() * 5) + 2;
+                    let prod = (parseFloat(a) * b).toFixed(1);
+                    fullQuestionBank.push({
+                        q: `What is <strong>${a} × ${b}</strong>?`,
+                        a: prod,
+                        options: [prod, (parseFloat(prod) + 2).toFixed(1), (parseFloat(prod) - 2).toFixed(1)]
+                    });
+                }
+
+                // Division (10 questions)
+                for (let i = 0; i < 10; i++) {
+                    let divisors = [2, 4, 5, 10];
+                    let div = divisors[Math.floor(Math.random() * divisors.length)];
+                    let a = (div * (Math.random() * 5 + 1)).toFixed(1);
+                    let quot = (parseFloat(a) / div).toFixed(1);
+                    fullQuestionBank.push({
+                        q: `What is <strong>${a} ÷ ${div}</strong>?`,
+                        a: quot,
+                        options: [quot, (parseFloat(quot) + 1).toFixed(1), (parseFloat(quot) * 2).toFixed(1)]
+                    });
+                }
+
+                // Place Value (5 questions)
+                const placeVals = [
+                    { q: "In 23.45, what place is 4?", a: "Tenths", o: ["Tenths", "Ones", "Hundredths"] },
+                    { q: "In 12.678, what place is 7?", a: "Hundredths", o: ["Hundredths", "Tenths", "Thousandths"] },
+                    { q: "In 5.234, what place is 3?", a: "Hundredths", o: ["Hundredths", "Tenths", "Thousandths"] },
+                    { q: "In 45.6, what place is 6?", a: "Tenths", o: ["Tenths", "Hundredths", "Ones"] },
+                    { q: "In 0.789, what place is 8?", a: "Hundredths", o: ["Hundredths", "Tenths", "Thousandths"] }
+                ];
+                placeVals.forEach(item => fullQuestionBank.push(item));
+
+                fullQuestionBank.sort(() => Math.random() - 0.5);
+            }
+
+            let currentPage = 0;
+            const perPage = 50;
+            let score = 0;
+            let attempted = 0;
+
+            function renderQuestions() {
+                const container = document.getElementById('questionWrapper');
+                const start = currentPage * perPage;
+                const end = start + perPage;
+                const batch = fullQuestionBank.slice(start, end);
+
+                container.innerHTML = '';
+                document.getElementById('pageIndicator').innerText = `Page ${currentPage + 1} of 2`;
+
+                batch.forEach((item, idx) => {
+                    const card = document.createElement('div');
+                    card.className = 'question-card';
+                    card.innerHTML = `
+                    <h4>Question ${start + idx + 1}</h4>
+                    <p style="margin-bottom:1rem; font-size:1.1rem;">${item.q}</p>
+                    <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                        ${item.options.map(opt => `
+                            <button class="opt-btn" onclick="checkAnswer(this, '${opt}', '${item.a}')">${opt}</button>
+                        `).join('')}
+                    </div>
+                    <div class="feedback" style="margin-top:10px; font-variation-settings:'wght' 600; display:none;"></div>
+                `;
+                    container.appendChild(card);
+                });
+
+                document.getElementById('prevBtn').disabled = currentPage === 0;
+                document.getElementById('prevBtn').style.opacity = currentPage === 0 ? "0.5" : "1";
+                document.getElementById('nextBtn').disabled = currentPage === 1;
+                document.getElementById('nextBtn').style.opacity = currentPage === 1 ? "0.5" : "1";
+            }
+
+            window.checkAnswer = function (btn, selected, correct) {
+                const card = btn.closest('.question-card');
+                const feedback = card.querySelector('.feedback');
+                const buttons = card.querySelectorAll('.opt-btn');
+
+                attempted++;
+                if (selected === correct) {
+                    score++;
+                    btn.style.background = 'var(--green)';
+                    btn.style.color = 'white';
+                    feedback.innerText = "✓ Correct!";
+                    feedback.style.color = "var(--green)";
+                } else {
+                    btn.style.background = 'var(--accent)';
+                    btn.style.color = 'white';
+                    feedback.innerText = `✗ Wrong. Correct is ${correct}`;
+                    feedback.style.color = "var(--accent)";
+                }
+
+                buttons.forEach(b => b.onclick = null);
+                feedback.style.display = "block";
+
+                document.getElementById('score').innerText = score;
+                document.getElementById('totalAttempted').innerText = attempted;
+            };
+
+            function nextPage() {
+                if (currentPage < 1) {
+                    currentPage++;
+                    renderQuestions();
+                    document.getElementById('practice').scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+
+            function prevPage() {
+                if (currentPage > 0) {
+                    currentPage--;
+                    renderQuestions();
+                    document.getElementById('practice').scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+
+            generate100Questions();
+            renderQuestions();
+        </script>
+
+        <footer>
+            <p style="font-size:1.2rem; margin-bottom:1rem; font-variation-settings:'opsz' 16, 'wdth' 100, 'wght' 500;">
+                Nalanda Academy, Wardha</p>
+            <p style="opacity:0.8;">Chapter 8: Decimals – Mastering Parts and Wholes</p>
+        </footer>
+</body>
+
+</html>
