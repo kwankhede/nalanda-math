@@ -1,0 +1,31 @@
+project:
+  type: website
+
+website:
+  title: "Nalanda Academy Mathematics"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: wb1-cover.qmd
+        text: Workbook 1 Cover
+      - href: wb1-contents.qmd
+        text: WB1 Contents
+      - href: wb1-number-system.qmd
+        text: WB1 Ch1 Number System
+      - href: wb1-factors-multiples.qmd
+        text: WB1 Factors & Multiples
+      - href: wb2-cover.qmd
+        text: Workbook 2 Cover
+      - href: wb2-contents.qmd
+        text: WB2 Contents
+      - href: wb2-mensuration.qmd
+        text: WB2 Ch11 Mensuration
+      - href: fractions-operations.qmd
+        text: Fractions Operations # Your requested starting topic
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true

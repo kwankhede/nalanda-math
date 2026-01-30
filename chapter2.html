@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 2: Basic Operations | Nalanda Academy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --cream: #FFF8E7;
+            --dark: #1a1a1a;
+            --accent: #FF6B35;
+            --blue: #4A90E2;
+            --purple: #9B59B6;
+            --green: #27AE60;
+            --orange: #E67E22;
+            --red: #E74C3C;
+        }
+
+        body {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            background: var(--cream);
+            color: var(--dark);
+            line-height: 1.7;
+            font-variation-settings: 'opsz' 16, 'wdth' 100, 'wght' 400;
+        }
+
+        .header {
+            background: var(--dark);
+            color: var(--cream);
+            padding: 1.5rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-variation-settings: 'opsz' 24, 'wdth' 100, 'wght' 600;
+        }
+
+        .nav-links a {
+            color: var(--cream);
+            text-decoration: none;
+            margin-left: 2rem;
+            font-variation-settings: 'opsz' 16, 'wdth' 100, 'wght' 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .chapter-hero {
+            background: linear-gradient(135deg, var(--blue) 0%, #357ABD 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .chapter-number {
+            font-size: 1.2rem;
+            font-variation-settings: 'opsz' 16, 'wdth' 100, 'wght' 500;
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+        }
+
+        .chapter-title {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-variation-settings: 'opsz' 96, 'wdth' 85, 'wght' 700;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .chapter-subtitle {
+            font-size: 1.3rem;
+            font-variation-settings: 'opsz' 16, 'wdth' 100, 'wght' 400;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .intro-box {
+            background: white;
+            padding: 2.5rem;
+            border: 3px solid var(--dark);
+            box-shadow: 8px 8px 0 var(--dark);
+            margin-bottom: 3rem;
+        }
+
+        .intro-box p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .highlight {
+            background: var(--blue);
+            color: white;
+            padding: 0.2rem 0.5rem;
+            font-variation-settings: 'opsz' 16, 'wdth' 100, 'wght' 600;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-variation-settings: 'opsz' 48, 'wdth' 85, 'wght' 700;
+            margin: 3rem 0 2rem;
+            color: var(--blue);
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100px;
+            height: 4px;
+            background: var(--accent);
+        }
+
+        .operation-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .type-card {
+            background: white;
+            border: 3px solid var(--blue);
+            padding: 2rem;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .type-card:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 8px 8px 0 var(--blue);
+        }
+
+        .type-card h3 {
+            font-size: 1.5rem;
+            font-variation-settings: 'opsz' 24, 'wdth' 100, 'wght' 600;
+            color: var(--blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .type-card .marathi {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .type-card .symbol {
+            font-size: 3rem;
+            color: var(--blue);
+            margin: 1rem 0;
+            font-variation-settings: 'wght' 700;
+        }
+
+        .examples {
+            background: var(--cream);
+            padding: 1rem;
+            margin-top: 1rem;
+            border-left: 4px solid var(--blue);
+        }
+
+        .visual-demo {
+            background: white;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 3px solid var(--dark);
+            text-align: center;
+        }
+
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .demo-item {
+            padding: 1rem;
+            background: var(--cream);
+            border: 2px solid var(--blue);
+        }
+
+        .demo-item .symbol-large {
+            font-size: 2rem;
+            color: var(--blue);
+            font-variation-settings: 'wght' 700;
+        }
+
+        .exercise-section {
+            background: linear-gradient(135deg, var(--green) 0%, #229954 100%);
+            color: white;
+            padding: 3rem 2rem;
+            margin: 3rem -2rem;
+        }
+
+        .exercise-section h2 {
+            font-size: 2.5rem;
+            font-variation-settings: 'opsz' 48, 'wdth' 85, 'wght' 700;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .question-card {
+            background: white;
+            color: var(--dark);
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            border: 3px solid var(--dark);
+            box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        .question-card h4 {
+            font-size: 1.3rem;
+            font-variation-settings: 'opsz' 24, 'wdth' 100, 'wght' 600;
+            color: var(--green);
+            margin-bottom: 1rem;
+        }
+
+        .math-formula {
+            font-family: 'Times New Roman', serif;
+            font-style: italic;
+            font-size: 1.3rem;
+        }
+
+        .practice-arena {
+            background: linear-gradient(135deg, var(--orange) 0%, #D35400 100%);
+            color: white;
+            padding: 3rem 2rem;
+            margin: 3rem 0;
+        }
+
+        .practice-arena h2 {
+            font-size: 2.5rem;
+            font-variation-settings: 'opsz' 48, 'wdth' 85, 'wght' 700;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .arena-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .arena-stats {
+            background: white;
+            color: var(--dark);
+            padding: 1.5rem;
+            border: 3px solid var(--dark);
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .arena-stats div:first-child {
+            font-variation-settings: 'wght' 600;
+        }
+
+        .arena-stats #stats {
+            font-variation-settings: 'wght' 700;
+        }
+
+        .homework-section {
+            background: linear-gradient(135deg, var(--purple) 0%, #8E44AD 100%);
+            color: white;
+            padding: 3rem 2rem;
+            margin: 3rem -2rem;
+        }
+
+        .homework-section h2 {
+            font-size: 2.5rem;
+            font-variation-settings: 'opsz' 48, 'wdth' 85, 'wght' 700;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .homework-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .homework-card {
+            background: white;
+            color: var(--dark);
+            padding: 2rem;
+            border: 3px solid var(--dark);
+            box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.2);
+            transition: all 0.3s;
+        }
+
+        .homework-card:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        .homework-card h3 {
+            font-size: 1.5rem;
+            font-variation-settings: 'opsz' 24, 'wdth' 100, 'wght' 600;
+            color: var(--purple);
+            margin-bottom: 1rem;
+        }
+
+        .homework-card p {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .download-btn {
+            background: var(--purple);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            cursor: pointer;
+            font-family: inherit;
+            font-variation-settings: 'wght' 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: background 0.3s;
+        }
+
+        .download-btn:hover {
+            background: #8E44AD;
+        }
+
+        footer {
+            background: var(--dark);
+            color: var(--cream);
+            padding: 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .opt-btn {
+            background: var(--cream);
+            border: 2px solid var(--dark);
+            padding: 0.6rem 1.2rem;
+            cursor: pointer;
+            font-family: inherit;
+            font-variation-settings: 'wght' 600;
+            margin: 0.4rem;
+        }
+
+        .properties-grid {
+            display: grid;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .property-card {
+            background: white;
+            border-left: 6px solid var(--blue);
+            padding: 1.5rem 2rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .property-card h4 {
+            color: var(--blue);
+            margin-bottom: 0.5rem;
+            font-variation-settings: 'wght' 600;
+        }
+
+        @media (max-width: 768px) {
+            .chapter-hero {
+                padding: 2rem 1rem;
+            }
+
+            .container {
+                padding: 2rem 1rem;
+            }
+
+            .exercise-section,
+            .practice-arena,
+            .homework-section {
+                margin: 2rem -1rem;
+            }
+
+            .nav-links a {
+                margin-left: 1rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">Nalanda Academy Mathematics</div>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="#exercises">Exercises</a>
+                <a href="#practice">Practice Arena</a>
+                <a href="#homework">Homework</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="chapter-hero">
+        <div class="chapter-number">CHAPTER 02</div>
+        <h1 class="chapter-title">Basic Operations</h1>
+        <p class="chapter-subtitle">मूलभूत गणित क्रिया</p>
+    </div>
+
+    <div class="container">
+        <div class="intro-box">
+            <p><span class="highlight">Basic Operations</span> are the <strong>foundation of all mathematics</strong>.
+                They include <strong>Addition (+)</strong>, <strong>Subtraction (−)</strong>, <strong>Multiplication
+                    (×)</strong>, and <strong>Division (÷)</strong>.</p>
+            <p>These four operations allow us to solve everyday problems — from counting money and measuring
+                ingredients to calculating distances and sharing equally among friends.</p>
+            <p>This chapter covers the fundamental properties of each operation, the order of operations
+                (BODMAS/PEMDAS),
+                mental math strategies, and real-world applications — with <strong>1000+ practice problems</strong>
+                across exercises & interactive arena.</p>
+        </div>
+
+        <h2 class="section-title">The Four Basic Operations | चार मूलभूत क्रिया</h2>
+
+        <div class="operation-types">
+            <div class="type-card">
+                <h3>1. Addition</h3>
+                <p class="marathi">बेरीज / जोड</p>
+                <div class="symbol">+</div>
+                <p><strong>Combining</strong> two or more numbers to find their <strong>total</strong> or
+                    <strong>sum</strong>.
+                </p>
+                <div class="examples">
+                    <strong>Examples:</strong><br>
+                    5 + 3 = 8<br>
+                    27 + 45 = 72<br>
+                    123 + 89 = 212
+                </div>
+                <p style="margin-top: 1rem;"><strong>Keywords:</strong> sum, total, altogether, plus, increased by</p>
+            </div>
+
+            <div class="type-card">
+                <h3>2. Subtraction</h3>
+                <p class="marathi">वजाबाकी / वजा करणे</p>
+                <div class="symbol">−</div>
+                <p><strong>Taking away</strong> one number from another to find the <strong>difference</strong>.</p>
+                <div class="examples">
+                    <strong>Examples:</strong><br>
+                    9 − 4 = 5<br>
+                    85 − 37 = 48<br>
+                    200 − 156 = 44
+                </div>
+                <p style="margin-top: 1rem;"><strong>Keywords:</strong> difference, minus, less than, decreased by,
+                    take away</p>
+            </div>
+
+            <div class="type-card">
+                <h3>3. Multiplication</h3>
+                <p class="marathi">गुणाकार</p>
+                <div class="symbol">×</div>
+                <p><strong>Repeated addition</strong> — adding the same number multiple times to find the
+                    <strong>product</strong>.
+                </p>
+                <div class="examples">
+                    <strong>Examples:</strong><br>
+                    4 × 6 = 24<br>
+                    12 × 8 = 96<br>
+                    25 × 4 = 100
+                </div>
+                <p style="margin-top: 1rem;"><strong>Keywords:</strong> product, times, multiply, of</p>
+            </div>
+
+            <div class="type-card">
+                <h3>4. Division</h3>
+                <p class="marathi">भागाकार</p>
+                <div class="symbol">÷</div>
+                <p><strong>Splitting</strong> a number into equal parts to find the <strong>quotient</strong>.</p>
+                <div class="examples">
+                    <strong>Examples:</strong><br>
+                    15 ÷ 3 = 5<br>
+                    72 ÷ 9 = 8<br>
+                    100 ÷ 4 = 25
+                </div>
+                <p style="margin-top: 1rem;"><strong>Keywords:</strong> quotient, divide, shared equally, per, split
+                </p>
+            </div>
+        </div>
+
+        <div class="visual-demo">
+            <h3 style="margin-bottom: 1.5rem;">Understanding Operations Visually</h3>
+            <div class="demo-grid">
+                <div class="demo-item">
+                    <div class="symbol-large">+</div>
+                    <p><strong>Addition</strong></p>
+                    <p>3 apples + 2 apples = 5 apples</p>
+                    <p style="font-size: 2rem; margin: 0.5rem 0;">🍎🍎🍎 + 🍎🍎 = 🍎🍎🍎🍎🍎</p>
+                </div>
+
+                <div class="demo-item">
+                    <div class="symbol-large">−</div>
+                    <p><strong>Subtraction</strong></p>
+                    <p>5 apples − 2 apples = 3 apples</p>
+                    <p style="font-size: 2rem; margin: 0.5rem 0;">🍎🍎🍎🍎🍎 − 🍎🍎 = 🍎🍎🍎</p>
+                </div>
+
+                <div class="demo-item">
+                    <div class="symbol-large">×</div>
+                    <p><strong>Multiplication</strong></p>
+                    <p>3 groups of 4 apples = 12 apples</p>
+                    <p style="font-size: 1.5rem; margin: 0.5rem 0;">3 × 🍎🍎🍎🍎 = 12</p>
+                </div>
+
+                <div class="demo-item">
+                    <div class="symbol-large">÷</div>
+                    <p><strong>Division</strong></p>
+                    <p>12 apples ÷ 3 people = 4 each</p>
+                    <p style="font-size: 1.5rem; margin: 0.5rem 0;">🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎 ÷ 3 = 4</p>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">Important Properties & Rules</h2>
+
+        <div class="properties-grid">
+            <div class="property-card">
+                <h4>1. Commutative Property (क्रमबदल गुणधर्म)</h4>
+                <p><strong>Addition:</strong> a + b = b + a → 5 + 3 = 3 + 5 = 8</p>
+                <p><strong>Multiplication:</strong> a × b = b × a → 4 × 7 = 7 × 4 = 28</p>
+                <p style="color: var(--red); margin-top: 0.5rem;"><strong>Note:</strong> Does NOT work for subtraction
+                    or division!</p>
+            </div>
+
+            <div class="property-card">
+                <h4>2. Associative Property (साहचर्य गुणधर्म)</h4>
+                <p><strong>Addition:</strong> (a + b) + c = a + (b + c) → (2 + 3) + 4 = 2 + (3 + 4) = 9</p>
+                <p><strong>Multiplication:</strong> (a × b) × c = a × (b × c) → (2 × 3) × 4 = 2 × (3 × 4) = 24</p>
+            </div>
+
+            <div class="property-card">
+                <h4>3. Distributive Property (वितरण गुणधर्म)</h4>
+                <p>a × (b + c) = (a × b) + (a × c)</p>
+                <p><strong>Example:</strong> 5 × (3 + 2) = (5 × 3) + (5 × 2) = 15 + 10 = 25</p>
+                <p style="margin-top: 0.5rem;"><em>Very useful for mental math!</em></p>
+            </div>
+
+            <div class="property-card">
+                <h4>4. Identity Elements</h4>
+                <p><strong>Addition:</strong> a + 0 = a (Zero is the additive identity)</p>
+                <p><strong>Multiplication:</strong> a × 1 = a (One is the multiplicative identity)</p>
+            </div>
+
+            <div class="property-card">
+                <h4>5. Zero Property</h4>
+                <p><strong>Multiplication:</strong> a × 0 = 0 (Any number times zero is zero)</p>
+                <p><strong>Division:</strong> 0 ÷ a = 0 (Zero divided by any number is zero)</p>
+                <p style="color: var(--red); margin-top: 0.5rem;"><strong>Warning:</strong> a ÷ 0 is UNDEFINED!</p>
+            </div>
+
+            <div class="property-card">
+                <h4>6. Order of Operations — BODMAS/PEMDAS</h4>
+                <p><strong>B</strong>rackets / <strong>P</strong>arentheses</p>
+                <p><strong>O</strong>rders / <strong>E</strong>xponents</p>
+                <p><strong>D</strong>ivision & <strong>M</strong>ultiplication (left to right)</p>
+                <p><strong>A</strong>ddition & <strong>S</strong>ubtraction (left to right)</p>
+                <p style="margin-top: 0.5rem;"><strong>Example:</strong> 3 + 4 × 2 = 3 + 8 = 11 (NOT 14!)</p>
+            </div>
+        </div>
+
+        <div style="background:var(--dark); color:var(--cream); padding:2rem; margin:2rem 0;">
+            <h3>★ Quick Tips & Mental Math Strategies</h3>
+            <ul style="list-style:none; padding:0;">
+                <li style="padding:0.5rem 0;">★ <strong>Doubles:</strong> 7 + 7 = 14, 8 × 8 = 64 (memorize these!)</li>
+                <li style="padding:0.5rem 0;">★ <strong>Adding 9:</strong> Add 10, then subtract 1 (47 + 9 = 47 + 10 − 1
+                    = 56)</li>
+                <li style="padding:0.5rem 0;">★ <strong>Multiplying by 10:</strong> Add a zero (25 × 10 = 250)</li>
+                <li style="padding:0.5rem 0;">★ <strong>Multiplying by 5:</strong> Multiply by 10, then divide by 2</li>
+                <li style="padding:0.5rem 0;">★ <strong>Division check:</strong> Quotient × Divisor + Remainder =
+                    Dividend</li>
+                <li style="padding:0.5rem 0;">★ <strong>Inverse operations:</strong> Addition ↔ Subtraction,
+                    Multiplication ↔ Division</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="exercise-section" id="exercises">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2>Exercise 2.1 | सराव 2.1 – Addition & Subtraction</h2>
+
+            <div class="question-card">
+                <h4>Question 1: Solve the following additions</h4>
+                <div
+                    style="display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:0.8rem; margin-top:1rem;">
+                    <span>(a) 456 + 234</span>
+                    <span>(b) 789 + 456</span>
+                    <span>(c) 3,456 + 2,789</span>
+                    <span>(d) 12,345 + 6,789</span>
+                    <span>(e) 45,678 + 23,456</span>
+                    <span>(f) 99,999 + 1</span>
+                </div>
+            </div>
+
+            <div class="question-card">
+                <h4>Question 2: Solve the following subtractions</h4>
+                <div
+                    style="display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:0.8rem; margin-top:1rem;">
+                    <span>(a) 856 − 234</span>
+                    <span>(b) 1,000 − 456</span>
+                    <span>(c) 5,432 − 2,789</span>
+                    <span>(d) 10,000 − 3,456</span>
+                    <span>(e) 50,000 − 23,456</span>
+                    <span>(f) 100,000 − 99,999</span>
+                </div>
+            </div>
+
+            <div class="question-card">
+                <h4>Question 3: Fill in the blanks</h4>
+                <p>(a) 567 + ____ = 1,000</p>
+                <p>(b) ____ − 345 = 555</p>
+                <p>(c) 12,345 + 6,789 = ____</p>
+                <p>(d) 50,000 − ____ = 25,000</p>
+            </div>
+
+            <div class="question-card">
+                <h4>Question 4: Word Problems</h4>
+                <p>(a) A farmer has 2,456 apples in one basket and 3,789 apples in another. How many apples does he
+                    have in total?</p>
+                <p>(b) A library had 15,000 books. They donated 3,456 books to schools. How many books are left?</p>
+                <p>(c) Ram scored 456 runs in the first match and 678 runs in the second match. What is his total
+                    score?</p>
+            </div>
+
+            <div class="question-card">
+                <h4>Question 5: Mental Math Challenge</h4>
+                <p>Solve these without writing:</p>
+                <div
+                    style="display:grid; grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); gap:0.8rem; margin-top:1rem;">
+                    <span>(a) 99 + 99</span>
+                    <span>(b) 500 − 199</span>
+                    <span>(c) 75 + 25</span>
+                    <span>(d) 1,000 − 555</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="exercise-section">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2>Exercise 2.2 | सराव 2.2 – Multiplication & Division</h2>
+
+            <div class="question-card">
+                <h4>Question 1: Solve the following multiplications</h4>
+                <div
+                    style="display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:0.8rem; margin-top:1rem;">
+                    <span>(a) 23 × 45</span>
+                    <span>(b) 67 × 89</span>
+                    <span>(c) 234 × 56</span>
+                    <span>(d) 456 × 78</span>
+                    <span>(e) 125 × 8</span>
+                    <span>(f) 999 × 9</span>
+                </div>
+            </div>
+
+            <div class="question-card">
+                <h4>Question 2: Solve the following divisions</h4>
+                <div
+                    style="display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:0.8rem; margin-top:1rem;">
+                    <span>(a) 144 ÷ 12</span>
+                    <span>(b) 256 ÷ 16</span>
+                    <span>(c) 5,040 ÷ 12</span>
+                    <span>(d) 10,000 ÷ 25</span>
+                    <span>(e) 8,888 ÷ 8</span>
+                    <span>(f) 99,999 ÷ 9</span>
+                </div>
+            </div>
+
+            <div class="question-card">
+                <h4>Question 3: Find the missing number</h4>
+                <p>(a) 12 × ____ = 144</p>
+                <p>(b) ____ ÷ 8 = 25</p>
+                <p>(c) 25 × 4 × ____ = 1,000</p>
+                <p>(d) 10,000 ÷ ____ = 100</p>
+            </div>
+
+            <div class="question-card">
+                <h4>Question 4: Word Problems</h4>
+                <p>(a) A box contains 24 chocolates. How many chocolates are there in 15 such boxes?</p>
+                <p>(b) 456 students are divided equally into 12 classrooms. How many students are in each classroom?</p>
+                <p>(c) If 1 dozen eggs cost ₹60, how much do 8 dozen eggs cost?</p>
+            </div>
+
+            <div class="question-card">
+                <h4>Question 5: Multiplication Tables Challenge</h4>
+                <p>Complete the pattern:</p>
+                <p>(a) 13 × 1 = ____, 13 × 2 = ____, 13 × 3 = ____ ... 13 × 10 = ____</p>
+                <p>(b) 17 × 5 = ____, 17 × 10 = ____, 17 × 15 = ____</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="exercise-section">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2>Exercise 2.3 | सराव 2.3 – Mixed Operations & BODMAS</h2>
+
+            <div class="question-card">
+                <h4>Question 1: Solve using BODMAS rule</h4>
+                <p>(a) 5 + 3 × 4</p>
+                <p>(b) 18 − 6 ÷ 2</p>
+                <p>(c) (12 + 8) × 5</p>
+                <p>(d) 100 ÷ (5 + 5)</p>
+                <p>(e) 3 × (7 − 2) + 10</p>
+                <p>(f) 48 ÷ 6 + 5 × 3</p>
+            </div>
+
+            <div class="question-card">
+                <h4>Question 2: Apply the distributive property</h4>
+                <p>(a) 7 × (10 + 2) = ?</p>
+                <p>(b) 9 × (20 − 3) = ?</p>
+                <p>(c) 15 × 11 (use 15 × 10 + 15 × 1)</p>
+            </div>
+
+            <div class="question-card">
+                <h4>Question 3: True or False</h4>
+                <p>(a) 5 + 8 = 8 + 5</p>
+                <p>(b) 10 − 3 = 3 − 10</p>
+                <p>(c) 4 × 6 = 6 × 4</p>
+                <p>(d) 12 ÷ 3 = 3 ÷ 12</p>
+                <p>(e) (5 + 2) × 3 = 5 + (2 × 3)</p>
+            </div>
+
+            <div class="question-card">
+                <h4>Question 4: Complex Word Problems</h4>
+                <p>(a) A shopkeeper bought 50 pens at ₹12 each and sold them at ₹15 each. What is his total profit?</p>
+                <p>(b) Ram has ₹5,000. He bought 8 books at ₹125 each and 5 notebooks at ₹80 each. How much money does
+                    he have left?</p>
+                <p>(c) A car travels 60 km per hour. How far will it travel in 5 hours? If petrol costs ₹100 per litre
+                    and the car uses 1 litre per 15 km, what is the petrol cost for the journey?</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="practice-arena" id="practice">
+        <div class="arena-container">
+            <h2>Interactive Practice Arena | 100 Problems</h2>
+
+            <div class="arena-stats">
+                <div>Operations Mastery Challenge</div>
+                <div id="stats">
+                    Correct: <span id="score" style="color:var(--green);">0</span> |
+                    Attempted: <span id="totalAttempted">0</span> / 100
+                </div>
+            </div>
+
+            <div id="questionWrapper"></div>
+
+            <div
+                style="display:flex; justify-content:center; align-items:center; gap:2rem; margin-top:2rem; flex-wrap: wrap;">
+                <button onclick="prevPage()" id="prevBtn"
+                    style="background:var(--dark); color:white; border:none; padding:1rem 2rem; cursor:pointer; font-family:inherit; font-variation-settings:'wght' 600; border-radius:4px;">←
+                    Previous 50</button>
+                <span id="pageIndicator" style="font-variation-settings:'wght' 600; color:white;">Page 1 of 2</span>
+                <button onclick="nextPage()" id="nextBtn"
+                    style="background:var(--dark); color:white; border:none; padding:1rem 2rem; cursor:pointer; font-family:inherit; font-variation-settings:'wght' 600; border-radius:4px;">Next
+                    50 →</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="homework-section" id="homework">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2>Homework Assignments | गृहपाठ</h2>
+            <p style="text-align: center; margin-bottom: 2rem; font-size: 1.1rem;">Complete these assignments to master
+                basic operations. Download the PDFs below.</p>
+
+            <div class="homework-grid">
+                <div class="homework-card">
+                    <h3>📝 Homework 1</h3>
+                    <p>Focus on addition and subtraction with 2-digit and 3-digit numbers. Includes carrying and
+                        borrowing practice with step-by-step problems.</p>
+                    <a href="homework/Chapter_2_HW1.pdf" class="download-btn" download>📥 Download PDF</a>
+                </div>
+
+                <div class="homework-card">
+                    <h3>📝 Homework 2</h3>
+                    <p>Multiplication and division practice with tables up to 20, long multiplication, and division with
+                        remainders.</p>
+                    <a href="homework/Chapter_2_HW2.pdf" class="download-btn" download>📥 Download PDF</a>
+                </div>
+
+                <div class="homework-card">
+                    <h3>📝 Homework 3</h3>
+                    <p>Mixed operations using BODMAS, word problems combining all four operations, and mental math
+                        challenges.</p>
+                    <a href="homework/Chapter_2_HW3.pdf" class="download-btn" download>📥 Download PDF</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const fullQuestionBank = [];
+
+        function generate100Questions() {
+            // Addition problems (20)
+            for (let i = 0; i < 20; i++) {
+                let a = Math.floor(Math.random() * 90) + 10;
+                let b = Math.floor(Math.random() * 90) + 10;
+                let correct = a + b;
+                fullQuestionBank.push({
+                    q: `<strong>${a} + ${b}</strong> = ?`,
+                    a: correct.toString(),
+                    options: [correct.toString(), (correct + 10).toString(), (correct - 5).toString()]
+                });
+            }
+
+            // Subtraction problems (20)
+            for (let i = 0; i < 20; i++) {
+                let a = Math.floor(Math.random() * 90) + 50;
+                let b = Math.floor(Math.random() * 40) + 10;
+                let correct = a - b;
+                fullQuestionBank.push({
+                    q: `<strong>${a} − ${b}</strong> = ?`,
+                    a: correct.toString(),
+                    options: [correct.toString(), (correct + 5).toString(), (correct - 5).toString()]
+                });
+            }
+
+            // Multiplication problems (20)
+            for (let i = 0; i < 20; i++) {
+                let a = Math.floor(Math.random() * 12) + 2;
+                let b = Math.floor(Math.random() * 12) + 2;
+                let correct = a * b;
+                fullQuestionBank.push({
+                    q: `<strong>${a} × ${b}</strong> = ?`,
+                    a: correct.toString(),
+                    options: [correct.toString(), (correct + a).toString(), (correct + b).toString()]
+                });
+            }
+
+            // Division problems (15)
+            for (let i = 0; i < 15; i++) {
+                let quotient = Math.floor(Math.random() * 12) + 2;
+                let divisor = Math.floor(Math.random() * 12) + 2;
+                let dividend = quotient * divisor;
+                fullQuestionBank.push({
+                    q: `<strong>${dividend} ÷ ${divisor}</strong> = ?`,
+                    a: quotient.toString(),
+                    options: [quotient.toString(), (quotient + 1).toString(), (quotient - 1).toString()]
+                });
+            }
+
+            // BODMAS problems (15)
+            const bodmasProblems = [
+                { q: "3 + 4 × 2", a: "11", o: ["11", "14", "10"] },
+                { q: "18 − 6 ÷ 2", a: "15", o: ["15", "6", "12"] },
+                { q: "(12 + 8) × 5", a: "100", o: ["100", "60", "80"] },
+                { q: "100 ÷ (5 + 5)", a: "10", o: ["10", "20", "15"] },
+                { q: "5 × 3 + 10", a: "25", o: ["25", "65", "20"] },
+                { q: "48 ÷ 6 + 2", a: "10", o: ["10", "8", "4"] },
+                { q: "7 × (5 − 2)", a: "21", o: ["21", "33", "10"] },
+                { q: "20 − 4 × 3", a: "8", o: ["8", "48", "12"] },
+                { q: "(15 − 5) ÷ 2", a: "5", o: ["5", "10", "7"] },
+                { q: "6 + 3 × 4", a: "18", o: ["18", "36", "24"] },
+                { q: "40 ÷ 8 + 5", a: "10", o: ["10", "1", "5"] },
+                { q: "9 × (2 + 3)", a: "45", o: ["45", "21", "33"] },
+                { q: "(24 − 6) ÷ 3", a: "6", o: ["6", "8", "4"] },
+                { q: "5 + 12 ÷ 4", a: "8", o: ["8", "4", "17"] },
+                { q: "100 − 10 × 5", a: "50", o: ["50", "450", "0"] }
+            ];
+            bodmasProblems.forEach(item => {
+                fullQuestionBank.push({ q: `<strong>${item.q}</strong> = ?`, a: item.a, options: item.o });
+            });
+
+            // Word problems (10)
+            const wordProblems = [
+                { q: "5 boxes with 12 pencils each. Total?", a: "60", o: ["60", "17", "72"] },
+                { q: "144 students ÷ 12 classes = ?", a: "12", o: ["12", "156", "132"] },
+                { q: "₹500 − ₹235 = ?", a: "265", o: ["265", "735", "275"] },
+                { q: "3 trips × 45 km each = ?", a: "135", o: ["135", "48", "145"] },
+                { q: "8 × 25 (mental math) = ?", a: "200", o: ["200", "240", "180"] },
+                { q: "999 + 1 = ?", a: "1000", o: ["1000", "998", "1001"] },
+                { q: "75 + 25 = ?", a: "100", o: ["100", "50", "90"] },
+                { q: "1000 − 555 = ?", a: "445", o: ["445", "555", "455"] },
+                { q: "12 × 12 = ?", a: "144", o: ["144", "124", "132"] },
+                { q: "250 ÷ 5 = ?", a: "50", o: ["50", "45", "55"] }
+            ];
+            wordProblems.forEach(item => {
+                fullQuestionBank.push({ q: item.q, a: item.a, options: item.o });
+            });
+
+            fullQuestionBank.sort(() => Math.random() - 0.5);
+        }
+
+        let currentPage = 0;
+        const perPage = 50;
+        let score = 0;
+        let attempted = 0;
+
+        function renderQuestions() {
+            const container = document.getElementById('questionWrapper');
+            const start = currentPage * perPage;
+            const end = start + perPage;
+            const batch = fullQuestionBank.slice(start, end);
+
+            container.innerHTML = '';
+            document.getElementById('pageIndicator').innerText = `Page ${currentPage + 1} of 2`;
+
+            batch.forEach((item, idx) => {
+                const card = document.createElement('div');
+                card.className = 'question-card';
+                card.innerHTML = `
+                    <h4>Question ${start + idx + 1}</h4>
+                    <p style="margin-bottom:1rem; font-size:1.1rem;">${item.q}</p>
+                    <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                        ${item.options.map(opt => `
+                            <button class="opt-btn" onclick="checkAnswer(this, '${opt}', '${item.a}')">${opt}</button>
+                        `).join('')}
+                    </div>
+                    <div class="feedback" style="margin-top:10px; font-variation-settings:'wght' 600; display:none;"></div>
+                `;
+                container.appendChild(card);
+            });
+
+            document.getElementById('prevBtn').disabled = currentPage === 0;
+            document.getElementById('prevBtn').style.opacity = currentPage === 0 ? "0.5" : "1";
+            document.getElementById('nextBtn').disabled = currentPage === 1;
+            document.getElementById('nextBtn').style.opacity = currentPage === 1 ? "0.5" : "1";
+        }
+
+        window.checkAnswer = function (btn, selected, correct) {
+            const card = btn.closest('.question-card');
+            const feedback = card.querySelector('.feedback');
+            const buttons = card.querySelectorAll('.opt-btn');
+
+            attempted++;
+            if (selected === correct) {
+                score++;
+                btn.style.background = 'var(--green)';
+                btn.style.color = 'white';
+                feedback.innerText = "✓ Correct!";
+                feedback.style.color = "var(--green)";
+            } else {
+                btn.style.background = 'var(--accent)';
+                btn.style.color = 'white';
+                feedback.innerText = `✗ Wrong. Correct is ${correct}`;
+                feedback.style.color = "var(--accent)";
+            }
+
+            buttons.forEach(b => b.onclick = null);
+            feedback.style.display = "block";
+
+            document.getElementById('score').innerText = score;
+            document.getElementById('totalAttempted').innerText = attempted;
+        };
+
+        function nextPage() {
+            if (currentPage < 1) {
+                currentPage++;
+                renderQuestions();
+                document.getElementById('practice').scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function prevPage() {
+            if (currentPage > 0) {
+                currentPage--;
+                renderQuestions();
+                document.getElementById('practice').scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        generate100Questions();
+        renderQuestions();
+    </script>
+
+    <footer>
+        <p style="font-size:1.2rem; margin-bottom:1rem; font-variation-settings:'opsz' 16, 'wdth' 100, 'wght' 500;">
+            Nalanda Academy, Wardha</p>
+        <p style="opacity:0.8;">Chapter 2: Basic Operations – Foundation of All Mathematics</p>
+    </footer>
+</body>
+
+</html>

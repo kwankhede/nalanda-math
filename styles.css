@@ -1,0 +1,56 @@
+body {
+    font-family: Arial, sans-serif;
+    color: #000;
+    background-color: #fff;
+}
+
+.cover-page {
+    text-align: center;
+    margin-top: 150px;
+    color: #4682B4;
+    /* Light blue from your images */
+}
+
+.title-main {
+    font-size: 48px;
+    border-top: 1px solid #ADD8E6;
+    border-bottom: 1px solid #ADD8E6;
+    padding: 10px 0;
+    letter-spacing: 1px;
+}
+
+.subtitle {
+    font-size: 24px;
+    margin-top: 50px;
+    color: #4682B4;
+}
+
+.decor-top {
+    font-size: 30px;
+    margin-bottom: 20px;
+    color: #ADD8E6;
+}
+
+.decor-bottom {
+    font-size: 30px;
+    margin-top: 100px;
+    color: #ADD8E6;
+}
+
+.footer-small {
+    font-size: 14px;
+    color: #4682B4;
+    margin-top: 200px;
+}
+
+.chapter-content {
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.exercise {
+    margin-top: 30px;
+    border-top: 1px dashed #ADD8E6;
+    padding-top: 20px;
+}

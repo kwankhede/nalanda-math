@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mathematics Learning Hub | Nalanda Academy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --cream: #FFF8E7;
+            --dark: #1a1a1a;
+            --accent: #FF6B35;
+            --blue: #4A90E2;
+            --purple: #9B59B6;
+            --green: #27AE60;
+            --gold: #F39C12;
+        }
+
+        body {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            background: var(--cream);
+            color: var(--dark);
+            line-height: 1.6;
+            font-variation-settings: 'opsz' 16, 'wdth' 100, 'wght' 400;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--cream) 0%, #FFE5D9 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 107, 53, 0.1) 0%, transparent 70%);
+            top: -250px;
+            right: -250px;
+            border-radius: 50%;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(74, 144, 226, 0.1) 0%, transparent 70%);
+            bottom: -200px;
+            left: -200px;
+            border-radius: 50%;
+        }
+
+        h1 {
+            font-size: clamp(3rem, 10vw, 8rem);
+            font-variation-settings: 'opsz' 96, 'wdth' 75, 'wght' 700;
+            line-height: 0.9;
+            margin-bottom: 1rem;
+            color: var(--dark);
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero p {
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            font-variation-settings: 'opsz' 16, 'wdth' 100, 'wght' 300;
+            max-width: 600px;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            animation: bounce 2s infinite;
+            font-size: 2rem;
+            color: var(--accent);
+        }
+
+        @keyframes bounce {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0);
+            }
+
+            40% {
+                transform: translateY(-10px);
+            }
+
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            background: var(--dark);
+            padding: 1rem 2rem;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: var(--cream);
+            text-decoration: none;
+            font-variation-settings: 'opsz' 16, 'wdth' 100, 'wght' 500;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Teacher Section */
+        .teacher-section {
+            background: white;
+            padding: 3rem 2rem;
+            margin: 4rem auto;
+            max-width: 1000px;
+            border: 3px solid var(--dark);
+            box-shadow: 12px 12px 0 var(--dark);
+            position: relative;
+        }
+
+        .teacher-content {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .teacher-image-container {
+            position: relative;
+        }
+
+        .teacher-image {
+            width: 100%;
+            height: auto;
+            border: 4px solid var(--dark);
+            box-shadow: 8px 8px 0 var(--accent);
+            transition: all 0.3s;
+        }
+
+        .teacher-image:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 12px 12px 0 var(--accent);
+        }
+
+        .teacher-info h3 {
+            font-size: 2rem;
+            font-variation-settings: 'opsz' 48, 'wdth' 85, 'wght' 700;
+            color: var(--blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .teacher-info .role {
+            font-size: 1.2rem;
+            font-variation-settings: 'opsz' 16, 'wdth' 100, 'wght' 500;
+            color: var(--purple);
+            margin-bottom: 1.5rem;
+        }
+
+        .teacher-info p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .teacher-badge {
+            display: inline-block;
+            background: var(--green);
+            color: white;
+            padding: 0.5rem 1rem;
+            font-variation-settings: 'opsz' 12, 'wdth' 100, 'wght' 600;
+            margin-top: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 768px) {
+            .teacher-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .teacher-image-container {
+                max-width: 250px;
+                margin: 0 auto;
+            }
+        }
+
+        .section {
+            padding: 4rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-variation-settings: 'opsz' 48, 'wdth' 85, 'wght' 700;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--accent);
+        }
+
+        .topic-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .topic-card-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .topic-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 0;
+            border: 3px solid var(--dark);
+            box-shadow: 8px 8px 0 var(--dark);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .topic-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--blue), var(--purple), var(--green));
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .topic-card:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 12px 12px 0 var(--dark);
+        }
+
+        .topic-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .topic-number {
+            font-size: 3rem;
+            font-variation-settings: 'opsz' 96, 'wdth' 75, 'wght' 800;
+            color: var(--accent);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+            opacity: 0.3;
+        }
+
+        .topic-card h3 {
+            font-size: 1.5rem;
+            font-variation-settings: 'opsz' 24, 'wdth' 100, 'wght' 600;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .topic-card p {
+            font-variation-settings: 'opsz' 16, 'wdth' 100, 'wght' 400;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .category-badge {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background: var(--dark);
+            color: var(--cream);
+            font-size: 0.8rem;
+            font-variation-settings: 'opsz' 12, 'wdth' 100, 'wght' 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .fundamentals {
+            border-color: var(--blue);
+        }
+
+        .fundamentals .category-badge {
+            background: var(--blue);
+        }
+
+        .fundamentals .topic-number {
+            color: var(--blue);
+        }
+
+        .advanced {
+            border-color: var(--purple);
+        }
+
+        .advanced .category-badge {
+            background: var(--purple);
+        }
+
+        .advanced .topic-number {
+            color: var(--purple);
+        }
+
+        .professional {
+            border-color: var(--gold);
+        }
+
+        .professional .category-badge {
+            background: var(--gold);
+        }
+
+        .professional .topic-number {
+            color: var(--gold);
+        }
+
+        .fundamentals:hover {
+            box-shadow: 12px 12px 0 var(--blue);
+        }
+
+        .advanced:hover {
+            box-shadow: 12px 12px 0 var(--purple);
+        }
+
+        .professional:hover {
+            box-shadow: 12px 12px 0 var(--gold);
+        }
+
+        footer {
+            background: var(--dark);
+            color: var(--cream);
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            font-variation-settings: 'opsz' 16, 'wdth' 100, 'wght' 300;
+        }
+
+        .math-symbol {
+            position: fixed;
+            font-size: 10rem;
+            opacity: 0.03;
+            z-index: 0;
+            font-variation-settings: 'opsz' 96, 'wdth' 100, 'wght' 800;
+            pointer-events: none;
+        }
+
+        .symbol-1 {
+            top: 10%;
+            left: 5%;
+        }
+
+        .symbol-2 {
+            top: 50%;
+            right: 10%;
+        }
+
+        .symbol-3 {
+            bottom: 20%;
+            left: 15%;
+        }
+
+        @media (max-width: 768px) {
+            .topic-grid {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 3rem;
+            }
+
+            .math-symbol {
+                display: none;
+            }
+
+            .section {
+                padding: 2rem 1rem;
+            }
+
+            .teacher-section {
+                margin: 2rem 1rem;
+            }
+        }
+
+        .intro-text {
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            text-align: center;
+            font-size: 1.2rem;
+            font-variation-settings: 'opsz' 16, 'wdth' 100, 'wght' 400;
+            line-height: 1.8;
+        }
+
+        .progression-note {
+            background: linear-gradient(135deg, #fff3cd 0%, #ffe5a3 100%);
+            border-left: 5px solid var(--gold);
+            padding: 1.5rem;
+            margin: 2rem auto;
+            max-width: 800px;
+            font-variation-settings: 'opsz' 16, 'wdth' 100, 'wght' 500;
+            border-radius: 0;
+            box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+        }
+
+        .progression-note strong {
+            color: var(--gold);
+            font-variation-settings: 'opsz' 16, 'wdth' 100, 'wght' 700;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="math-symbol symbol-1">π</div>
+    <div class="math-symbol symbol-2">∑</div>
+    <div class="math-symbol symbol-3">∞</div>
+
+    <div class="hero">
+        <h1>Mathematics<br>Unlocked</h1>
+        <p>From numbers to equations, explore the building blocks of mathematical thinking</p>
+        <div class="scroll-indicator">↓</div>
+    </div>
+
+    <nav>
+        <ul>
+            <li><a href="#teacher">Your Teacher</a></li>
+            <li><a href="#fundamentals">Fundamentals</a></li>
+            <li><a href="#advanced">Advanced Topics</a></li>
+            <li><a href="#professional">Professional Mathematics</a></li>
+            <li><a href="#about">About</a></li>
+        </ul>
+    </nav>
+
+    <section id="teacher" class="teacher-section">
+        <div class="teacher-content">
+            <div class="teacher-image-container">
+                <img src="kapil.jpeg" alt="Kapil - Mathematics Teacher" class="teacher-image">
+            </div>
+            <div class="teacher-info">
+                <h3>Meet Your Teacher</h3>
+                <p class="role">Mathematics Educator | Nalanda Academy</p>
+                <p>Hello! I'm Kapil, your guide through the fascinating world of mathematics. With a passion for making
+                    complex concepts accessible and engaging, I've dedicated my career to helping students from all
+                    backgrounds discover the beauty and power of mathematical thinking.</p>
+                <p>At Nalanda Academy, we believe every student has the potential to excel in mathematics. Through this
+                    learning hub, I'll be with you every step of the way—from fundamental concepts to advanced
+                    problem-solving.</p>
+                <a href="https://kwakhede.netlify.app/" style="text-decoration: none; color: inherit;">
+                    <div class="teacher-badge">
+                        🎓 Know More About Me!
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="fundamentals" class="section">
+        <h2 class="section-title">Fundamental Concepts</h2>
+        <p class="intro-text">Master the essential building blocks of mathematics. These foundational topics form the
+            basis of all mathematical reasoning and problem-solving.</p>
+
+        <div class="topic-grid">
+            <a href="chapter1.html" class="topic-card-link">
+                <div class="topic-card fundamentals">
+                    <div class="category-badge">Numbers</div>
+                    <div class="topic-number">01</div>
+                    <h3>The Number System</h3>
+                    <p>Explore natural numbers, whole numbers, integers, rational numbers, and understand properties of
+                        zero, odd/even numbers, prime/composite/co-prime numbers.</p>
+                </div>
+            </a>
+
+            <a href="chapter2.html" class="topic-card-link">
+                <div class="topic-card fundamentals">
+                    <div class="category-badge">Operations</div>
+                    <div class="topic-number">02</div>
+                    <h3>Basic Operations</h3>
+                    <p>Master addition, subtraction, multiplication, and division. Learn the fundamental operations that
+                        power all of mathematics.</p>
+                </div>
+            </a>
+
+            <a href="chapter3.html" class="topic-card-link">
+                <div class="topic-card fundamentals">
+                    <div class="category-badge">Rules</div>
+                    <div class="topic-number">03</div>
+                    <h3>Divisibility Test</h3>
+                    <p>Discover quick methods to determine if one number divides another without performing full
+                        division.
+                    </p>
+                </div>
+            </a>
+
+            <a href="chapter4.html" class="topic-card-link">
+                <div class="topic-card fundamentals">
+                    <div class="category-badge">Numbers</div>
+                    <div class="topic-number">04</div>
+                    <h3>Factors and Multiples</h3>
+                    <p>Understand the relationship between numbers through factors and multiples, essential for solving
+                        complex problems.</p>
+                </div>
+            </a>
+
+            <a href="chapter5.html" class="topic-card-link">
+                <div class="topic-card fundamentals">
+                    <div class="category-badge">Concepts</div>
+                    <div class="topic-number">05</div>
+                    <h3>HCF and LCM</h3>
+                    <p>Learn to find the Highest Common Factor and Lowest Common Multiple, crucial tools for fraction
+                        operations and problem-solving.</p>
+                </div>
+            </a>
+
+            <a href="chapter6.html" class="topic-card-link">
+                <div class="topic-card fundamentals">
+                    <div class="category-badge">Numbers</div>
+                    <div class="topic-number">06</div>
+                    <h3>Integers</h3>
+                    <p>Work with positive and negative whole numbers, understanding operations and real-world
+                        applications.
+                    </p>
+                </div>
+            </a>
+
+            <a href="chapter7.html" class="topic-card-link">
+                <div class="topic-card fundamentals">
+                    <div class="category-badge">Numbers</div>
+                    <div class="topic-number">07</div>
+                    <h3>Fractions</h3>
+                    <p>Master parts of a whole, from simple fractions to complex operations and conversions.</p>
+                </div>
+            </a>
+
+            <a href="chapter8.html" class="topic-card-link">
+                <div class="topic-card fundamentals">
+                    <div class="category-badge">Numbers</div>
+                    <div class="topic-number">08</div>
+                    <h3>Decimals</h3>
+                    <p>Understand decimal notation, operations, and their relationship with fractions and percentages.
+                    </p>
+                </div>
+            </a>
+
+            <a href="chapter9.html" class="topic-card-link">
+                <div class="topic-card fundamentals">
+                    <div class="category-badge">Rules</div>
+                    <div class="topic-number">09</div>
+                    <h3>Use of BODMAS</h3>
+                    <p>Learn the order of operations: Brackets, Orders, Division, Multiplication, Addition, and
+                        Subtraction.
+                    </p>
+                </div>
+            </a>
+
+            <a href="chapter10.html" class="topic-card-link">
+                <div class="topic-card fundamentals">
+                    <div class="category-badge">Powers</div>
+                    <div class="topic-number">10</div>
+                    <h3>Exponents and Powers</h3>
+                    <p>Explore exponential notation, laws of exponents, and the power of repeated multiplication.</p>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <section id="advanced" class="section">
+        <h2 class="section-title">Advanced Topics</h2>
+        <p class="intro-text">Build upon your foundation with more sophisticated mathematical concepts. These topics are
+            carefully sequenced to build naturally from fundamental ideas to complex applications.</p>
+
+        <div class="progression-note">
+            <strong>📚 Learning Pathway:</strong> These topics are arranged in pedagogical order—each chapter builds on
+            concepts from previous ones. Start from the beginning for the smoothest learning experience!
+        </div>
+
+        
+        <div class="topic-grid">
+            <!-- Algebraic Foundation -->
+            <a href="chapter11.html" class="topic-card-link">
+                <div class="topic-card advanced">
+                    <div class="category-badge">Algebra</div>
+                    <div class="topic-number">11</div>
+                    <h3>Introduction to Algebra</h3>
+                    <p>Begin your algebraic journey by understanding variables, constants, and the language of mathematics.
+                    </p>
+                </div>
+            </a>
+
+
+            <a href="chapter12.html" class="topic-card-link"
+                <div class="topic-card advanced">
+                    <div class="category-badge">Expressions</div>
+                    <div class="topic-number">12</div>
+                    <h3>Algebraic Expressions</h3>
+                    <p>Form and simplify expressions using variables, constants, and operations—the building blocks of
+                        algebra.</p>
+                </div>
+            </a>
+
+            <div class="topic-card advanced">
+                <div class="category-badge">Algebra</div>
+                <div class="topic-number">13</div>
+                <h3>Polynomials</h3>
+                <p>Work with expressions containing multiple terms and understand polynomial operations and
+                    classifications.</p>
+            </div>
+
+            <!-- Equations Progression -->
+            <div class="topic-card advanced">
+                <div class="category-badge">Equations</div>
+                <div class="topic-number">14</div>
+                <h3>Simple Equations</h3>
+                <p>Solve for unknown variables in linear equations with one variable—your first step in equation
+                    solving.</p>
+            </div>
+
+            <div class="topic-card advanced">
+                <div class="category-badge">Equations</div>
+                <div class="topic-number">15</div>
+                <h3>Linear Equations (Two Variables)</h3>
+                <p>Solve pairs of linear equations simultaneously using substitution, elimination, and graphical
+                    methods.</p>
+            </div>
+
+            <div class="topic-card advanced">
+                <div class="category-badge">Equations</div>
+                <div class="topic-number">16</div>
+                <h3>Quadratic Equations</h3>
+                <p>Master second-degree equations using factoring, completing the square, and the quadratic formula.</p>
+            </div>
+
+            <!-- Powers and Roots -->
+            <div class="topic-card advanced">
+                <div class="category-badge">Powers</div>
+                <div class="topic-number">17</div>
+                <h3>Squares, Cubes & Roots</h3>
+                <p>Master square and square roots, cube and cube roots. Understand perfect squares and cubes.</p>
+            </div>
+
+            <!-- Ratios and Proportions Sequence -->
+            <div class="topic-card advanced">
+                <div class="category-badge">Relationships</div>
+                <div class="topic-number">18</div>
+                <h3>Ratio</h3>
+                <p>Compare quantities and understand the relationships between different values using ratios.</p>
+            </div>
+
+            <div class="topic-card advanced">
+                <div class="category-badge">Relationships</div>
+                <div class="topic-number">19</div>
+                <h3>Proportion</h3>
+                <p>Learn about equal ratios and proportional relationships—building on ratio concepts.</p>
+            </div>
+
+            <div class="topic-card advanced">
+                <div class="category-badge">Variation</div>
+                <div class="topic-number">20</div>
+                <h3>Direct & Inverse Proportion</h3>
+                <p>Understand how quantities vary together in direct and inverse relationships.</p>
+            </div>
+
+            <!-- Practical Applications -->
+            <div class="topic-card advanced">
+                <div class="category-badge">Applications</div>
+                <div class="topic-number">21</div>
+                <h3>Percentage</h3>
+                <p>Express parts per hundred and solve practical problems involving discounts, increases, and
+                    comparisons.</p>
+            </div>
+
+            <div class="topic-card advanced">
+                <div class="category-badge">Commerce</div>
+                <div class="topic-number">22</div>
+                <h3>Profit and Loss</h3>
+                <p>Apply percentage concepts to calculate cost price, selling price, profit, loss, and percentage gains.
+                </p>
+            </div>
+
+            <!-- Geometry -->
+            <div class="topic-card advanced">
+                <div class="category-badge">Geometry</div>
+                <div class="topic-number">23</div>
+                <h3>Mensuration</h3>
+                <p>Calculate perimeter and area of rectangles, squares, and polygons. Apply algebra to geometric
+                    problems.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="professional" class="section">
+        <h2 class="section-title">Professional Mathematics</h2>
+        <p class="intro-text">Advance into higher mathematics with topics essential for science, engineering, economics,
+            and advanced academic pursuits. These concepts open doors to university-level mathematics and research.</p>
+
+        <div class="progression-note">
+            <strong>🎯 Prerequisites:</strong> These topics require strong foundations in algebra, equations, and
+            mathematical reasoning. Ensure you've mastered the Fundamentals and Advanced sections before proceeding.
+        </div>
+
+        <div class="topic-grid">
+            <!-- Functions and Relations -->
+            <div class="topic-card professional">
+                <div class="category-badge">Functions</div>
+                <div class="topic-number">24</div>
+                <h3>Functions and Relations</h3>
+                <p>Explore mappings between sets, domain and range, types of functions, and function composition.</p>
+            </div>
+
+            <div class="topic-card professional">
+                <div class="category-badge">Functions</div>
+                <div class="topic-number">25</div>
+                <h3>Trigonometric Functions</h3>
+                <p>Study sine, cosine, tangent, and their applications in triangles, waves, and circular motion.</p>
+            </div>
+
+            <!-- Sequences and Series -->
+            <div class="topic-card professional">
+                <div class="category-badge">Sequences</div>
+                <div class="topic-number">26</div>
+                <h3>Sequences and Series</h3>
+                <p>Understand arithmetic and geometric progressions, summation notation, and convergence.</p>
+            </div>
+
+            <!-- Calculus Foundation -->
+            <div class="topic-card professional">
+                <div class="category-badge">Calculus</div>
+                <div class="topic-number">27</div>
+                <h3>Limits and Continuity</h3>
+                <p>Foundation of calculus: understand how functions behave as they approach specific values.</p>
+            </div>
+
+            <div class="topic-card professional">
+                <div class="category-badge">Calculus</div>
+                <div class="topic-number">28</div>
+                <h3>Derivatives</h3>
+                <p>Calculate rates of change, tangent lines, and optimization. Essential for physics and engineering.
+                </p>
+            </div>
+
+            <div class="topic-card professional">
+                <div class="category-badge">Calculus</div>
+                <div class="topic-number">29</div>
+                <h3>Integration</h3>
+                <p>Find areas under curves, solve differential equations, and understand accumulation of quantities.</p>
+            </div>
+
+            <div class="topic-card professional">
+                <div class="category-badge">Calculus</div>
+                <div class="topic-number">30</div>
+                <h3>Differential Equations</h3>
+                <p>Model real-world phenomena through equations involving derivatives—from population growth to physics.
+                </p>
+            </div>
+
+            <!-- Linear Algebra -->
+            <div class="topic-card professional">
+                <div class="category-badge">Linear Algebra</div>
+                <div class="topic-number">31</div>
+                <h3>Matrices and Determinants</h3>
+                <p>Work with rectangular arrays of numbers, perform matrix operations, and solve systems of equations.
+                </p>
+            </div>
+
+            <div class="topic-card professional">
+                <div class="category-badge">Linear Algebra</div>
+                <div class="topic-number">32</div>
+                <h3>Vectors</h3>
+                <p>Understand magnitude and direction, vector operations, and applications in physics and geometry.</p>
+            </div>
+
+            <div class="topic-card professional">
+                <div class="category-badge">Linear Algebra</div>
+                <div class="topic-number">33</div>
+                <h3>Vector Spaces</h3>
+                <p>Explore abstract algebraic structures, linear transformations, eigenvalues, and eigenvectors.</p>
+            </div>
+
+            <!-- Probability and Statistics -->
+            <div class="topic-card professional">
+                <div class="category-badge">Probability</div>
+                <div class="topic-number">34</div>
+                <h3>Probability Theory</h3>
+                <p>Understand chance and uncertainty, probability rules, conditional probability, and Bayes' theorem.
+                </p>
+            </div>
+
+            <div class="topic-card professional">
+                <div class="category-badge">Statistics</div>
+                <div class="topic-number">35</div>
+                <h3>Statistics and Data Analysis</h3>
+                <p>Collect, organize, analyze, and interpret data. Learn measures of central tendency and dispersion.
+                </p>
+            </div>
+
+            <div class="topic-card professional">
+                <div class="category-badge">Probability</div>
+                <div class="topic-number">36</div>
+                <h3>Probability Distributions</h3>
+                <p>Study binomial, normal, and Poisson distributions—essential for statistics and data science.</p>
+            </div>
+
+            <!-- Advanced Topics -->
+            <div class="topic-card professional">
+                <div class="category-badge">Complex Numbers</div>
+                <div class="topic-number">37</div>
+                <h3>Complex Numbers</h3>
+                <p>Extend the number system to include imaginary numbers, polar form, and De Moivre's theorem.</p>
+            </div>
+
+            <div class="topic-card professional">
+                <div class="category-badge">Discrete Math</div>
+                <div class="topic-number">38</div>
+                <h3>Combinatorics</h3>
+                <p>Master counting principles, permutations, combinations, and the binomial theorem.</p>
+            </div>
+
+            <div class="topic-card professional">
+                <div class="category-badge">Advanced</div>
+                <div class="topic-number">39</div>
+                <h3>Number Theory</h3>
+                <p>Study properties of integers, modular arithmetic, Diophantine equations, and cryptography basics.</p>
+            </div>
+
+            <div class="topic-card professional">
+                <div class="category-badge">Geometry</div>
+                <div class="topic-number">40</div>
+                <h3>Analytic Geometry</h3>
+                <p>Use algebra to study geometric shapes—conic sections, coordinate systems, and transformations.</p>
+            </div>
+
+            <div class="topic-card professional">
+                <div class="category-badge">Logic</div>
+                <div class="topic-number">41</div>
+                <h3>Mathematical Logic & Proofs</h3>
+                <p>Learn formal reasoning, proof techniques (induction, contradiction), and propositional logic.</p>
+            </div>
+
+            <div class="topic-card professional">
+                <div class="category-badge">Optimization</div>
+                <div class="topic-number">42</div>
+                <h3>Linear Programming</h3>
+                <p>Optimize objective functions subject to constraints—applications in business, economics, and
+                    operations research.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <h2 class="section-title">About Nalanda Academy</h2>
+        <div style="max-width: 900px; margin: 0 auto;">
+            <p class="intro-text">Nalanda Academy, Wardha is an Educational Resource Centre empowering students from
+                marginalized, rural, and non-English medium backgrounds to pursue quality higher education in India and
+                abroad.</p>
+
+            <div
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin: 3rem 0;">
+                <div style="text-align: center;">
+                    <div
+                        style="font-size: 3rem; font-variation-settings: 'opsz' 96, 'wdth' 75, 'wght' 800; color: var(--blue); margin-bottom: 0.5rem;">
+                        17,000+</div>
+                    <p style="font-variation-settings: 'opsz' 16, 'wdth' 100, 'wght' 500;">Students Trained</p>
+                </div>
+                <div style="text-align: center;">
+                    <div
+                        style="font-size: 3rem; font-variation-settings: 'opsz' 96, 'wdth' 75, 'wght' 800; color: var(--purple); margin-bottom: 0.5rem;">
+                        200+</div>
+                    <p style="font-variation-settings: 'opsz' 16, 'wdth' 100, 'wght' 500;">Dedicated Mentors</p>
+                </div>
+                <div style="text-align: center;">
+                    <div
+                        style="font-size: 3rem; font-variation-settings: 'opsz' 96, 'wdth' 75, 'wght' 800; color: var(--green); margin-bottom: 0.5rem;">
+                        100%</div>
+                    <p style="font-variation-settings: 'opsz' 16, 'wdth' 100, 'wght' 500;">Free Education</p>
+                </div>
+            </div>
+
+            <div
+                style="background: white; padding: 2.5rem; border: 3px solid var(--dark); box-shadow: 8px 8px 0 var(--dark); margin: 3rem 0;">
+                <h3
+                    style="font-size: 1.8rem; font-variation-settings: 'opsz' 24, 'wdth' 100, 'wght' 600; margin-bottom: 1.5rem; color: var(--dark);">
+                    Our Mission</h3>
+                <p
+                    style="font-variation-settings: 'opsz' 16, 'wdth' 100, 'wght' 400; line-height: 1.8; margin-bottom: 1rem;">
+                    Founded in 2013 with just one educator and 22 students, Nalanda Academy has grown to provide
+                    comprehensive educational resources and mentorship to rural students across 15 states. We realize
+                    Dr. Babasaheb Ambedkar's vision of community empowerment through education.
+                </p>
+                <p style="font-variation-settings: 'opsz' 16, 'wdth' 100, 'wght' 400; line-height: 1.8;">
+                    Our students have gone on to study at premier universities in India and abroad, breaking barriers
+                    and becoming role models in their communities. All training and facilities are provided completely
+                    free of cost, supported by friends and well-wishers.
+                </p>
+            </div>
+
+            <div style="background: var(--dark); color: var(--cream); padding: 2.5rem; margin: 3rem 0;">
+                <h3
+                    style="font-size: 1.8rem; font-variation-settings: 'opsz' 24, 'wdth' 100, 'wght' 600; margin-bottom: 1.5rem;">
+                    What We Offer</h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li
+                        style="padding: 0.8rem 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-variation-settings: 'opsz' 16, 'wdth' 100, 'wght' 400;">
+                        ✓ 10-month Foundation Course for underprivileged students
+                    </li>
+                    <li
+                        style="padding: 0.8rem 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-variation-settings: 'opsz' 16, 'wdth' 100, 'wght' 400;">
+                        ✓ Nalanda Abhiyan Labs for emerging technologies
+                    </li>
+                    <li
+                        style="padding: 0.8rem 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-variation-settings: 'opsz' 16, 'wdth' 100, 'wght' 400;">
+                        ✓ 15 Abhiyan Community Libraries across villages
+                    </li>
+                    <li
+                        style="padding: 0.8rem 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-variation-settings: 'opsz' 16, 'wdth' 100, 'wght' 400;">
+                        ✓ Digital Nalanda online learning platform
+                    </li>
+                    <li style="padding: 0.8rem 0; font-variation-settings: 'opsz' 16, 'wdth' 100, 'wght' 400;">
+                        ✓ Samyak Centre for Interdisciplinary Research
+                    </li>
+                </ul>
+            </div>
+
+            <p class="intro-text" style="margin-top: 2rem;">
+                This mathematics resource hub is part of our commitment to provide quality educational content to
+                students from all backgrounds, helping them build strong foundations for higher education and beyond.
+            </p>
+        </div>
+    </section>
+
+    <footer>
+        <p style="font-size: 1.2rem; margin-bottom: 1rem; font-variation-settings: 'opsz' 16, 'wdth' 100, 'wght' 500;">
+            Nalanda Academy, Wardha</p>
+        <p style="opacity: 0.8; margin-bottom: 0.5rem;">Empowering Education Since 2013</p>
+        <p style="opacity: 0.8; margin-bottom: 1.5rem;">An Educational Resource Centre at Samyak Buddha Vihar, Wardha,
+            Maharashtra</p>
+        <p style="opacity: 0.7; font-size: 0.9rem;">Mathematics Learning Hub — Built with Bricolage Grotesque • Hosted
+            on GitHub Pages</p>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 10: Exponents and Powers | Nalanda Academy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --cream: #FFF8E7;
+            --dark: #1a1a1a;
+            --accent: #FF6B35;
+            --blue: #4A90E2;
+            --purple: #9B59B6;
+            --green: #27AE60;
+            --orange: #E67E22;
+            --red: #E74C3C;
+            --cyan: #17A2B8;
+            --deepblue: #2C3E50;
+        }
+
+        body {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            background: var(--cream);
+            color: var(--dark);
+            line-height: 1.7;
+            font-variation-settings: 'opsz' 16, 'wdth' 100, 'wght' 400;
+        }
+
+        .header {
+            background: var(--dark);
+            color: var(--cream);
+            padding: 1.5rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-variation-settings: 'opsz' 24, 'wdth' 100, 'wght' 600;
+        }
+
+        .nav-links a {
+            color: var(--cream);
+            text-decoration: none;
+            margin-left: 2rem;
+            font-variation-settings: 'opsz' 16, 'wdth' 100, 'wght' 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .chapter-hero {
+            background: linear-gradient(135deg, var(--deepblue) 0%, #1A252F 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .chapter-number {
+            font-size: 1.2rem;
+            font-variation-settings: 'opsz' 16, 'wdth' 100, 'wght' 500;
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+        }
+
+        .chapter-title {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-variation-settings: 'opsz' 96, 'wdth' 85, 'wght' 700;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .chapter-subtitle {
+            font-size: 1.3rem;
+            font-variation-settings: 'opsz' 16, 'wdth' 100, 'wght' 400;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .intro-box {
+            background: white;
+            padding: 2.5rem;
+            border: 3px solid var(--dark);
+            box-shadow: 8px 8px 0 var(--dark);
+            margin-bottom: 3rem;
+        }
+
+        .intro-box p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .highlight {
+            background: var(--deepblue);
+            color: white;
+            padding: 0.2rem 0.5rem;
+            font-variation-settings: 'opsz' 16, 'wdth' 100, 'wght' 600;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-variation-settings: 'opsz' 48, 'wdth' 85, 'wght' 700;
+            margin: 3rem 0 2rem;
+            color: var(--deepblue);
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100px;
+            height: 4px;
+            background: var(--accent);
+        }
+
+        .power-notation {
+            background: white;
+            border: 3px solid var(--deepblue);
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .power-visual {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .power-example {
+            font-size: 3rem;
+            font-variation-settings: 'wght' 700;
+            color: var(--deepblue);
+        }
+
+        .power-example sup {
+            font-size: 2rem;
+            color: var(--accent);
+        }
+
+        .power-breakdown {
+            background: var(--cream);
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-left: 4px solid var(--deepblue);
+        }
+
+        .law-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .law-card {
+            background: white;
+            border: 3px solid var(--deepblue);
+            padding: 2rem;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .law-card:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 8px 8px 0 var(--deepblue);
+        }
+
+        .law-card h3 {
+            font-size: 1.5rem;
+            font-variation-settings: 'opsz' 24, 'wdth' 100, 'wght' 600;
+            color: var(--deepblue);
+            margin-bottom: 1rem;
+        }
+
+        .law-card .formula {
+            background: var(--cream);
+            padding: 1rem;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 1.2rem;
+            text-align: center;
+            border-radius: 4px;
+        }
+
+        .law-card .example {
+            background: #E8F4F8;
+            padding: 1rem;
+            margin-top: 1rem;
+            border-left: 4px solid var(--cyan);
+        }
+
+        .concept-box {
+            background: white;
+            border-left: 6px solid var(--deepblue);
+            padding: 1.5rem 2rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin: 1.5rem 0;
+        }
+
+        .concept-box h4 {
+            font-size: 1.3rem;
+            font-variation-settings: 'opsz' 24, 'wdth' 100, 'wght' 600;
+            color: var(--deepblue);
+            margin-bottom: 0.8rem;
+        }
+
+        .special-cases {
+            background: #FFF3CD;
+            border: 3px solid #FFC107;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .special-cases h3 {
+            color: #856404;
+            font-size: 1.5rem;
+            font-variation-settings: 'wght' 600;
+            margin-bottom: 1rem;
+        }
+
+        .case-item {
+            background: white;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-left: 4px solid #FFC107;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .comparison-item {
+            background: white;
+            border: 2px solid var(--deepblue);
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .comparison-item .value {
+            font-size: 2rem;
+            font-variation-settings: 'wght' 700;
+            color: var(--deepblue);
+            margin: 1rem 0;
+        }
+
+        .exercise-section {
+            background: linear-gradient(135deg, var(--green) 0%, #229954 100%);
+            color: white;
+            padding: 3rem 2rem;
+            margin: 3rem -2rem;
+        }
+
+        .exercise-section h2 {
+            font-size: 2.5rem;
+            font-variation-settings: 'opsz' 48, 'wdth' 85, 'wght' 700;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .question-card {
+            background: white;
+            color: var(--dark);
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            border: 3px solid var(--dark);
+            box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        .question-card h4 {
+            font-size: 1.3rem;
+            font-variation-settings: 'opsz' 24, 'wdth' 100, 'wght' 600;
+            color: var(--green);
+            margin-bottom: 1rem;
+        }
+
+        .math-formula {
+            font-family: 'Courier New', monospace;
+            font-size: 1.2rem;
+            background: var(--cream);
+            padding: 0.5rem 1rem;
+            display: inline-block;
+            margin: 0.3rem 0;
+        }
+
+        .practice-arena {
+            background: linear-gradient(135deg, var(--orange) 0%, #D35400 100%);
+            color: white;
+            padding: 3rem 2rem;
+            margin: 3rem 0;
+        }
+
+        .practice-arena h2 {
+            font-size: 2.5rem;
+            font-variation-settings: 'opsz' 48, 'wdth' 85, 'wght' 700;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .arena-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .arena-stats {
+            background: white;
+            color: var(--dark);
+            padding: 1.5rem;
+            border: 3px solid var(--dark);
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .arena-stats div:first-child {
+            font-variation-settings: 'wght' 600;
+        }
+
+        .arena-stats #stats {
+            font-variation-settings: 'wght' 700;
+        }
+
+        .homework-section {
+            background: linear-gradient(135deg, var(--blue) 0%, #357ABD 100%);
+            color: white;
+            padding: 3rem 2rem;
+            margin: 3rem -2rem;
+        }
+
+        .homework-section h2 {
+            font-size: 2.5rem;
+            font-variation-settings: 'opsz' 48, 'wdth' 85, 'wght' 700;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .homework-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .homework-card {
+            background: white;
+            color: var(--dark);
+            padding: 2rem;
+            border: 3px solid var(--dark);
+            box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.2);
+            transition: all 0.3s;
+        }
+
+        .homework-card:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        .homework-card h3 {
+            font-size: 1.5rem;
+            font-variation-settings: 'opsz' 24, 'wdth' 100, 'wght' 600;
+            color: var(--blue);
+            margin-bottom: 1rem;
+        }
+
+        .homework-card p {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .download-btn {
+            background: var(--blue);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            cursor: pointer;
+            font-family: inherit;
+            font-variation-settings: 'wght' 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: background 0.3s;
+        }
+
+        .download-btn:hover {
+            background: #357ABD;
+        }
+
+        footer {
+            background: var(--dark);
+            color: var(--cream);
+            padding: 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .opt-btn {
+            background: var(--cream);
+            border: 2px solid var(--dark);
+            padding: 0.6rem 1.2rem;
+            cursor: pointer;
+            font-family: inherit;
+            font-variation-settings: 'wght' 600;
+            margin: 0.4rem;
+        }
+
+        .laws-table {
+            width: 100%;
+            background: white;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            border: 3px solid var(--dark);
+        }
+
+        .laws-table th,
+        .laws-table td {
+            padding: 1rem;
+            border: 2px solid var(--dark);
+            text-align: left;
+        }
+
+        .laws-table th {
+            background: var(--deepblue);
+            color: white;
+            font-variation-settings: 'wght' 600;
+        }
+
+        .laws-table .formula-cell {
+            font-family: 'Courier New', monospace;
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 768px) {
+            .chapter-hero {
+                padding: 2rem 1rem;
+            }
+
+            .container {
+                padding: 2rem 1rem;
+            }
+
+            .exercise-section,
+            .practice-arena,
+            .homework-section {
+                margin: 2rem -1rem;
+            }
+
+            .nav-links a {
+                margin-left: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .power-visual {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .laws-table {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">Nalanda Academy Mathematics</div>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="#exercises">Exercises</a>
+                <a href="#practice">Practice Arena</a>
+                <a href="#homework">Homework</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="chapter-hero">
+        <div class="chapter-number">CHAPTER 10</div>
+        <h1 class="chapter-title">Exponents and Powers</h1>
+        <p class="chapter-subtitle">घातांक आणि घात (Exponential Notation)</p>
+    </div>
+
+    <div class="container">
+        <div class="intro-box">
+            <p><span class="highlight">Exponents</span> (also called <strong>powers or indices</strong>) are a shorthand
+                way to express <strong>repeated multiplication</strong> of the same number.</p>
+            <p>Instead of writing 2 × 2 × 2 × 2 × 2, we write <strong>2⁵</strong> (read as "2 to the power 5" or "2
+                raised to 5").</p>
+            <p>This chapter explores exponential notation, the laws of exponents, negative and zero exponents, and their
+                applications with <strong>1000+ practice problems</strong>.</p>
+        </div>
+
+        <h2 class="section-title">Understanding Exponents | घातांक समजून घेणे</h2>
+
+        <div class="power-notation">
+            <h3 style="margin-bottom: 2rem; font-size: 1.8rem;">Exponential Notation</h3>
+            <div class="power-visual">
+                <div class="power-example">
+                    a<sup>n</sup>
+                </div>
+                <div style="font-size: 2rem;">=</div>
+                <div style="text-align: left;">
+                    <div style="font-size: 1.2rem; margin-bottom: 0.5rem;">
+                        <strong>a</strong> = Base (आधार/पाया)
+                    </div>
+                    <div style="font-size: 1.2rem;">
+                        <strong>n</strong> = Exponent/Power/Index (घातांक)
+                    </div>
+                </div>
+            </div>
+
+            <div class="power-breakdown">
+                <p style="font-size: 1.3rem; margin-bottom: 1rem;"><strong>Example: 3⁴ = 3 × 3 × 3 × 3 = 81</strong>
+                </p>
+                <p><strong>Base:</strong> 3 (the number being multiplied)</p>
+                <p><strong>Exponent:</strong> 4 (how many times to multiply)</p>
+                <p><strong>Value:</strong> 81 (the result)</p>
+            </div>
+        </div>
+
+        <div class="concept-box">
+            <h4>Reading Exponents</h4>
+            <p>2³ can be read as:</p>
+            <ul style="margin-left: 2rem; margin-top: 0.5rem;">
+                <li>"2 to the power 3" or "2 raised to 3"</li>
+                <li>"2 cubed" (only for power 3)</li>
+                <li>"The third power of 2"</li>
+            </ul>
+            <p style="margin-top: 1rem;">2² is read as "2 squared" (only for power 2)</p>
+        </div>
+
+        <h2 class="section-title">Common Powers & Their Values</h2>
+
+        <div class="comparison-grid">
+            <div class="comparison-item">
+                <div style="font-size: 1.5rem; color: var(--deepblue); font-variation-settings: 'wght' 600;">2¹ = 2
+                </div>
+                <div class="value">2</div>
+            </div>
+            <div class="comparison-item">
+                <div style="font-size: 1.5rem; color: var(--deepblue); font-variation-settings: 'wght' 600;">2² = 4
+                </div>
+                <div class="value">4</div>
+            </div>
+            <div class="comparison-item">
+                <div style="font-size: 1.5rem; color: var(--deepblue); font-variation-settings: 'wght' 600;">2³ = 8
+                </div>
+                <div class="value">8</div>
+            </div>
+            <div class="comparison-item">
+                <div style="font-size: 1.5rem; color: var(--deepblue); font-variation-settings: 'wght' 600;">2⁴ = 16
+                </div>
+                <div class="value">16</div>
+            </div>
+            <div class="comparison-item">
+                <div style="font-size: 1.5rem; color: var(--deepblue); font-variation-settings: 'wght' 600;">3² = 9
+                </div>
+                <div class="value">9</div>
+            </div>
+            <div class="comparison-item">
+                <div style="font-size: 1.5rem; color: var(--deepblue); font-variation-settings: 'wght' 600;">3³ = 27
+                </div>
+                <div class="value">27</div>
+            </div>
+            <div class="comparison-item">
+                <div style="font-size: 1.5rem; color: var(--deepblue); font-variation-settings: 'wght' 600;">5² = 25
+                </div>
+                <div class="value">25</div>
+            </div>
+            <div class="comparison-item">
+                <div style="font-size: 1.5rem; color: var(--deepblue); font-variation-settings: 'wght' 600;">10² = 100
+                </div>
+                <div class="value">100</div>
+            </div>
+        </div>
+
+        <h2 class="section-title">Laws of Exponents | घातांकाचे नियम</h2>
+
+        <div class="law-cards">
+            <div class="law-card">
+                <h3>Law 1: Product Rule</h3>
+                <p>When multiplying same bases, <strong>add</strong> the exponents</p>
+                <div class="formula">
+                    a<sup>m</sup> × a<sup>n</sup> = a<sup>m+n</sup>
+                </div>
+                <div class="example">
+                    <strong>Example:</strong><br>
+                    2³ × 2⁴ = 2<sup>3+4</sup> = 2⁷ = 128<br>
+                    x⁵ × x² = x<sup>5+2</sup> = x⁷
+                </div>
+            </div>
+
+            <div class="law-card">
+                <h3>Law 2: Quotient Rule</h3>
+                <p>When dividing same bases, <strong>subtract</strong> the exponents</p>
+                <div class="formula">
+                    a<sup>m</sup> ÷ a<sup>n</sup> = a<sup>m-n</sup>
+                </div>
+                <div class="example">
+                    <strong>Example:</strong><br>
+                    3⁵ ÷ 3² = 3<sup>5-2</sup> = 3³ = 27<br>
+                    y⁸ ÷ y³ = y<sup>8-3</sup> = y⁵
+                </div>
+            </div>
+
+            <div class="law-card">
+                <h3>Law 3: Power of a Power</h3>
+                <p>When raising a power to a power, <strong>multiply</strong> the exponents</p>
+                <div class="formula">
+                    (a<sup>m</sup>)<sup>n</sup> = a<sup>m×n</sup>
+                </div>
+                <div class="example">
+                    <strong>Example:</strong><br>
+                    (2³)² = 2<sup>3×2</sup> = 2⁶ = 64<br>
+                    (x⁴)³ = x<sup>4×3</sup> = x¹²
+                </div>
+            </div>
+
+            <div class="law-card">
+                <h3>Law 4: Power of a Product</h3>
+                <p>Apply the exponent to each factor</p>
+                <div class="formula">
+                    (ab)<sup>n</sup> = a<sup>n</sup> × b<sup>n</sup>
+                </div>
+                <div class="example">
+                    <strong>Example:</strong><br>
+                    (2 × 3)² = 2² × 3² = 4 × 9 = 36<br>
+                    (xy)³ = x³y³
+                </div>
+            </div>
+
+            <div class="law-card">
+                <h3>Law 5: Power of a Quotient</h3>
+                <p>Apply the exponent to numerator and denominator</p>
+                <div class="formula">
+                    (a/b)<sup>n</sup> = a<sup>n</sup> / b<sup>n</sup>
+                </div>
+                <div class="example">
+                    <strong>Example:</strong><br>
+                    (2/3)² = 2²/3² = 4/9<br>
+                    (x/y)⁴ = x⁴/y⁴
+                </div>
+            </div>
+
+            <div class="law-card">
+                <h3>Law 6: Zero Exponent</h3>
+                <p>Any non-zero number raised to power 0 equals 1</p>
+                <div class="formula">
+                    a<sup>0</sup> = 1 (where a ≠ 0)
+                </div>
+                <div class="example">
+                    <strong>Example:</strong><br>
+                    5⁰ = 1<br>
+                    100⁰ = 1<br>
+                    (-7)⁰ = 1
+                </div>
+            </div>
+        </div>
+
+        <table class="laws-table">
+            <thead>
+                <tr>
+                    <th>Law</th>
+                    <th>Formula</th>
+                    <th>Example</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Product Rule</strong></td>
+                    <td class="formula-cell">a<sup>m</sup> × a<sup>n</sup> = a<sup>m+n</sup></td>
+                    <td>2³ × 2² = 2⁵ = 32</td>
+                </tr>
+                <tr>
+                    <td><strong>Quotient Rule</strong></td>
+                    <td class="formula-cell">a<sup>m</sup> ÷ a<sup>n</sup> = a<sup>m-n</sup></td>
+                    <td>5⁶ ÷ 5⁴ = 5² = 25</td>
+                </tr>
+                <tr>
+                    <td><strong>Power of Power</strong></td>
+                    <td class="formula-cell">(a<sup>m</sup>)<sup>n</sup> = a<sup>m×n</sup></td>
+                    <td>(3²)³ = 3⁶ = 729</td>
+                </tr>
+                <tr>
+                    <td><strong>Power of Product</strong></td>
+                    <td class="formula-cell">(ab)<sup>n</sup> = a<sup>n</sup>b<sup>n</sup></td>
+                    <td>(2×5)² = 2²×5² = 100</td>
+                </tr>
+                <tr>
+                    <td><strong>Power of Quotient</strong></td>
+                    <td class="formula-cell">(a/b)<sup>n</sup> = a<sup>n</sup>/b<sup>n</sup></td>
+                    <td>(4/2)³ = 4³/2³ = 8</td>
+                </tr>
+                <tr>
+                    <td><strong>Zero Exponent</strong></td>
+                    <td class="formula-cell">a⁰ = 1</td>
+                    <td>99⁰ = 1</td>
+                </tr>
+                <tr>
+                    <td><strong>Negative Exponent</strong></td>
+                    <td class="formula-cell">a<sup>-n</sup> = 1/a<sup>n</sup></td>
+                    <td>2<sup>-3</sup> = 1/2³ = 1/8</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 class="section-title">Special Cases & Important Notes</h2>
+
+        <div class="special-cases">
+            <h3>⚡ Special Exponent Cases</h3>
+
+            <div class="case-item">
+                <h4 style="color: var(--deepblue); margin-bottom: 0.5rem;">1. Zero Exponent</h4>
+                <p><strong>Any number (except 0) raised to power 0 = 1</strong></p>
+                <p>Examples: 5⁰ = 1, 1000⁰ = 1, (-3)⁰ = 1</p>
+                <p style="margin-top: 0.5rem; color: var(--red);">⚠️ Note: 0⁰ is undefined!</p>
+            </div>
+
+            <div class="case-item">
+                <h4 style="color: var(--deepblue); margin-bottom: 0.5rem;">2. Power of One</h4>
+                <p><strong>Any number raised to power 1 = the number itself</strong></p>
+                <p>Examples: 7¹ = 7, 100¹ = 100, x¹ = x</p>
+            </div>
+
+            <div class="case-item">
+                <h4 style="color: var(--deepblue); margin-bottom: 0.5rem;">3. One as Base</h4>
+                <p><strong>1 raised to any power = 1</strong></p>
+                <p>Examples: 1² = 1, 1¹⁰ = 1, 1¹⁰⁰⁰ = 1</p>
+            </div>
+
+            <div class="case-item">
+                <h4 style="color: var(--deepblue); margin-bottom: 0.5rem;">4. Negative Exponents</h4>
+                <p><strong>a<sup>-n</sup> = 1/a<sup>n</sup></strong></p>
+                <p>Examples: 2<sup>-3</sup> = 1/2³ = 1/8, 5<sup>-2</sup> = 1/5² = 1/25</p>
+            </div>
+
+            <div class="case-item">
+                <h4 style="color: var(--deepblue); margin-bottom: 0.5rem;">5. Negative Base</h4>
+                <p><strong>Even exponent → Positive result</strong></p>
+                <p>(-2)² = 4, (-3)⁴ = 81</p>
+                <p style="margin-top: 0.5rem;"><strong>Odd exponent → Negative result</strong></p>
+                <p>(-2)³ = -8, (-3)⁵ = -243</p>
+            </div>
+        </div>
+
+        <div class="concept-box">
+            <h4>Comparing Exponential Expressions</h4>
+            <p>Which is larger: 2¹⁰ or 10²?</p>
+            <p>2¹⁰ = 1024 and 10² = 100</p>
+            <p><strong>So 2¹⁰ > 10²</strong></p>
+            <p style="margin-top: 1rem;">Remember: A small base with large exponent can be greater than a large base
+                with small exponent!</p>
+        </div>
+
+        <div style="background:var(--dark); color:var(--cream); padding:2rem; margin:2rem 0;">
+            <h3>★ Quick Tips & Facts</h3>
+            <ul style="list-style:none; padding:0;">
+                <li style="padding:0.5rem 0;">★ Same base: add exponents when multiplying, subtract when dividing</li>
+                <li style="padding:0.5rem 0;">★ Power of power: multiply the exponents</li>
+                <li style="padding:0.5rem 0;">★ Anything to power 0 = 1 (except 0⁰ which is undefined)</li>
+                <li style="padding:0.5rem 0;">★ Negative exponent = reciprocal with positive exponent</li>
+                <li style="padding:0.5rem 0;">★ Powers of 2: 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024...</li>
+                <li style="padding:0.5rem 0;">★ Powers of 10: 10, 100, 1000, 10000... (add a zero for each power)</li>
+                <li style="padding:0.5rem 0;">★ When bases are different, calculate the values to compare</li>
+            </ul>
+        </div>
+
+        <h2 class="section-title">Real-World Applications</h2>
+
+        <div style="display: grid; gap: 1.5rem; margin: 2rem 0;">
+            <div class="concept-box">
+                <h4>📊 Population Growth</h4>
+                <p><strong>Problem:</strong> A bacteria colony doubles every hour. Starting with 1 bacterium, how many
+                    after 5 hours?</p>
+                <p><strong>Solution:</strong> 2⁵ = 32 bacteria</p>
+            </div>
+
+            <div class="concept-box">
+                <h4>💰 Compound Interest</h4>
+                <p><strong>Problem:</strong> ₹1000 invested at 10% compound interest per year. After 3 years?</p>
+                <p><strong>Solution:</strong> 1000 × (1.1)³ = 1000 × 1.331 = ₹1,331</p>
+            </div>
+
+            <div class="concept-box">
+                <h4>💾 Data Storage</h4>
+                <p><strong>1 KB (Kilobyte)</strong> = 2¹⁰ bytes = 1,024 bytes</p>
+                <p><strong>1 MB (Megabyte)</strong> = 2²⁰ bytes ≈ 1 million bytes</p>
+                <p><strong>1 GB (Gigabyte)</strong> = 2³⁰ bytes ≈ 1 billion bytes</p>
+            </div>
+
+            <div class="concept-box">
+                <h4>📏 Area and Volume</h4>
+                <p><strong>Square area:</strong> side² (if side = 5 cm, area = 5² = 25 cm²)</p>
+                <p><strong>Cube volume:</strong> side³ (if side = 4 cm, volume = 4³ = 64 cm³)</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="exercise-section" id="exercises">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2>Exercise 10.1 | सराव 10.1 – Basic Exponents</h2>
+
+            <div class="question-card">
+                <h4>Question 1: Evaluate the following</h4>
+                <p>(a) 2⁵<br>(b) 3⁴<br>(c) 5³<br>(d) 10²<br>(e) 4³<br>(f) 2⁶</p>
+            </div>
+
+            <div class="question-card">
+                <h4>Question 2: Write in exponential form</h4>
+                <p>(a) 2 × 2 × 2 × 2<br>(b) 5 × 5 × 5<br>(c) 10 × 10 × 10 × 10 × 10<br>(d) 7 × 7</p>
+            </div>
+
+            <div class="question-card">
+                <h4>Question 3: Write in expanded form</h4>
+                <p>(a) 3⁴<br>(b) 2⁷<br>(c) 5⁵<br>(d) 6³</p>
+            </div>
+
+            <div class="question-card">
+                <h4>Question 4: Compare using >, <, or=</h4>
+                        <p>(a) 2³ ___ 3²<br>(b) 4² ___ 2⁴<br>(c) 3³ ___ 5²<br>(d) 10² ___ 2⁵</p>
+            </div>
+
+            <div class="question-card">
+                <h4>Question 5: Find the value</h4>
+                <p>(a) (-2)³<br>(b) (-3)²<br>(c) (-1)⁵<br>(d) (-5)²</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="exercise-section">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2>Exercise 10.2 | सराव 10.2 – Laws of Exponents</h2>
+
+            <div class="question-card">
+                <h4>Question 1: Simplify using Product Rule</h4>
+                <p>(a) 2³ × 2⁴<br>(b) 5² × 5³<br>(c) 3⁵ × 3²<br>(d) 10³ × 10²</p>
+            </div>
+
+            <div class="question-card">
+                <h4>Question 2: Simplify using Quotient Rule</h4>
+                <p>(a) 3⁶ ÷ 3²<br>(b) 5⁸ ÷ 5³<br>(c) 2⁷ ÷ 2⁴<br>(d) 10⁵ ÷ 10²</p>
+            </div>
+
+            <div class="question-card">
+                <h4>Question 3: Simplify using Power of Power Rule</h4>
+                <p>(a) (2³)²<br>(b) (3²)⁴<br>(c) (5²)³<br>(d) (10²)²</p>
+            </div>
+
+            <div class="question-card">
+                <h4>Question 4: Simplify</h4>
+                <p>(a) (2 × 3)²<br>(b) (4/2)³<br>(c) (5 × 2)³<br>(d) (8/4)²</p>
+            </div>
+
+            <div class="question-card">
+                <h4>Question 5: Find the value</h4>
+                <p>(a) 5⁰<br>(b) 100⁰<br>(c) 2<sup>-2</sup><br>(d) 3<sup>-3</sup></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="exercise-section">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2>Exercise 10.3 | सराव 10.3 – Advanced Problems</h2>
+
+            <div class="question-card">
+                <h4>Question 1: Simplify</h4>
+                <p>(a) 2³ × 2⁴ ÷ 2⁵<br>(b) 3⁶ ÷ 3² × 3³<br>(c) (2²)³ × 2⁴<br>(d) 5⁵ ÷ (5²)²</p>
+            </div>
+
+            <div class="question-card">
+                <h4>Question 2: Find x</h4>
+                <p>(a) 2<sup>x</sup> = 16<br>(b) 3<sup>x</sup> = 81<br>(c) 5<sup>x</sup> = 125<br>(d) 10<sup>x</sup> =
+                    1000</p>
+            </div>
+
+            <div class="question-card">
+                <h4>Question 3: Simplify the expressions</h4>
+                <p>(a) (2³ × 2⁴) ÷ 2⁵<br>(b) [(3²)³ × 3⁴] ÷ 3⁸<br>(c) (5² × 5³) ÷ (5⁴ × 5⁰)<br>(d) 2⁸ ÷ (2³ × 2²)</p>
+            </div>
+
+            <div class="question-card">
+                <h4>Question 4: Word Problems</h4>
+                <p>(a) A square has side 2³ cm. What is its area?</p>
+                <p>(b) A cube has edge 3² cm. What is its volume?</p>
+                <p>(c) A bacteria colony doubles every hour. Starting with 2³ bacteria, how many after 4 hours?</p>
+            </div>
+
+            <div class="question-card">
+                <h4>Question 5: Express as a single power</h4>
+                <p>(a) 8 × 4 (as power of 2)<br>(b) 27 × 9 (as power of 3)<br>(c) 100 × 1000 (as power of 10)<br>(d)
+                    16 × 64 (as power of 2)</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="practice-arena" id="practice">
+        <div class="arena-container">
+            <h2>Interactive Practice Arena | 100 Problems</h2>
+
+            <div class="arena-stats">
+                <div>Exponents & Powers Mastery Challenge</div>
+                <div id="stats">
+                    Correct: <span id="score" style="color:var(--green);">0</span> |
+                    Attempted: <span id="totalAttempted">0</span> / 100
+                </div>
+            </div>
+
+            <div id="questionWrapper"></div>
+
+            <div
+                style="display:flex; justify-content:center; align-items:center; gap:2rem; margin-top:2rem; flex-wrap: wrap;">
+                <button onclick="prevPage()" id="prevBtn"
+                    style="background:var(--dark); color:white; border:none; padding:1rem 2rem; cursor:pointer; font-family:inherit; font-variation-settings:'wght' 600; border-radius:4px;">←
+                    Previous 50</button>
+                <span id="pageIndicator" style="font-variation-settings:'wght' 600; color:white;">Page 1 of 2</span>
+                <button onclick="nextPage()" id="nextBtn"
+                    style="background:var(--dark); color:white; border:none; padding:1rem 2rem; cursor:pointer; font-family:inherit; font-variation-settings:'wght' 600; border-radius:4px;">Next
+                    50 →</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="homework-section" id="homework">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2>Homework Assignments | गृहपाठ</h2>
+            <p style="text-align: center; margin-bottom: 2rem; font-size: 1.1rem;">Complete these assignments to master
+                exponents and powers. Download the PDFs below.</p>
+
+            <div class="homework-grid">
+                <div class="homework-card">
+                    <h3>📝 Homework 1</h3>
+                    <p>Basic exponent evaluation, exponential notation, expanded form, and comparing exponential
+                        expressions.</p>
+                    <a href="homework/Chapter_10_HW1.pdf" class="download-btn" download>📥 Download PDF</a>
+                </div>
+
+                <div class="homework-card">
+                    <h3>📝 Homework 2</h3>
+                    <p>Laws of exponents: product rule, quotient rule, power of power, zero and negative exponents.</p>
+                    <a href="homework/Chapter_10_HW2.pdf" class="download-btn" download>📥 Download PDF</a>
+                </div>
+
+                <div class="homework-card">
+                    <h3>📝 Homework 3</h3>
+                    <p>Advanced problems combining multiple laws, solving for unknown exponents, and real-world
+                        applications.</p>
+                    <a href="homework/Chapter_10_HW3.pdf" class="download-btn" download>📥 Download PDF</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const fullQuestionBank = [];
+
+        function getRandomInt(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        function generate100Questions() {
+            // Basic evaluation (20)
+            const bases = [2, 3, 4, 5, 10];
+            for (let i = 0; i < 20; i++) {
+                let base = bases[i % bases.length];
+                let exp = getRandomInt(2, 5);
+                let correct = Math.pow(base, exp);
+                let wrong1 = correct + getRandomInt(1, 20);
+                let wrong2 = correct - getRandomInt(1, Math.min(correct - 1, 20));
+
+                fullQuestionBank.push({
+                    q: `What is <strong>${base}<sup>${exp}</sup></strong>?`,
+                    a: correct.toString(),
+                    options: [correct.toString(), wrong1.toString(), wrong2.toString()].sort(() => Math.random() - 0.5)
+                });
+            }
+
+            // Product rule (15)
+            for (let i = 0; i < 15; i++) {
+                let base = [2, 3, 5][i % 3];
+                let exp1 = getRandomInt(2, 4);
+                let exp2 = getRandomInt(2, 4);
+                let correctExp = exp1 + exp2;
+                let wrong1 = exp1 * exp2;
+                let wrong2 = exp1 - exp2;
+
+                fullQuestionBank.push({
+                    q: `Simplify: <strong>${base}<sup>${exp1}</sup> × ${base}<sup>${exp2}</sup></strong>`,
+                    a: `${base}^${correctExp}`,
+                    options: [`${base}^${correctExp}`, `${base}^${wrong1}`, `${base}^${Math.abs(wrong2)}`].sort(() => Math.random() - 0.5)
+                });
+            }
+
+            // Quotient rule (15)
+            for (let i = 0; i < 15; i++) {
+                let base = [2, 3, 5, 10][i % 4];
+                let exp1 = getRandomInt(5, 8);
+                let exp2 = getRandomInt(2, 4);
+                let correctExp = exp1 - exp2;
+                let wrong1 = exp1 + exp2;
+                let wrong2 = exp1 * exp2;
+
+                fullQuestionBank.push({
+                    q: `Simplify: <strong>${base}<sup>${exp1}</sup> ÷ ${base}<sup>${exp2}</sup></strong>`,
+                    a: `${base}^${correctExp}`,
+                    options: [`${base}^${correctExp}`, `${base}^${wrong1}`, `${base}^${wrong2}`].sort(() => Math.random() - 0.5)
+                });
+            }
+
+            // Power of power (12)
+            for (let i = 0; i < 12; i++) {
+                let base = [2, 3, 5][i % 3];
+                let exp1 = getRandomInt(2, 4);
+                let exp2 = getRandomInt(2, 3);
+                let correctExp = exp1 * exp2;
+                let wrong1 = exp1 + exp2;
+                let wrong2 = Math.pow(exp1, exp2);
+
+                fullQuestionBank.push({
+                    q: `Simplify: <strong>(${base}<sup>${exp1}</sup>)<sup>${exp2}</sup></strong>`,
+                    a: `${base}^${correctExp}`,
+                    options: [`${base}^${correctExp}`, `${base}^${wrong1}`, `${base}^${wrong2}`].sort(() => Math.random() - 0.5)
+                });
+            }
+
+            // Comparing values (10)
+            for (let i = 0; i < 10; i++) {
+                let pairs = [
+                    { a: "2^3", b: "3^2", ans: "<" },
+                    { a: "4^2", b: "2^4", ans: "=" },
+                    { a: "3^3", b: "5^2", ans: ">" },
+                    { a: "10^2", b: "2^5", ans: ">" },
+                    { a: "5^2", b: "2^5", ans: "<" },
+                    { a: "3^4", b: "4^3", ans: ">" },
+                    { a: "2^6", b: "4^3", ans: "=" },
+                    { a: "6^2", b: "2^6", ans: "<" },
+                    { a: "5^3", b: "3^5", ans: "<" },
+                    { a: "10^3", b: "3^10", ans: "<" }
+                ];
+                let chosen = pairs[i % pairs.length];
+
+                fullQuestionBank.push({
+                    q: `Compare: <strong>${chosen.a.replace('^', '<sup>') + '</sup>'} ___ ${chosen.b.replace('^', '<sup>') + '</sup>'}</strong>`,
+                    a: chosen.ans,
+                    options: [">", "<", "="].sort(() => Math.random() - 0.5)
+                });
+            }
+
+            // Zero and negative exponents (10)
+            const zeroNeg = [
+                { q: "5⁰ = ?", a: "1", o: ["1", "0", "5"] },
+                { q: "100⁰ = ?", a: "1", o: ["1", "0", "100"] },
+                { q: "2⁻² = ?", a: "1/4", o: ["1/4", "4", "-4"] },
+                { q: "3⁻¹ = ?", a: "1/3", o: ["1/3", "3", "-3"] },
+                { q: "10⁻¹ = ?", a: "0.1", o: ["0.1", "10", "-10"] },
+                { q: "Any number to power 0 = ?", a: "1", o: ["1", "0", "Same number"] },
+                { q: "2⁻³ = ?", a: "1/8", o: ["1/8", "8", "-8"] },
+                { q: "(-2)² = ?", a: "4", o: ["4", "-4", "2"] },
+                { q: "(-3)³ = ?", a: "-27", o: ["-27", "27", "-9"] },
+                { q: "(-1)⁵ = ?", a: "-1", o: ["-1", "1", "5"] }
+            ];
+
+            zeroNeg.forEach(item => {
+                fullQuestionBank.push({ q: item.q, a: item.a, options: item.o });
+            });
+
+            // Conceptual questions (18)
+            const concepts = [
+                { q: "In 5³, what is the base?", a: "5", o: ["5", "3", "125"] },
+                { q: "In 2⁴, what is the exponent?", a: "4", o: ["4", "2", "16"] },
+                { q: "2³ means multiply 2 how many times?", a: "3", o: ["3", "2", "6"] },
+                { q: "What is 2² called?", a: "2 squared", o: ["2 squared", "2 cubed", "2 doubled"] },
+                { q: "What is 3³ called?", a: "3 cubed", o: ["3 cubed", "3 squared", "3 tripled"] },
+                { q: "a^m × a^n = ?", a: "a^(m+n)", o: ["a^(m+n)", "a^(m×n)", "a^(m-n)"] },
+                { q: "a^m ÷ a^n = ?", a: "a^(m-n)", o: ["a^(m-n)", "a^(m+n)", "a^(m÷n)"] },
+                { q: "(a^m)^n = ?", a: "a^(m×n)", o: ["a^(m×n)", "a^(m+n)", "a^(m-n)"] },
+                { q: "2⁴ = ?", a: "16", o: ["16", "8", "12"] },
+                { q: "3³ = ?", a: "27", o: ["27", "9", "18"] },
+                { q: "5² = ?", a: "25", o: ["25", "10", "15"] },
+                { q: "10³ = ?", a: "1000", o: ["1000", "100", "30"] },
+                { q: "Which is larger: 2⁵ or 5²?", a: "2⁵", o: ["2⁵", "5²", "Equal"] },
+                { q: "1 raised to any power = ?", a: "1", o: ["1", "0", "The power"] },
+                { q: "Negative base, even exponent → ?", a: "Positive", o: ["Positive", "Negative", "Zero"] },
+                { q: "Negative base, odd exponent → ?", a: "Negative", o: ["Negative", "Positive", "Zero"] },
+                { q: "2¹ = ?", a: "2", o: ["2", "1", "0"] },
+                { q: "10² = ?", a: "100", o: ["100", "20", "1000"] }
+            ];
+
+            concepts.forEach(item => {
+                fullQuestionBank.push({ q: item.q, a: item.a, options: item.o });
+            });
+
+            // Shuffle all questions
+            fullQuestionBank.sort(() => Math.random() - 0.5);
+        }
+
+        let currentPage = 0;
+        const perPage = 50;
+        let score = 0;
+        let attempted = 0;
+
+        function renderQuestions() {
+            const container = document.getElementById('questionWrapper');
+            const start = currentPage * perPage;
+            const end = start + perPage;
+            const batch = fullQuestionBank.slice(start, end);
+
+            container.innerHTML = '';
+            document.getElementById('pageIndicator').innerText = `Page ${currentPage + 1} of 2`;
+
+            batch.forEach((item, idx) => {
+                const card = document.createElement('div');
+                card.className = 'question-card';
+                card.innerHTML = `
+                    <h4>Question ${start + idx + 1}</h4>
+                    <p style="margin-bottom:1rem; font-size:1.1rem;">${item.q}</p>
+                    <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                        ${item.options.map(opt => `
+                            <button class="opt-btn" onclick="checkAnswer(this, '${opt.replace(/'/g, "\\'")}', '${item.a.replace(/'/g, "\\'")}')">${opt}</button>
+                        `).join('')}
+                    </div>
+                    <div class="feedback" style="margin-top:10px; font-variation-settings:'wght' 600; display:none;"></div>
+                `;
+                container.appendChild(card);
+            });
+
+            document.getElementById('prevBtn').disabled = currentPage === 0;
+            document.getElementById('prevBtn').style.opacity = currentPage === 0 ? "0.5" : "1";
+            document.getElementById('nextBtn').disabled = currentPage === 1;
+            document.getElementById('nextBtn').style.opacity = currentPage === 1 ? "0.5" : "1";
+        }
+
+        window.checkAnswer = function (btn, selected, correct) {
+            const card = btn.closest('.question-card');
+            const feedback = card.querySelector('.feedback');
+            const buttons = card.querySelectorAll('.opt-btn');
+
+            attempted++;
+            if (selected === correct) {
+                score++;
+                btn.style.background = 'var(--green)';
+                btn.style.color = 'white';
+                feedback.innerText = "✓ Correct!";
+                feedback.style.color = "var(--green)";
+            } else {
+                btn.style.background = 'var(--accent)';
+                btn.style.color = 'white';
+                feedback.innerText = `✗ Wrong. Correct is ${correct}`;
+                feedback.style.color = "var(--accent)";
+            }
+
+            buttons.forEach(b => b.onclick = null);
+            feedback.style.display = "block";
+
+            document.getElementById('score').innerText = score;
+            document.getElementById('totalAttempted').innerText = attempted;
+        };
+
+        function nextPage() {
+            if (currentPage < 1) {
+                currentPage++;
+                renderQuestions();
+                document.getElementById('practice').scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function prevPage() {
+            if (currentPage > 0) {
+                currentPage--;
+                renderQuestions();
+                document.getElementById('practice').scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        generate100Questions();
+        renderQuestions();
+    </script>
+
+    <footer>
+        <p style="font-size:1.2rem; margin-bottom:1rem; font-variation-settings:'opsz' 16, 'wdth' 100, 'wght' 500;">
+            Nalanda Academy, Wardha</p>
+        <p style="opacity:0.8;">Chapter 10: Exponents and Powers – Master Exponential Notation</p>
+    </footer>
+</body>
+
+</html>

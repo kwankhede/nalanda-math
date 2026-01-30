@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 11: Introduction to Algebra | Nalanda Academy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --cream: #FFF8E7;
+            --dark: #1a1a1a;
+            --accent: #FF6B35;
+            --blue: #4A90E2;
+            --purple: #9B59B6;
+            --green: #27AE60;
+            --orange: #E67E22;
+            --teal: #16A085;
+        }
+
+        body {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            background: var(--cream);
+            color: var(--dark);
+            line-height: 1.7;
+            font-variation-settings: 'opsz' 16, 'wdth' 100, 'wght' 400;
+        }
+
+        .header {
+            background: var(--dark);
+            color: var(--cream);
+            padding: 1.5rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-variation-settings: 'opsz' 24, 'wdth' 100, 'wght' 600;
+        }
+
+        .nav-links a {
+            color: var(--cream);
+            text-decoration: none;
+            margin-left: 2rem;
+            font-variation-settings: 'opsz' 16, 'wdth' 100, 'wght' 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .chapter-hero {
+            background: linear-gradient(135deg, var(--teal) 0%, #138D75 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .chapter-number {
+            font-size: 1.2rem;
+            font-variation-settings: 'opsz' 16, 'wdth' 100, 'wght' 500;
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+        }
+
+        .chapter-title {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-variation-settings: 'opsz' 96, 'wdth' 85, 'wght' 700;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .chapter-subtitle {
+            font-size: 1.3rem;
+            font-variation-settings: 'opsz' 16, 'wdth' 100, 'wght' 400;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .intro-box {
+            background: white;
+            padding: 2.5rem;
+            border: 3px solid var(--dark);
+            box-shadow: 8px 8px 0 var(--dark);
+            margin-bottom: 3rem;
+        }
+
+        .intro-box p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .highlight {
+            background: var(--teal);
+            color: white;
+            padding: 0.2rem 0.5rem;
+            font-variation-settings: 'opsz' 16, 'wdth' 100, 'wght' 600;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-variation-settings: 'opsz' 48, 'wdth' 85, 'wght' 700;
+            margin: 3rem 0 2rem;
+            color: var(--teal);
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100px;
+            height: 4px;
+            background: var(--accent);
+        }
+
+        .concept-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .type-card {
+            background: white;
+            border: 3px solid var(--teal);
+            padding: 2rem;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .type-card:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 8px 8px 0 var(--teal);
+        }
+
+        .type-card h3 {
+            font-size: 1.5rem;
+            font-variation-settings: 'opsz' 24, 'wdth' 100, 'wght' 600;
+            color: var(--teal);
+            margin-bottom: 0.5rem;
+        }
+
+        .type-card .marathi {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .examples {
+            background: var(--cream);
+            padding: 1rem;
+            margin-top: 1rem;
+            border-left: 4px solid var(--teal);
+        }
+
+        .exercise-section {
+            background: linear-gradient(135deg, var(--green) 0%, #229954 100%);
+            color: white;
+            padding: 3rem 2rem;
+            margin: 3rem -2rem;
+        }
+
+        .exercise-section h2 {
+            font-size: 2.5rem;
+            font-variation-settings: 'opsz' 48, 'wdth' 85, 'wght' 700;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .question-card {
+            background: white;
+            color: var(--dark);
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            border: 3px solid var(--dark);
+            box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        .question-card h4 {
+            font-size: 1.3rem;
+            font-variation-settings: 'opsz' 24, 'wdth' 100, 'wght' 600;
+            color: var(--green);
+            margin-bottom: 1rem;
+        }
+
+        .math-formula {
+            font-family: 'Times New Roman', serif;
+            font-style: italic;
+            font-size: 1.3rem;
+        }
+
+        .practice-arena {
+            background: linear-gradient(135deg, var(--orange) 0%, #D35400 100%);
+            color: white;
+            padding: 3rem 2rem;
+            margin: 3rem 0;
+        }
+
+        .practice-arena h2 {
+            font-size: 2.5rem;
+            font-variation-settings: 'opsz' 48, 'wdth' 85, 'wght' 700;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .arena-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .arena-stats {
+            background: white;
+            color: var(--dark);
+            padding: 1.5rem;
+            border: 3px solid var(--dark);
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .arena-stats div:first-child {
+            font-variation-settings: 'wght' 600;
+        }
+
+        .arena-stats #stats {
+            font-variation-settings: 'wght' 700;
+        }
+
+        .homework-section {
+            background: linear-gradient(135deg, var(--blue) 0%, #357ABD 100%);
+            color: white;
+            padding: 3rem 2rem;
+            margin: 3rem -2rem;
+        }
+
+        .homework-section h2 {
+            font-size: 2.5rem;
+            font-variation-settings: 'opsz' 48, 'wdth' 85, 'wght' 700;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .homework-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .homework-card {
+            background: white;
+            color: var(--dark);
+            padding: 2rem;
+            border: 3px solid var(--dark);
+            box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.2);
+            transition: all 0.3s;
+        }
+
+        .homework-card:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        .homework-card h3 {
+            font-size: 1.5rem;
+            font-variation-settings: 'opsz' 24, 'wdth' 100, 'wght' 600;
+            color: var(--blue);
+            margin-bottom: 1rem;
+        }
+
+        .homework-card p {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .download-btn {
+            background: var(--blue);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            cursor: pointer;
+            font-family: inherit;
+            font-variation-settings: 'wght' 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: background 0.3s;
+        }
+
+        .download-btn:hover {
+            background: #357ABD;
+        }
+
+        footer {
+            background: var(--dark);
+            color: var(--cream);
+            padding: 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .opt-btn {
+            background: var(--cream);
+            border: 2px solid var(--dark);
+            padding: 0.6rem 1.2rem;
+            cursor: pointer;
+            font-family: inherit;
+            font-variation-settings: 'wght' 600;
+            margin: 0.4rem;
+        }
+
+        .comparison-table {
+            background: white;
+            border: 3px solid var(--dark);
+            padding: 2rem;
+            margin: 2rem 0;
+            overflow-x: auto;
+        }
+
+        .comparison-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            border: 2px solid var(--dark);
+            text-align: left;
+        }
+
+        .comparison-table th {
+            background: var(--teal);
+            color: white;
+            font-variation-settings: 'wght' 600;
+        }
+
+        @media (max-width: 768px) {
+            .chapter-hero {
+                padding: 2rem 1rem;
+            }
+
+            .container {
+                padding: 2rem 1rem;
+            }
+
+            .exercise-section,
+            .practice-arena,
+            .homework-section {
+                margin: 2rem -1rem;
+            }
+
+            .nav-links a {
+                margin-left: 1rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">Nalanda Academy Mathematics</div>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="#exercises">Exercises</a>
+                <a href="#practice">Practice Arena</a>
+                <a href="#homework">Homework</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="chapter-hero">
+        <div class="chapter-number">CHAPTER 11</div>
+        <h1 class="chapter-title">Introduction to Algebra</h1>
+        <p class="chapter-subtitle">बीजगणित परिचय</p>
+    </div>
+
+    <div class="container">
+        <div class="intro-box">
+            <p><span class="highlight">Algebra</span> is the language of mathematics where we use <strong>letters and
+                    symbols</strong> to represent <strong>numbers and quantities</strong>. Instead of just working with
+                specific numbers, algebra lets us work with general patterns and relationships.</p>
+            <p>Think of algebra as a powerful tool that helps us solve problems by creating equations and finding
+                unknown values. Whether calculating distances, analyzing patterns, or solving real-world problems,
+                algebra is essential.</p>
+            <p>This chapter introduces <strong>variables, constants, terms, coefficients, and expressions</strong> — the
+                building blocks of algebraic thinking, with <strong>100+ practice problems</strong> to master the
+                fundamentals.</p>
+        </div>
+
+        <h2 class="section-title">Core Concepts | मूलभूत संकल्पना</h2>
+
+        <div class="concept-types">
+            <div class="type-card">
+                <h3>1. Variable (चल)</h3>
+                <p class="marathi">बदलणारे मूल्य</p>
+                <p>A symbol (usually a letter) that represents an unknown or changing quantity. Common variables: x, y,
+                    z, a, b, c</p>
+                <div class="examples">
+                    <strong>Examples:</strong> In <em>x + 5</em>, x is the variable<br>
+                    In <em>2y - 3</em>, y is the variable
+                </div>
+            </div>
+
+            <div class="type-card">
+                <h3>2. Constant (स्थिरांक)</h3>
+                <p class="marathi">स्थिर मूल्य</p>
+                <p>A fixed value that doesn't change. Numbers like 5, -3, 0.5, π are constants.</p>
+                <div class="examples">
+                    <strong>Examples:</strong> In <em>x + 7</em>, 7 is a constant<br>
+                    In <em>3a - 9</em>, 3 and -9 are constants
+                </div>
+            </div>
+
+            <div class="type-card">
+                <h3>3. Coefficient (गुणांक)</h3>
+                <p class="marathi">चलासमोरील संख्या</p>
+                <p>The numerical factor multiplying a variable. It tells us "how many" of that variable we have.</p>
+                <div class="examples">
+                    <strong>Examples:</strong> In <em>5x</em>, 5 is the coefficient<br>
+                    In <em>-3y</em>, -3 is the coefficient<br>
+                    In <em>x</em>, coefficient is 1 (understood)
+                </div>
+            </div>
+
+            <div class="type-card">
+                <h3>4. Term (पद)</h3>
+                <p class="marathi">वेगळा भाग</p>
+                <p>A single number, variable, or product of numbers and variables separated by + or - signs.</p>
+                <div class="examples">
+                    <strong>Examples:</strong> In <em>3x + 5y - 2</em><br>
+                    Terms are: 3x, 5y, and -2
+                </div>
+            </div>
+
+            <div class="type-card">
+                <h3>5. Expression (व्यंजक)</h3>
+                <p class="marathi">गणितीय विधान</p>
+                <p>A combination of terms using mathematical operations. No equals sign (=).</p>
+                <div class="examples">
+                    <strong>Examples:</strong><br>
+                    2x + 3<br>
+                    5a - 7b + 9<br>
+                    x² + 2x - 5
+                </div>
+            </div>
+
+            <div class="type-card">
+                <h3>6. Equation (समीकरण)</h3>
+                <p class="marathi">समानता दर्शविणारे विधान</p>
+                <p>A mathematical statement showing two expressions are equal, connected by = sign.</p>
+                <div class="examples">
+                    <strong>Examples:</strong><br>
+                    x + 5 = 12<br>
+                    2y - 3 = 7<br>
+                    3a + 2 = 11
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">The Algebra Translation Guide</h2>
+
+        <div class="comparison-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Everyday Language</th>
+                        <th>Algebraic Expression</th>
+                        <th>Explanation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>A number increased by 7</td>
+                        <td><em>x + 7</em></td>
+                        <td>"Increased by" means add</td>
+                    </tr>
+                    <tr>
+                        <td>5 less than a number</td>
+                        <td><em>x - 5</em></td>
+                        <td>"Less than" means subtract</td>
+                    </tr>
+                    <tr>
+                        <td>Triple a number</td>
+                        <td><em>3x</em></td>
+                        <td>"Triple" means multiply by 3</td>
+                    </tr>
+                    <tr>
+                        <td>Half of a number</td>
+                        <td><em>x/2</em> or <em>x ÷ 2</em></td>
+                        <td>"Half" means divide by 2</td>
+                    </tr>
+                    <tr>
+                        <td>A number squared</td>
+                        <td><em>x²</em></td>
+                        <td>Multiply the number by itself</td>
+                    </tr>
+                    <tr>
+                        <td>The sum of two numbers</td>
+                        <td><em>x + y</em></td>
+                        <td>"Sum" means addition</td>
+                    </tr>
+                    <tr>
+                        <td>Product of 5 and a number</td>
+                        <td><em>5x</em></td>
+                        <td>"Product" means multiplication</td>
+                    </tr>
+                    <tr>
+                        <td>Quotient of x and 4</td>
+                        <td><em>x/4</em></td>
+                        <td>"Quotient" means division</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2 class="section-title">Important Properties & Rules</h2>
+
+        <div style="display: grid; gap: 1.5rem; margin: 2rem 0;">
+            <div
+                style="background:white; border-left:6px solid var(--teal); padding:1.5rem 2rem; box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+                <h4>Like Terms (समान पद)</h4>
+                <p>Terms with the same variable(s) raised to the same power.</p>
+                <p><strong>Examples:</strong> 3x and 5x are like terms | 2y² and 7y² are like terms</p>
+                <p><strong>Can combine:</strong> 3x + 5x = 8x</p>
+                <p><strong>Cannot combine:</strong> 3x and 5y (different variables)</p>
+            </div>
+
+            <div
+                style="background:white; border-left:6px solid var(--teal); padding:1.5rem 2rem; box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+                <h4>Unlike Terms (विषम पद)</h4>
+                <p>Terms with different variables or different powers.</p>
+                <p><strong>Examples:</strong> 3x and 5y | 2x and 3x² | 4a and 7b</p>
+                <p><strong>Rule:</strong> Unlike terms cannot be combined through addition/subtraction</p>
+            </div>
+
+            <div
+                style="background:white; border-left:6px solid var(--teal); padding:1.5rem 2rem; box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+                <h4>Simplifying Expressions</h4>
+                <p><strong>Step 1:</strong> Identify like terms</p>
+                <p><strong>Step 2:</strong> Combine like terms by adding/subtracting coefficients</p>
+                <p><strong>Step 3:</strong> Keep unlike terms separate</p>
+                <p><strong>Example:</strong> 5x + 3y - 2x + 7y = (5x - 2x) + (3y + 7y) = 3x + 10y</p>
+            </div>
+
+            <div
+                style="background:white; border-left:6px solid var(--teal); padding:1.5rem 2rem; box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+                <h4>Substitution</h4>
+                <p>Replace variables with given values and calculate.</p>
+                <p><strong>Example:</strong> If x = 3, find 2x + 5</p>
+                <p><strong>Solution:</strong> 2(3) + 5 = 6 + 5 = 11</p>
+            </div>
+        </div>
+
+        <div style="background:var(--dark); color:var(--cream); padding:2rem; margin:2rem 0;">
+            <h3>★ Quick Tips & Key Points</h3>
+            <ul style="list-style:none; padding:0;">
+                <li style="padding:0.5rem 0;">★ Variables are placeholders for unknown numbers</li>
+                <li style="padding:0.5rem 0;">★ Coefficient of x is 1, coefficient of -x is -1</li>
+                <li style="padding:0.5rem 0;">★ Only like terms can be added or subtracted</li>
+                <li style="padding:0.5rem 0;">★ Order doesn't matter: 2x + 3 = 3 + 2x (Commutative Property)</li>
+                <li style="padding:0.5rem 0;">★ Distributive Property: a(b + c) = ab + ac</li>
+                <li style="padding:0.5rem 0;">★ Expression ≠ Equation (Expression has no = sign)</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="exercise-section" id="exercises">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2>Exercise 11.1 | सराव 11.1 – Understanding Variables & Constants</h2>
+
+            <div class="question-card">
+                <h4>Question 1: Identify variables and constants</h4>
+                <p>(a) 5x + 7<br>(b) 3y - 9<br>(c) 2a + 4b - 6<br>(d) 8m + 3n - 12</p>
+            </div>
+
+            <div class="question-card">
+                <h4>Question 2: Identify the coefficient</h4>
+                <p>(a) 7x → coefficient = ?<br>(b) -5y → coefficient = ?<br>(c) x → coefficient = ?<br>(d) -m →
+                    coefficient = ?</p>
+            </div>
+
+            <div class="question-card">
+                <h4>Question 3: How many terms in each expression?</h4>
+                <p>(a) 3x + 5<br>(b) 2a - 3b + 7<br>(c) 5m + 2n - 4p + 9<br>(d) x² + 2x - 5</p>
+            </div>
+
+            <div class="question-card">
+                <h4>Question 4: Translate into algebraic expressions</h4>
+                <p>(a) A number increased by 8<br>(b) 5 less than a number<br>(c) Double a number<br>(d) A number
+                    divided by 3</p>
+            </div>
+
+            <div class="question-card">
+                <h4>Question 5: Is it an expression or equation?</h4>
+                <p>(a) 3x + 5 = 11<br>(b) 2y - 7<br>(c) 4a + 9 = 21<br>(d) x + y - 3</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="exercise-section">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2>Exercise 11.2 | सराव 11.2 – Like Terms & Simplification</h2>
+
+            <div class="question-card">
+                <h4>Question 1: Identify like terms</h4>
+                <p>From: 3x, 5y, 2x, 7y, -4x, 9</p>
+                <p>Group the like terms together.</p>
+            </div>
+
+            <div class="question-card">
+                <h4>Question 2: Simplify by combining like terms</h4>
+                <p>(a) 3x + 5x<br>(b) 7y - 2y<br>(c) 4a + 3a - 2a<br>(d) 9m - 5m + 2m</p>
+            </div>
+
+            <div class="question-card">
+                <h4>Question 3: Simplify these expressions</h4>
+                <p>(a) 2x + 3y + 5x - y<br>(b) 7a - 3b + 2a + 5b<br>(c) 4m + 2n - 3m + n<br>(d) 5p - 2q + 3p - 4q</p>
+            </div>
+
+            <div class="question-card">
+                <h4>Question 4: Substitution - Find the value when x = 5</h4>
+                <p>(a) 2x + 3<br>(b) 5x - 7<br>(c) 3x + 2x - 4<br>(d) 4x ÷ 2 + 6</p>
+            </div>
+
+            <div class="question-card">
+                <h4>Question 5: Word Problems</h4>
+                <p>(a) Ram has x rupees. He earns 50 more. Write an expression for his total money.<br>
+                    (b) A box contains y apples. 12 apples are eaten. Write an expression for remaining apples.<br>
+                    (c) Age of father is 3 times age of son (s years). Write father's age as expression.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="practice-arena" id="practice">
+        <div class="arena-container">
+            <h2>Interactive Practice Arena | 100 Problems</h2>
+
+            <div class="arena-stats">
+                <div>Algebra Fundamentals Challenge</div>
+                <div id="stats">
+                    Correct: <span id="score" style="color:var(--green);">0</span> |
+                    Attempted: <span id="totalAttempted">0</span> / 100
+                </div>
+            </div>
+
+            <div id="questionWrapper"></div>
+
+            <div
+                style="display:flex; justify-content:center; align-items:center; gap:2rem; margin-top:2rem; flex-wrap: wrap;">
+                <button onclick="prevPage()" id="prevBtn"
+                    style="background:var(--dark); color:white; border:none; padding:1rem 2rem; cursor:pointer; font-family:inherit; font-variation-settings:'wght' 600; border-radius:4px;">←
+                    Previous 50</button>
+                <span id="pageIndicator" style="font-variation-settings:'wght' 600; color:white;">Page 1 of 2</span>
+                <button onclick="nextPage()" id="nextBtn"
+                    style="background:var(--dark); color:white; border:none; padding:1rem 2rem; cursor:pointer; font-family:inherit; font-variation-settings:'wght' 600; border-radius:4px;">Next
+                    50 →</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="homework-section" id="homework">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2>Homework Assignments | गृहपाठ</h2>
+            <p style="text-align: center; margin-bottom: 2rem; font-size: 1.1rem;">Complete these assignments to master
+                algebraic fundamentals. Download the PDFs below.</p>
+
+            <div class="homework-grid">
+                <div class="homework-card">
+                    <h3>📝 Homework 1</h3>
+                    <p>Basic algebra concepts: identifying variables, constants, coefficients, and terms. Translating
+                        word phrases into algebraic expressions.</p>
+                    <a href="homework/Chapter_11_HW1.pdf" class="download-btn" download>📥 Download PDF</a>
+                </div>
+
+                <div class="homework-card">
+                    <h3>📝 Homework 2</h3>
+                    <p>Like and unlike terms, combining like terms, simplifying expressions, and substitution practice
+                        problems.</p>
+                    <a href="homework/Chapter_11_HW2.pdf" class="download-btn" download>📥 Download PDF</a>
+                </div>
+
+                <div class="homework-card">
+                    <h3>📝 Homework 3</h3>
+                    <p>Advanced expression simplification, real-world algebra word problems, and introduction to writing
+                        simple equations.</p>
+                    <a href="homework/Chapter_11_HW3.pdf" class="download-btn" download>📥 Download PDF</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const fullQuestionBank = [];
+
+        function generate100Questions() {
+            // Identify coefficient (15)
+            for (let i = 0; i < 15; i++) {
+                let coef = Math.floor(Math.random() * 20) - 10;
+                if (coef === 0) coef = 1;
+                let vars = ['x', 'y', 'z', 'a', 'b', 'm', 'n', 'p'];
+                let v = vars[Math.floor(Math.random() * vars.length)];
+                fullQuestionBank.push({
+                    q: `What is the coefficient in <strong>${coef}${v}</strong>?`,
+                    a: String(coef),
+                    options: [String(coef), String(coef + 1), String(coef - 1)]
+                });
+            }
+
+            // Identify variable (10)
+            const varQuestions = [
+                { q: "In 5x + 3, what is the variable?", a: "x" },
+                { q: "In 7y - 2, what is the variable?", a: "y" },
+                { q: "In 3a + 9, what is the variable?", a: "a" },
+                { q: "In 2m - 5, what is the variable?", a: "m" },
+                { q: "In 8n + 1, what is the variable?", a: "n" }
+            ];
+            for (let i = 0; i < 10; i++) {
+                let item = varQuestions[i % varQuestions.length];
+                fullQuestionBank.push({
+                    q: item.q,
+                    a: item.a,
+                    options: [item.a, 'z', 'p']
+                });
+            }
+
+            // Count terms (15)
+            for (let i = 0; i < 15; i++) {
+                let numTerms = Math.floor(Math.random() * 3) + 2;
+                let expr = "";
+                for (let j = 0; j < numTerms; j++) {
+                    let sign = j === 0 ? "" : (Math.random() > 0.5 ? " + " : " - ");
+                    let coef = Math.floor(Math.random() * 9) + 1;
+                    let v = ['x', 'y', 'a', 'b'][Math.floor(Math.random() * 4)];
+                    expr += sign + coef + v;
+                }
+                fullQuestionBank.push({
+                    q: `How many terms in <strong>${expr}</strong>?`,
+                    a: String(numTerms),
+                    options: [String(numTerms), String(numTerms + 1), String(numTerms - 1)]
+                });
+            }
+
+            // Like terms identification (15)
+            const likeTerms = [
+                { q: "Are 3x and 5x like terms?", a: "Yes" },
+                { q: "Are 2y and 7y like terms?", a: "Yes" },
+                { q: "Are 4x and 4y like terms?", a: "No" },
+                { q: "Are 5a and 2b like terms?", a: "No" },
+                { q: "Are 7m and 9m like terms?", a: "Yes" }
+            ];
+            for (let i = 0; i < 15; i++) {
+                let item = likeTerms[i % likeTerms.length];
+                fullQuestionBank.push({
+                    q: item.q,
+                    a: item.a,
+                    options: ["Yes", "No"]
+                });
+            }
+
+            // Combine like terms (20)
+            for (let i = 0; i < 20; i++) {
+                let a = Math.floor(Math.random() * 15) + 1;
+                let b = Math.floor(Math.random() * 15) + 1;
+                let sum = a + b;
+                let v = ['x', 'y', 'a', 'b', 'm'][Math.floor(Math.random() * 5)];
+                fullQuestionBank.push({
+                    q: `Simplify: <strong>${a}${v} + ${b}${v}</strong>`,
+                    a: `${sum}${v}`,
+                    options: [`${sum}${v}`, `${sum + 1}${v}`, `${a}${v}`]
+                });
+            }
+
+            // Substitution (15)
+            for (let i = 0; i < 15; i++) {
+                let coef = Math.floor(Math.random() * 5) + 2;
+                let const1 = Math.floor(Math.random() * 10) + 1;
+                let xval = Math.floor(Math.random() * 5) + 1;
+                let result = coef * xval + const1;
+                fullQuestionBank.push({
+                    q: `If x = ${xval}, find <strong>${coef}x + ${const1}</strong>`,
+                    a: String(result),
+                    options: [String(result), String(result + 1), String(result - 1)]
+                });
+            }
+
+            // Translation (10)
+            const translations = [
+                { q: "x increased by 5", a: "x + 5" },
+                { q: "7 less than y", a: "y - 7" },
+                { q: "Triple a (3 × a)", a: "3a" },
+                { q: "m divided by 4", a: "m/4" },
+                { q: "Double x plus 3", a: "2x + 3" }
+            ];
+            for (let i = 0; i < 10; i++) {
+                let item = translations[i % translations.length];
+                fullQuestionBank.push({
+                    q: `Write algebraically: <strong>${item.q}</strong>`,
+                    a: item.a,
+                    options: [item.a, "x - 5", "2x"]
+                });
+            }
+
+            fullQuestionBank.sort(() => Math.random() - 0.5);
+        }
+
+        let currentPage = 0;
+        const perPage = 50;
+        let score = 0;
+        let attempted = 0;
+
+        function renderQuestions() {
+            const container = document.getElementById('questionWrapper');
+            const start = currentPage * perPage;
+            const end = start + perPage;
+            const batch = fullQuestionBank.slice(start, end);
+
+            container.innerHTML = '';
+            document.getElementById('pageIndicator').innerText = `Page ${currentPage + 1} of 2`;
+
+            batch.forEach((item, idx) => {
+                const card = document.createElement('div');
+                card.className = 'question-card';
+                card.innerHTML = `
+                    <h4>Question ${start + idx + 1}</h4>
+                    <p style="margin-bottom:1rem; font-size:1.1rem;">${item.q}</p>
+                    <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                        ${item.options.map(opt => `
+                            <button class="opt-btn" onclick="checkAnswer(this, '${opt}', '${item.a}')">${opt}</button>
+                        `).join('')}
+                    </div>
+                    <div class="feedback" style="margin-top:10px; font-variation-settings:'wght' 600; display:none;"></div>
+                `;
+                container.appendChild(card);
+            });
+
+            document.getElementById('prevBtn').disabled = currentPage === 0;
+            document.getElementById('prevBtn').style.opacity = currentPage === 0 ? "0.5" : "1";
+            document.getElementById('nextBtn').disabled = currentPage === 1;
+            document.getElementById('nextBtn').style.opacity = currentPage === 1 ? "0.5" : "1";
+        }
+
+        window.checkAnswer = function (btn, selected, correct) {
+            const card = btn.closest('.question-card');
+            const feedback = card.querySelector('.feedback');
+            const buttons = card.querySelectorAll('.opt-btn');
+
+            attempted++;
+            if (selected === correct) {
+                score++;
+                btn.style.background = 'var(--green)';
+                btn.style.color = 'white';
+                feedback.innerText = "✓ Correct!";
+                feedback.style.color = "var(--green)";
+            } else {
+                btn.style.background = 'var(--accent)';
+                btn.style.color = 'white';
+                feedback.innerText = `✗ Wrong. Correct is ${correct}`;
+                feedback.style.color = "var(--accent)";
+            }
+
+            buttons.forEach(b => b.onclick = null);
+            feedback.style.display = "block";
+
+            document.getElementById('score').innerText = score;
+            document.getElementById('totalAttempted').innerText = attempted;
+        };
+
+        function nextPage() {
+            if (currentPage < 1) {
+                currentPage++;
+                renderQuestions();
+                document.getElementById('practice').scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function prevPage() {
+            if (currentPage > 0) {
+                currentPage--;
+                renderQuestions();
+                document.getElementById('practice').scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        generate100Questions();
+        renderQuestions();
+    </script>
+
+    <footer>
+        <p style="font-size:1.2rem; margin-bottom:1rem; font-variation-settings:'opsz' 16, 'wdth' 100, 'wght' 500;">
+            Nalanda Academy, Wardha</p>
+        <p style="opacity:0.8;">Chapter 11: Introduction to Algebra – The Language of Mathematics</p>
+    </footer>
+</body>
+
+</html>

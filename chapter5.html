@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 5: HCF and LCM | Nalanda Academy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --cream: #FFF8E7;
+            --dark: #1a1a1a;
+            --accent: #FF6B35;
+            --blue: #4A90E2;
+            --teal: #16A085;
+            --green: #27AE60;
+            --orange: #E67E22;
+            --red: #E74C3C;
+        }
+
+        body {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            background: var(--cream);
+            color: var(--dark);
+            line-height: 1.7;
+            font-variation-settings: 'opsz' 16, 'wdth' 100, 'wght' 400;
+        }
+
+        .header {
+            background: var(--dark);
+            color: var(--cream);
+            padding: 1.5rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-variation-settings: 'opsz' 24, 'wdth' 100, 'wght' 600;
+        }
+
+        .nav-links a {
+            color: var(--cream);
+            text-decoration: none;
+            margin-left: 2rem;
+            font-variation-settings: 'opsz' 16, 'wdth' 100, 'wght' 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .chapter-hero {
+            background: linear-gradient(135deg, var(--teal) 0%, #138D75 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .chapter-number {
+            font-size: 1.2rem;
+            font-variation-settings: 'opsz' 16, 'wdth' 100, 'wght' 500;
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+        }
+
+        .chapter-title {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-variation-settings: 'opsz' 96, 'wdth' 85, 'wght' 700;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .chapter-subtitle {
+            font-size: 1.3rem;
+            font-variation-settings: 'opsz' 16, 'wdth' 100, 'wght' 400;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .intro-box {
+            background: white;
+            padding: 2.5rem;
+            border: 3px solid var(--dark);
+            box-shadow: 8px 8px 0 var(--dark);
+            margin-bottom: 3rem;
+        }
+
+        .intro-box p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .highlight {
+            background: var(--teal);
+            color: white;
+            padding: 0.2rem 0.5rem;
+            font-variation-settings: 'opsz' 16, 'wdth' 100, 'wght' 600;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-variation-settings: 'opsz' 48, 'wdth' 85, 'wght' 700;
+            margin: 3rem 0 2rem;
+            color: var(--teal);
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100px;
+            height: 4px;
+            background: var(--accent);
+        }
+
+        .method-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .method-card {
+            background: white;
+            border: 3px solid var(--teal);
+            padding: 2rem;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .method-card:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 8px 8px 0 var(--teal);
+        }
+
+        .method-card h3 {
+            font-size: 1.5rem;
+            font-variation-settings: 'opsz' 24, 'wdth' 100, 'wght' 600;
+            color: var(--teal);
+            margin-bottom: 1rem;
+        }
+
+        .method-card .marathi {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .examples {
+            background: var(--cream);
+            padding: 1rem;
+            margin-top: 1rem;
+            border-left: 4px solid var(--teal);
+        }
+
+        .concept-box {
+            background: white;
+            border-left: 6px solid var(--teal);
+            padding: 1.5rem 2rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin: 1.5rem 0;
+        }
+
+        .concept-box h4 {
+            font-size: 1.3rem;
+            font-variation-settings: 'opsz' 24, 'wdth' 100, 'wght' 600;
+            color: var(--teal);
+            margin-bottom: 0.8rem;
+        }
+
+        .visual-demo {
+            background: white;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 3px solid var(--dark);
+            text-align: center;
+        }
+
+        .demo-steps {
+            background: var(--cream);
+            padding: 1.5rem;
+            margin: 1rem 0;
+            text-align: left;
+            font-family: 'Courier New', monospace;
+            border-left: 4px solid var(--teal);
+        }
+
+        .exercise-section {
+            background: linear-gradient(135deg, var(--green) 0%, #229954 100%);
+            color: white;
+            padding: 3rem 2rem;
+            margin: 3rem -2rem;
+        }
+
+        .exercise-section h2 {
+            font-size: 2.5rem;
+            font-variation-settings: 'opsz' 48, 'wdth' 85, 'wght' 700;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .question-card {
+            background: white;
+            color: var(--dark);
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            border: 3px solid var(--dark);
+            box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        .question-card h4 {
+            font-size: 1.3rem;
+            font-variation-settings: 'opsz' 24, 'wdth' 100, 'wght' 600;
+            color: var(--green);
+            margin-bottom: 1rem;
+        }
+
+        .math-formula {
+            font-family: 'Times New Roman', serif;
+            font-style: italic;
+            font-size: 1.3rem;
+        }
+
+        .practice-arena {
+            background: linear-gradient(135deg, var(--orange) 0%, #D35400 100%);
+            color: white;
+            padding: 3rem 2rem;
+            margin: 3rem 0;
+        }
+
+        .practice-arena h2 {
+            font-size: 2.5rem;
+            font-variation-settings: 'opsz' 48, 'wdth' 85, 'wght' 700;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .arena-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .arena-stats {
+            background: white;
+            color: var(--dark);
+            padding: 1.5rem;
+            border: 3px solid var(--dark);
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .arena-stats div:first-child {
+            font-variation-settings: 'wght' 600;
+        }
+
+        .arena-stats #stats {
+            font-variation-settings: 'wght' 700;
+        }
+
+        .homework-section {
+            background: linear-gradient(135deg, var(--blue) 0%, #357ABD 100%);
+            color: white;
+            padding: 3rem 2rem;
+            margin: 3rem -2rem;
+        }
+
+        .homework-section h2 {
+            font-size: 2.5rem;
+            font-variation-settings: 'opsz' 48, 'wdth' 85, 'wght' 700;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .homework-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .homework-card {
+            background: white;
+            color: var(--dark);
+            padding: 2rem;
+            border: 3px solid var(--dark);
+            box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.2);
+            transition: all 0.3s;
+        }
+
+        .homework-card:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        .homework-card h3 {
+            font-size: 1.5rem;
+            font-variation-settings: 'opsz' 24, 'wdth' 100, 'wght' 600;
+            color: var(--blue);
+            margin-bottom: 1rem;
+        }
+
+        .homework-card p {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .download-btn {
+            background: var(--blue);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            cursor: pointer;
+            font-family: inherit;
+            font-variation-settings: 'wght' 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: background 0.3s;
+        }
+
+        .download-btn:hover {
+            background: #357ABD;
+        }
+
+        footer {
+            background: var(--dark);
+            color: var(--cream);
+            padding: 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .opt-btn {
+            background: var(--cream);
+            border: 2px solid var(--dark);
+            padding: 0.6rem 1.2rem;
+            cursor: pointer;
+            font-family: inherit;
+            font-variation-settings: 'wght' 600;
+            margin: 0.4rem;
+        }
+
+        .comparison-table {
+            width: 100%;
+            background: white;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            border: 3px solid var(--dark);
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            border: 2px solid var(--dark);
+            text-align: left;
+        }
+
+        .comparison-table th {
+            background: var(--teal);
+            color: white;
+            font-variation-settings: 'wght' 600;
+        }
+
+        @media (max-width: 768px) {
+            .chapter-hero {
+                padding: 2rem 1rem;
+            }
+
+            .container {
+                padding: 2rem 1rem;
+            }
+
+            .exercise-section,
+            .practice-arena,
+            .homework-section {
+                margin: 2rem -1rem;
+            }
+
+            .nav-links a {
+                margin-left: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .comparison-table {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">Nalanda Academy Mathematics</div>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="#exercises">Exercises</a>
+                <a href="#practice">Practice Arena</a>
+                <a href="#homework">Homework</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="chapter-hero">
+        <div class="chapter-number">CHAPTER 05</div>
+        <h1 class="chapter-title">HCF and LCM</h1>
+        <p class="chapter-subtitle">महत्तम समापवर्तक आणि लघुत्तम समापवर्त्य</p>
+    </div>
+
+    <div class="container">
+        <div class="intro-box">
+            <p><span class="highlight">HCF (Highest Common Factor)</span> is the <strong>largest number</strong> that
+                divides two or more numbers without leaving a remainder. Also called <strong>GCD (Greatest Common
+                    Divisor)</strong>.</p>
+            <p><span class="highlight">LCM (Lowest Common Multiple)</span> is the <strong>smallest number</strong> that
+                is a multiple of two or more numbers.</p>
+            <p>These concepts are fundamental for simplifying fractions, solving problems involving patterns, and
+                working with ratios. This chapter covers multiple methods to find HCF and LCM, their relationship, and
+                practical applications with <strong>1000+ practice problems</strong>.</p>
+        </div>
+
+        <h2 class="section-title">Understanding HCF | महत्तम समापवर्तक</h2>
+
+        <div class="concept-box">
+            <h4>What is HCF?</h4>
+            <p>The HCF of two or more numbers is the <strong>greatest number</strong> that divides all of them
+                completely.</p>
+            <p><strong>Example:</strong> HCF of 12 and 18</p>
+            <p>Factors of 12: 1, 2, 3, 4, 6, 12</p>
+            <p>Factors of 18: 1, 2, 3, 6, 9, 18</p>
+            <p>Common factors: 1, 2, 3, 6 → <strong>HCF = 6</strong></p>
+        </div>
+
+        <h2 class="section-title">Methods to Find HCF</h2>
+
+        <div class="method-types">
+            <div class="method-card">
+                <h3>1. Prime Factorization Method</h3>
+                <p class="marathi">अविभाज्य गुणनखंड पद्धत</p>
+                <p>Break numbers into prime factors, then multiply common factors with lowest powers.</p>
+                <div class="examples">
+                    <strong>Example: HCF of 36 and 48</strong><br>
+                    36 = 2² × 3²<br>
+                    48 = 2⁴ × 3<br>
+                    HCF = 2² × 3 = <strong>12</strong>
+                </div>
+            </div>
+
+            <div class="method-card">
+                <h3>2. Division Method (Euclid's Algorithm)</h3>
+                <p class="marathi">भाग पद्धत</p>
+                <p>Divide larger by smaller, then divide divisor by remainder. Continue until remainder is 0.</p>
+                <div class="examples">
+                    <strong>Example: HCF of 48 and 18</strong><br>
+                    48 ÷ 18 = 2 remainder 12<br>
+                    18 ÷ 12 = 1 remainder 6<br>
+                    12 ÷ 6 = 2 remainder 0<br>
+                    HCF = <strong>6</strong>
+                </div>
+            </div>
+
+            <div class="method-card">
+                <h3>3. Listing Factors Method</h3>
+                <p class="marathi">गुणनखंड सूची पद्धत</p>
+                <p>List all factors of each number and find the largest common one.</p>
+                <div class="examples">
+                    <strong>Example: HCF of 24 and 36</strong><br>
+                    24: 1, 2, 3, 4, 6, 8, 12, 24<br>
+                    36: 1, 2, 3, 4, 6, 9, 12, 18, 36<br>
+                    HCF = <strong>12</strong>
+                </div>
+            </div>
+        </div>
+
+        <div class="visual-demo">
+            <h3 style="margin-bottom: 1.5rem;">Visual Example: Finding HCF of 24 and 36</h3>
+            <div class="demo-steps">
+                <strong>Prime Factorization:</strong><br>
+                24 = 2 × 2 × 2 × 3 = 2³ × 3¹<br>
+                36 = 2 × 2 × 3 × 3 = 2² × 3²<br><br>
+                Common prime factors:<br>
+                2 appears minimum 2 times → 2²<br>
+                3 appears minimum 1 time → 3¹<br><br>
+                <strong>HCF = 2² × 3 = 4 × 3 = 12</strong>
+            </div>
+        </div>
+
+        <h2 class="section-title">Understanding LCM | लघुत्तम समापवर्त्य</h2>
+
+        <div class="concept-box">
+            <h4>What is LCM?</h4>
+            <p>The LCM of two or more numbers is the <strong>smallest number</strong> that is a multiple of all of
+                them.</p>
+            <p><strong>Example:</strong> LCM of 4 and 6</p>
+            <p>Multiples of 4: 4, 8, 12, 16, 20, 24...</p>
+            <p>Multiples of 6: 6, 12, 18, 24, 30...</p>
+            <p>Common multiples: 12, 24, 36... → <strong>LCM = 12</strong></p>
+        </div>
+
+        <h2 class="section-title">Methods to Find LCM</h2>
+
+        <div class="method-types">
+            <div class="method-card">
+                <h3>1. Prime Factorization Method</h3>
+                <p class="marathi">अविभाज्य गुणनखंड पद्धत</p>
+                <p>Break into prime factors, multiply all factors with highest powers.</p>
+                <div class="examples">
+                    <strong>Example: LCM of 12 and 18</strong><br>
+                    12 = 2² × 3<br>
+                    18 = 2 × 3²<br>
+                    LCM = 2² × 3² = <strong>36</strong>
+                </div>
+            </div>
+
+            <div class="method-card">
+                <h3>2. Division Method</h3>
+                <p class="marathi">भाग पद्धत</p>
+                <p>Divide by common prime factors, then multiply all divisors and remaining numbers.</p>
+                <div class="examples">
+                    <strong>Example: LCM of 12, 15, 20</strong><br>
+                    2 | 12, 15, 20<br>
+                    2 | 6, 15, 10<br>
+                    3 | 3, 15, 5<br>
+                    5 | 1, 5, 5<br>
+                    &nbsp; | 1, 1, 1<br>
+                    LCM = 2×2×3×5 = <strong>60</strong>
+                </div>
+            </div>
+
+            <div class="method-card">
+                <h3>3. Listing Multiples Method</h3>
+                <p class="marathi">गुणाकार सूची पद्धत</p>
+                <p>List multiples of each number and find the smallest common one.</p>
+                <div class="examples">
+                    <strong>Example: LCM of 6 and 8</strong><br>
+                    6: 6, 12, 18, 24, 30...<br>
+                    8: 8, 16, 24, 32...<br>
+                    LCM = <strong>24</strong>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">HCF × LCM Relationship</h2>
+
+        <div class="concept-box">
+            <h4>Important Formula</h4>
+            <p class="math-formula">HCF × LCM = Product of the two numbers</p>
+            <p><strong>Example:</strong> For numbers 12 and 18</p>
+            <p>HCF = 6, LCM = 36</p>
+            <p>HCF × LCM = 6 × 36 = 216</p>
+            <p>Product = 12 × 18 = 216 ✓</p>
+            <p style="margin-top:1rem;"><strong>Application:</strong> If you know any three values, you can find the
+                fourth!</p>
+        </div>
+
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>Aspect</th>
+                    <th>HCF</th>
+                    <th>LCM</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Full Form</strong></td>
+                    <td>Highest Common Factor</td>
+                    <td>Lowest Common Multiple</td>
+                </tr>
+                <tr>
+                    <td><strong>Definition</strong></td>
+                    <td>Largest number that divides all numbers</td>
+                    <td>Smallest number divisible by all numbers</td>
+                </tr>
+                <tr>
+                    <td><strong>Value</strong></td>
+                    <td>Always ≤ smallest number</td>
+                    <td>Always ≥ largest number</td>
+                </tr>
+                <tr>
+                    <td><strong>For 12 & 18</strong></td>
+                    <td>6</td>
+                    <td>36</td>
+                </tr>
+                <tr>
+                    <td><strong>Use Cases</strong></td>
+                    <td>Simplifying fractions, equal distribution</td>
+                    <td>Finding common timing, patterns</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div style="background:var(--dark); color:var(--cream); padding:2rem; margin:2rem 0;">
+            <h3>★ Quick Tips & Facts</h3>
+            <ul style="list-style:none; padding:0;">
+                <li style="padding:0.5rem 0;">★ HCF is always ≤ the smallest number; LCM is always ≥ the largest
+                    number</li>
+                <li style="padding:0.5rem 0;">★ HCF of two prime numbers = 1</li>
+                <li style="padding:0.5rem 0;">★ LCM of two prime numbers = their product</li>
+                <li style="padding:0.5rem 0;">★ HCF × LCM = Product of two numbers</li>
+                <li style="padding:0.5rem 0;">★ HCF is used to simplify fractions</li>
+                <li style="padding:0.5rem 0;">★ LCM is used to add/subtract fractions with different denominators</li>
+                <li style="padding:0.5rem 0;">★ For numbers a and b: if a divides b, then HCF = a and LCM = b</li>
+            </ul>
+        </div>
+
+        <h2 class="section-title">Real-World Applications</h2>
+
+        <div style="display: grid; gap: 1.5rem; margin: 2rem 0;">
+            <div class="concept-box">
+                <h4>🎁 HCF Applications</h4>
+                <p><strong>Equal Distribution:</strong> Dividing 36 apples and 48 oranges equally into maximum groups →
+                    HCF(36,48) = 12 groups</p>
+                <p><strong>Tile Cutting:</strong> Maximum size of square tiles for a 24×36 cm floor → HCF(24,36) = 12
+                    cm</p>
+                <p><strong>Simplifying Fractions:</strong> 24/36 = (24÷12)/(36÷12) = 2/3</p>
+            </div>
+
+            <div class="concept-box">
+                <h4>🔄 LCM Applications</h4>
+                <p><strong>Meeting Patterns:</strong> Bus A every 12 min, Bus B every 18 min → Meet after LCM(12,18) =
+                    36 min</p>
+                <p><strong>Gear Rotations:</strong> Gear with 15 teeth and 25 teeth → Align after LCM(15,25) = 75 teeth
+                </p>
+                <p><strong>Adding Fractions:</strong> 1/4 + 1/6 → Common denominator = LCM(4,6) = 12</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="exercise-section" id="exercises">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2>Exercise 5.1 | सराव 5.1 – Finding HCF</h2>
+
+            <div class="question-card">
+                <h4>Question 1: Find HCF using Prime Factorization</h4>
+                <p>(a) 24 and 36<br>(b) 48 and 72<br>(c) 54 and 90<br>(d) 120 and 180</p>
+            </div>
+
+            <div class="question-card">
+                <h4>Question 2: Find HCF using Division Method</h4>
+                <p>(a) 42 and 56<br>(b) 96 and 120<br>(c) 144 and 192<br>(d) 210 and 315</p>
+            </div>
+
+            <div class="question-card">
+                <h4>Question 3: Find HCF of three numbers</h4>
+                <p>(a) 12, 18, 24<br>(b) 30, 45, 60<br>(c) 24, 36, 48<br>(d) 40, 60, 80</p>
+            </div>
+
+            <div class="question-card">
+                <h4>Question 4: Word Problems</h4>
+                <p>(a) Two ropes of length 96 m and 144 m need to be cut into equal pieces. What is the maximum length
+                    of each piece?</p>
+                <p>(b) 36 apples and 54 oranges are to be distributed equally among children. What is the maximum
+                    number of children?</p>
+            </div>
+
+            <div class="question-card">
+                <h4>Question 5: Simplify fractions using HCF</h4>
+                <p>(a) 24/36<br>(b) 48/72<br>(c) 56/84<br>(d) 90/120</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="exercise-section">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2>Exercise 5.2 | सराव 5.2 – Finding LCM</h2>
+
+            <div class="question-card">
+                <h4>Question 1: Find LCM using Prime Factorization</h4>
+                <p>(a) 12 and 18<br>(b) 15 and 25<br>(c) 24 and 36<br>(d) 30 and 45</p>
+            </div>
+
+            <div class="question-card">
+                <h4>Question 2: Find LCM using Division Method</h4>
+                <p>(a) 8, 12, 16<br>(b) 10, 15, 20<br>(c) 12, 18, 24<br>(d) 20, 30, 40</p>
+            </div>
+
+            <div class="question-card">
+                <h4>Question 3: Find LCM of three numbers</h4>
+                <p>(a) 4, 6, 8<br>(b) 6, 9, 12<br>(c) 10, 12, 15<br>(d) 14, 21, 28</p>
+            </div>
+
+            <div class="question-card">
+                <h4>Question 4: Word Problems</h4>
+                <p>(a) Three bells ring at intervals of 12, 15, and 18 minutes. After how many minutes will they ring
+                    together?</p>
+                <p>(b) Two runners complete a lap in 6 and 8 minutes. When will they meet at the starting point again?
+                </p>
+            </div>
+
+            <div class="question-card">
+                <h4>Question 5: Application Problems</h4>
+                <p>(a) What is the smallest number divisible by 12, 15, and 18?</p>
+                <p>(b) Three containers hold 20 L, 30 L, and 40 L. What is the capacity of the smallest container that
+                    can fill each exactly?</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="exercise-section">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2>Exercise 5.3 | सराव 5.3 – HCF & LCM Together</h2>
+
+            <div class="question-card">
+                <h4>Question 1: Find both HCF and LCM</h4>
+                <p>(a) 16 and 24<br>(b) 28 and 42<br>(c) 45 and 60<br>(d) 72 and 108</p>
+            </div>
+
+            <div class="question-card">
+                <h4>Question 2: Verify HCF × LCM = Product</h4>
+                <p>For each pair above, verify that HCF × LCM = Product of the two numbers</p>
+            </div>
+
+            <div class="question-card">
+                <h4>Question 3: Find missing value</h4>
+                <p>(a) Two numbers: HCF = 12, LCM = 180, one number = 36. Find the other.</p>
+                <p>(b) Two numbers: HCF = 8, one number = 24, product = 384. Find LCM and the other number.</p>
+            </div>
+
+            <div class="question-card">
+                <h4>Question 4: Challenge Problems</h4>
+                <p>(a) The HCF of two numbers is 15 and their LCM is 300. If one number is 60, find the other.</p>
+                <p>(b) Two numbers are in ratio 3:4. Their LCM is 180. Find the numbers.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="practice-arena" id="practice">
+        <div class="arena-container">
+            <h2>Interactive Practice Arena | 100 Problems</h2>
+
+            <div class="arena-stats">
+                <div>HCF & LCM Mastery Challenge</div>
+                <div id="stats">
+                    Correct: <span id="score" style="color:var(--green);">0</span> |
+                    Attempted: <span id="totalAttempted">0</span> / 100
+                </div>
+            </div>
+
+            <div id="questionWrapper"></div>
+
+            <div
+                style="display:flex; justify-content:center; align-items:center; gap:2rem; margin-top:2rem; flex-wrap: wrap;">
+                <button onclick="prevPage()" id="prevBtn"
+                    style="background:var(--dark); color:white; border:none; padding:1rem 2rem; cursor:pointer; font-family:inherit; font-variation-settings:'wght' 600; border-radius:4px;">←
+                    Previous 50</button>
+                <span id="pageIndicator" style="font-variation-settings:'wght' 600; color:white;">Page 1 of 2</span>
+                <button onclick="nextPage()" id="nextBtn"
+                    style="background:var(--dark); color:white; border:none; padding:1rem 2rem; cursor:pointer; font-family:inherit; font-variation-settings:'wght' 600; border-radius:4px;">Next
+                    50 →</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="homework-section" id="homework">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2>Homework Assignments | गृहपाठ</h2>
+            <p style="text-align: center; margin-bottom: 2rem; font-size: 1.1rem;">Complete these assignments to master
+                HCF and LCM. Download the PDFs below.</p>
+
+            <div class="homework-grid">
+                <div class="homework-card">
+                    <h3>📝 Homework 1</h3>
+                    <p>Finding HCF using different methods, simplifying fractions, and basic word problems on equal
+                        distribution.</p>
+                    <a href="homework/Chapter_5_HW1.pdf" class="download-btn" download>📥 Download PDF</a>
+                </div>
+
+                <div class="homework-card">
+                    <h3>📝 Homework 2</h3>
+                    <p>Finding LCM using prime factorization and division method, solving timing and pattern problems.
+                    </p>
+                    <a href="homework/Chapter_5_HW2.pdf" class="download-btn" download>📥 Download PDF</a>
+                </div>
+
+                <div class="homework-card">
+                    <h3>📝 Homework 3</h3>
+                    <p>Combined HCF and LCM problems, using the HCF×LCM formula, and advanced real-world applications.
+                    </p>
+                    <a href="homework/Chapter_5_HW3.pdf" class="download-btn" download>📥 Download PDF</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const fullQuestionBank = [];
+
+        // Helper functions
+        function gcd(a, b) {
+            while (b !== 0) {
+                let temp = b;
+                b = a % b;
+                a = temp;
+            }
+            return a;
+        }
+
+        function lcm(a, b) {
+            return (a * b) / gcd(a, b);
+        }
+
+        function getRandomInt(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        function generate100Questions() {
+            // HCF Questions (25)
+            for (let i = 0; i < 25; i++) {
+                let a = getRandomInt(12, 96);
+                let b = getRandomInt(12, 96);
+                let correctHCF = gcd(a, b);
+                let wrong1 = correctHCF + getRandomInt(1, 5);
+                let wrong2 = correctHCF - getRandomInt(1, 3);
+                if (wrong2 < 1) wrong2 = 1;
+
+                fullQuestionBank.push({
+                    q: `What is the HCF of <strong>${a}</strong> and <strong>${b}</strong>?`,
+                    a: correctHCF.toString(),
+                    options: [correctHCF.toString(), wrong1.toString(), wrong2.toString()].sort(() => Math.random() - 0.5)
+                });
+            }
+
+            // LCM Questions (25)
+            for (let i = 0; i < 25; i++) {
+                let a = getRandomInt(6, 30);
+                let b = getRandomInt(6, 30);
+                let correctLCM = lcm(a, b);
+                let wrong1 = correctLCM + getRandomInt(5, 15);
+                let wrong2 = correctLCM - getRandomInt(5, 10);
+                if (wrong2 < Math.max(a, b)) wrong2 = Math.max(a, b) + getRandomInt(1, 5);
+
+                fullQuestionBank.push({
+                    q: `What is the LCM of <strong>${a}</strong> and <strong>${b}</strong>?`,
+                    a: correctLCM.toString(),
+                    options: [correctLCM.toString(), wrong1.toString(), wrong2.toString()].sort(() => Math.random() - 0.5)
+                });
+            }
+
+            // HCF of three numbers (10)
+            for (let i = 0; i < 10; i++) {
+                let a = getRandomInt(12, 48);
+                let b = getRandomInt(12, 48);
+                let c = getRandomInt(12, 48);
+                let correctHCF = gcd(gcd(a, b), c);
+                let wrong1 = correctHCF + getRandomInt(1, 4);
+                let wrong2 = correctHCF > 2 ? correctHCF - getRandomInt(1, 2) : 1;
+
+                fullQuestionBank.push({
+                    q: `HCF of <strong>${a}, ${b}, ${c}</strong>?`,
+                    a: correctHCF.toString(),
+                    options: [correctHCF.toString(), wrong1.toString(), wrong2.toString()].sort(() => Math.random() - 0.5)
+                });
+            }
+
+            // LCM of three numbers (10)
+            for (let i = 0; i < 10; i++) {
+                let a = getRandomInt(4, 12);
+                let b = getRandomInt(4, 12);
+                let c = getRandomInt(4, 12);
+                let correctLCM = lcm(lcm(a, b), c);
+                let wrong1 = correctLCM + getRandomInt(5, 20);
+                let wrong2 = correctLCM - getRandomInt(5, 15);
+                if (wrong2 < Math.max(a, b, c)) wrong2 = Math.max(a, b, c) + getRandomInt(2, 8);
+
+                fullQuestionBank.push({
+                    q: `LCM of <strong>${a}, ${b}, ${c}</strong>?`,
+                    a: correctLCM.toString(),
+                    options: [correctLCM.toString(), wrong1.toString(), wrong2.toString()].sort(() => Math.random() - 0.5)
+                });
+            }
+
+            // HCF × LCM = Product verification (10)
+            for (let i = 0; i < 10; i++) {
+                let a = getRandomInt(8, 36);
+                let b = getRandomInt(8, 36);
+                let product = a * b;
+                let hcfVal = gcd(a, b);
+                let lcmVal = lcm(a, b);
+                let result = hcfVal * lcmVal;
+
+                fullQuestionBank.push({
+                    q: `For ${a} and ${b}, HCF × LCM equals?`,
+                    a: product.toString(),
+                    options: [product.toString(), (product + 10).toString(), (product - 10).toString()].sort(() => Math.random() - 0.5)
+                });
+            }
+
+            // Word problems (10)
+            const wordProblems = [
+                { q: "Bells ring every 12 and 18 min. When together?", a: "36", o: ["36", "30", "54"] },
+                { q: "Tiles 18×24 cm floor. Max tile size?", a: "6", o: ["6", "4", "8"] },
+                { q: "48 apples, 60 oranges in equal groups. Max groups?", a: "12", o: ["12", "6", "4"] },
+                { q: "Buses at 15 min and 20 min. Meet after?", a: "60", o: ["60", "30", "45"] },
+                { q: "Simplify 36/48 (find HCF)", a: "12", o: ["12", "6", "24"] },
+                { q: "HCF of 24 and 36?", a: "12", o: ["12", "6", "18"] },
+                { q: "LCM of 8 and 12?", a: "24", o: ["24", "12", "48"] },
+                { q: "Runners lap in 4 and 6 min. Meet after?", a: "12", o: ["12", "10", "24"] },
+                { q: "HCF of 15 and 25?", a: "5", o: ["5", "10", "15"] },
+                { q: "LCM of 6 and 9?", a: "18", o: ["18", "12", "27"] }
+            ];
+
+            wordProblems.forEach(item => {
+                fullQuestionBank.push({ q: item.q, a: item.a, options: item.o });
+            });
+
+            // Identify HCF or LCM needed (10)
+            const conceptQuestions = [
+                { q: "To simplify fractions, use:", a: "HCF", o: ["HCF", "LCM", "Both"] },
+                { q: "To add unlike fractions, find:", a: "LCM", o: ["LCM", "HCF", "Product"] },
+                { q: "For equal distribution, find:", a: "HCF", o: ["HCF", "LCM", "Sum"] },
+                { q: "For repeating patterns, find:", a: "LCM", o: ["LCM", "HCF", "Difference"] },
+                { q: "HCF of 7 and 11 (both prime)?", a: "1", o: ["1", "7", "77"] },
+                { q: "LCM of 5 and 7 (both prime)?", a: "35", o: ["35", "12", "5"] },
+                { q: "If a divides b, HCF(a,b) = ?", a: "a", o: ["a", "b", "ab"] },
+                { q: "If a divides b, LCM(a,b) = ?", a: "b", o: ["b", "a", "ab"] },
+                { q: "HCF is always ≤ ?", a: "smaller number", o: ["smaller number", "larger number", "product"] },
+                { q: "LCM is always ≥ ?", a: "larger number", o: ["larger number", "smaller number", "sum"] }
+            ];
+
+            conceptQuestions.forEach(item => {
+                fullQuestionBank.push({ q: item.q, a: item.a, options: item.o });
+            });
+
+            // Shuffle all questions
+            fullQuestionBank.sort(() => Math.random() - 0.5);
+        }
+
+        let currentPage = 0;
+        const perPage = 50;
+        let score = 0;
+        let attempted = 0;
+
+        function renderQuestions() {
+            const container = document.getElementById('questionWrapper');
+            const start = currentPage * perPage;
+            const end = start + perPage;
+            const batch = fullQuestionBank.slice(start, end);
+
+            container.innerHTML = '';
+            document.getElementById('pageIndicator').innerText = `Page ${currentPage + 1} of 2`;
+
+            batch.forEach((item, idx) => {
+                const card = document.createElement('div');
+                card.className = 'question-card';
+                card.innerHTML = `
+                    <h4>Question ${start + idx + 1}</h4>
+                    <p style="margin-bottom:1rem; font-size:1.1rem;">${item.q}</p>
+                    <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                        ${item.options.map(opt => `
+                            <button class="opt-btn" onclick="checkAnswer(this, '${opt}', '${item.a}')">${opt}</button>
+                        `).join('')}
+                    </div>
+                    <div class="feedback" style="margin-top:10px; font-variation-settings:'wght' 600; display:none;"></div>
+                `;
+                container.appendChild(card);
+            });
+
+            document.getElementById('prevBtn').disabled = currentPage === 0;
+            document.getElementById('prevBtn').style.opacity = currentPage === 0 ? "0.5" : "1";
+            document.getElementById('nextBtn').disabled = currentPage === 1;
+            document.getElementById('nextBtn').style.opacity = currentPage === 1 ? "0.5" : "1";
+        }
+
+        window.checkAnswer = function (btn, selected, correct) {
+            const card = btn.closest('.question-card');
+            const feedback = card.querySelector('.feedback');
+            const buttons = card.querySelectorAll('.opt-btn');
+
+            attempted++;
+            if (selected === correct) {
+                score++;
+                btn.style.background = 'var(--green)';
+                btn.style.color = 'white';
+                feedback.innerText = "✓ Correct!";
+                feedback.style.color = "var(--green)";
+            } else {
+                btn.style.background = 'var(--accent)';
+                btn.style.color = 'white';
+                feedback.innerText = `✗ Wrong. Correct is ${correct}`;
+                feedback.style.color = "var(--accent)";
+            }
+
+            buttons.forEach(b => b.onclick = null);
+            feedback.style.display = "block";
+
+            document.getElementById('score').innerText = score;
+            document.getElementById('totalAttempted').innerText = attempted;
+        };
+
+        function nextPage() {
+            if (currentPage < 1) {
+                currentPage++;
+                renderQuestions();
+                document.getElementById('practice').scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function prevPage() {
+            if (currentPage > 0) {
+                currentPage--;
+                renderQuestions();
+                document.getElementById('practice').scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        generate100Questions();
+        renderQuestions();
+    </script>
+
+    <footer>
+        <p style="font-size:1.2rem; margin-bottom:1rem; font-variation-settings:'opsz' 16, 'wdth' 100, 'wght' 500;">
+            Nalanda Academy, Wardha</p>
+        <p style="opacity:0.8;">Chapter 5: HCF and LCM – Master the Fundamentals of Number Theory</p>
+    </footer>
+</body>
+
+</html>
