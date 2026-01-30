@@ -159,84 +159,6 @@
             width: 100%;
         }
 
-        /* Teacher Section */
-        .teacher-section {
-            background: white;
-            padding: 3rem 2rem;
-            margin: 4rem auto;
-            max-width: 1000px;
-            border: 3px solid var(--dark);
-            box-shadow: 12px 12px 0 var(--dark);
-            position: relative;
-        }
-
-        .teacher-content {
-            display: grid;
-            grid-template-columns: 300px 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .teacher-image-container {
-            position: relative;
-        }
-
-        .teacher-image {
-            width: 100%;
-            height: auto;
-            border: 4px solid var(--dark);
-            box-shadow: 8px 8px 0 var(--accent);
-            transition: all 0.3s;
-        }
-
-        .teacher-image:hover {
-            transform: translate(-4px, -4px);
-            box-shadow: 12px 12px 0 var(--accent);
-        }
-
-        .teacher-info h3 {
-            font-size: 2rem;
-            font-variation-settings: 'opsz' 48, 'wdth' 85, 'wght' 700;
-            color: var(--blue);
-            margin-bottom: 0.5rem;
-        }
-
-        .teacher-info .role {
-            font-size: 1.2rem;
-            font-variation-settings: 'opsz' 16, 'wdth' 100, 'wght' 500;
-            color: var(--purple);
-            margin-bottom: 1.5rem;
-        }
-
-        .teacher-info p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 1rem;
-        }
-
-        .teacher-badge {
-            display: inline-block;
-            background: var(--green);
-            color: white;
-            padding: 0.5rem 1rem;
-            font-variation-settings: 'opsz' 12, 'wdth' 100, 'wght' 600;
-            margin-top: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        @media (max-width: 768px) {
-            .teacher-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .teacher-image-container {
-                max-width: 250px;
-                margin: 0 auto;
-            }
-        }
-
         .section {
             padding: 4rem 2rem;
             max-width: 1400px;
@@ -444,10 +366,6 @@
             .section {
                 padding: 2rem 1rem;
             }
-
-            .teacher-section {
-                margin: 2rem 1rem;
-            }
         }
 
         .intro-text {
@@ -490,37 +408,12 @@
 
     <nav>
         <ul>
-            <li><a href="#teacher">Your Teacher</a></li>
             <li><a href="#fundamentals">Fundamentals</a></li>
-            <li><a href="#advanced">Advanced Topics</a></li>
-            <li><a href="#professional">Professional Mathematics</a></li>
+            <li><a href="#advanced">Advance</a></li>
+            <li><a href="#professional">Professional</a></li>
             <li><a href="#about">About</a></li>
         </ul>
     </nav>
-
-    <section id="teacher" class="teacher-section">
-        <div class="teacher-content">
-            <div class="teacher-image-container">
-                <img src="kapil.jpeg" alt="Kapil Wankhede - Mathematics Teacher" class="teacher-image">
-            </div>
-            <div class="teacher-info">
-                <h3>Meet Your Teacher</h3>
-                <p class="role">Mathematics Educator | Nalanda Academy</p>
-                <p>Hello! I'm Kapil Wankhede, your guide through the fascinating world of mathematics. With a passion
-                    for making
-                    complex concepts accessible and engaging, I've dedicated my career to helping students from all
-                    backgrounds discover the beauty and power of mathematical thinking.</p>
-                <p>At Nalanda Academy, we believe every student has the potential to excel in mathematics. Through this
-                    learning hub, I'll be with you every step of the way—from fundamental concepts to advanced
-                    problem-solving.</p>
-                <a href="https://kwakhede.netlify.app/" style="text-decoration: none; color: inherit;">
-                    <div class="teacher-badge">
-                        🎓 Know More About Me!
-                    </div>
-                </a>
-            </div>
-        </div>
-    </section>
 
     <section id="fundamentals" class="section">
         <h2 class="section-title">Fundamental Concepts</h2>
