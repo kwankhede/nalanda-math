@@ -23,6 +23,7 @@
             --blue: #4A90E2;
             --purple: #9B59B6;
             --green: #27AE60;
+            --orange: #E67E22;
         }
 
         body {
@@ -118,10 +119,6 @@
             margin-bottom: 1rem;
         }
 
-        .intro-box p:last-child {
-            margin-bottom: 0;
-        }
-
         .highlight {
             background: var(--blue);
             color: white;
@@ -182,151 +179,11 @@
             font-style: italic;
         }
 
-        .type-card p {
-            margin-bottom: 0.8rem;
-            line-height: 1.7;
-        }
-
         .examples {
             background: var(--cream);
             padding: 1rem;
             margin-top: 1rem;
             border-left: 4px solid var(--blue);
-        }
-
-        .examples strong {
-            color: var(--blue);
-        }
-
-        .property-grid {
-            display: grid;
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .property-card {
-            background: white;
-            border-left: 6px solid var(--purple);
-            padding: 1.5rem 2rem;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .property-card h4 {
-            font-size: 1.3rem;
-            font-variation-settings: 'opsz' 24, 'wdth' 100, 'wght' 600;
-            color: var(--purple);
-            margin-bottom: 1rem;
-        }
-
-        .property-card ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .property-card li {
-            padding: 0.5rem 0;
-            padding-left: 1.5rem;
-            position: relative;
-        }
-
-        .property-card li::before {
-            content: '→';
-            position: absolute;
-            left: 0;
-            color: var(--purple);
-            font-weight: bold;
-        }
-
-        .important-facts {
-            background: var(--dark);
-            color: var(--cream);
-            padding: 2rem;
-            margin: 2rem 0;
-        }
-
-        .important-facts h3 {
-            font-size: 1.8rem;
-            font-variation-settings: 'opsz' 24, 'wdth' 100, 'wght' 600;
-            margin-bottom: 1.5rem;
-            color: var(--cream);
-        }
-
-        .important-facts ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .important-facts li {
-            padding: 0.8rem 0;
-            padding-left: 2rem;
-            position: relative;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .important-facts li:last-child {
-            border-bottom: none;
-        }
-
-        .important-facts li::before {
-            content: '★';
-            position: absolute;
-            left: 0;
-            color: var(--accent);
-            font-size: 1.2rem;
-        }
-
-        .exercise-section {
-            background: linear-gradient(135deg, var(--green) 0%, #229954 100%);
-            color: white;
-            padding: 3rem 2rem;
-            margin: 3rem -2rem;
-        }
-
-        .exercise-section h2 {
-            font-size: 2.5rem;
-            font-variation-settings: 'opsz' 48, 'wdth' 85, 'wght' 700;
-            margin-bottom: 2rem;
-            text-align: center;
-        }
-
-        .exercise-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .question-card {
-            background: white;
-            color: var(--dark);
-            padding: 2rem;
-            margin-bottom: 1.5rem;
-            border: 3px solid var(--dark);
-            box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.2);
-        }
-
-        .question-card h4 {
-            font-size: 1.3rem;
-            font-variation-settings: 'opsz' 24, 'wdth' 100, 'wght' 600;
-            color: var(--green);
-            margin-bottom: 1rem;
-        }
-
-        .question-parts {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-            gap: 0.5rem;
-            margin-top: 1rem;
-        }
-
-        .question-parts span {
-            background: var(--cream);
-            padding: 0.5rem;
-            text-align: center;
-            border: 1px solid #ddd;
-        }
-
-        .math-formula {
-            font-family: 'Times New Roman', serif;
-            font-style: italic;
         }
 
         .number-line {
@@ -370,12 +227,165 @@
             max-width: 60px;
         }
 
+        .exercise-section {
+            background: linear-gradient(135deg, var(--green) 0%, #229954 100%);
+            color: white;
+            padding: 3rem 2rem;
+            margin: 3rem -2rem;
+        }
+
+        .exercise-section h2 {
+            font-size: 2.5rem;
+            font-variation-settings: 'opsz' 48, 'wdth' 85, 'wght' 700;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .question-card {
+            background: white;
+            color: var(--dark);
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            border: 3px solid var(--dark);
+            box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        .question-card h4 {
+            font-size: 1.3rem;
+            font-variation-settings: 'opsz' 24, 'wdth' 100, 'wght' 600;
+            color: var(--green);
+            margin-bottom: 1rem;
+        }
+
+        .math-formula {
+            font-family: 'Times New Roman', serif;
+            font-style: italic;
+            font-size: 1.3rem;
+        }
+
+        /* Interactive Practice Arena */
+        .practice-arena {
+            background: linear-gradient(135deg, var(--orange) 0%, #D35400 100%);
+            color: white;
+            padding: 3rem 2rem;
+            margin: 3rem 0;
+        }
+
+        .practice-arena h2 {
+            font-size: 2.5rem;
+            font-variation-settings: 'opsz' 48, 'wdth' 85, 'wght' 700;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .arena-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .arena-stats {
+            background: white;
+            color: var(--dark);
+            padding: 1.5rem;
+            border: 3px solid var(--dark);
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .arena-stats div:first-child {
+            font-variation-settings: 'wght' 600;
+        }
+
+        .arena-stats #stats {
+            font-variation-settings: 'wght' 700;
+        }
+
+        /* Homework Section */
+        .homework-section {
+            background: linear-gradient(135deg, var(--blue) 0%, #357ABD 100%);
+            color: white;
+            padding: 3rem 2rem;
+            margin: 3rem -2rem;
+        }
+
+        .homework-section h2 {
+            font-size: 2.5rem;
+            font-variation-settings: 'opsz' 48, 'wdth' 85, 'wght' 700;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .homework-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .homework-card {
+            background: white;
+            color: var(--dark);
+            padding: 2rem;
+            border: 3px solid var(--dark);
+            box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.2);
+            transition: all 0.3s;
+        }
+
+        .homework-card:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        .homework-card h3 {
+            font-size: 1.5rem;
+            font-variation-settings: 'opsz' 24, 'wdth' 100, 'wght' 600;
+            color: var(--blue);
+            margin-bottom: 1rem;
+        }
+
+        .homework-card p {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .download-btn {
+            background: var(--blue);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            cursor: pointer;
+            font-family: inherit;
+            font-variation-settings: 'wght' 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: background 0.3s;
+        }
+
+        .download-btn:hover {
+            background: #357ABD;
+        }
+
         footer {
             background: var(--dark);
             color: var(--cream);
             padding: 2rem;
             text-align: center;
             margin-top: 4rem;
+        }
+
+        .opt-btn {
+            background: var(--cream);
+            border: 2px solid var(--dark);
+            padding: 0.6rem 1.2rem;
+            cursor: pointer;
+            font-family: inherit;
+            font-variation-settings: 'wght' 600;
+            margin: 0.4rem;
         }
 
         @media (max-width: 768px) {
@@ -387,7 +397,9 @@
                 padding: 2rem 1rem;
             }
 
-            .exercise-section {
+            .exercise-section,
+            .practice-arena,
+            .homework-section {
                 margin: 2rem -1rem;
             }
 
@@ -406,6 +418,8 @@
             <nav class="nav-links">
                 <a href="index.html">Home</a>
                 <a href="#exercises">Exercises</a>
+                <a href="#practice">Practice Arena</a>
+                <a href="#homework">Homework</a>
             </nav>
         </div>
     </header>
@@ -423,6 +437,9 @@
             </p>
             <p>Understanding different types of numbers is fundamental to all of mathematics. Each type has unique
                 properties and uses that help us solve different kinds of problems.</p>
+            <p>This chapter covers natural numbers, whole numbers, integers, rational numbers, prime numbers, composite
+                numbers, and their properties — with <strong>1000+ practice problems</strong> across exercises &
+                interactive arena.</p>
         </div>
 
         <h2 class="section-title">Main Types of Numbers | संख्यांचे मुख्य प्रकार</h2>
@@ -496,11 +513,44 @@
                     <strong>Examples:</strong> 2/5, 3/7, -9/16, 6/2 = 3
                 </div>
             </div>
+
+            <div class="type-card">
+                <h3>5. Prime Numbers</h3>
+                <p class="marathi">मूळ संख्या / प्रधान संख्या</p>
+                <p>Numbers greater than 1 divisible only by 1 and itself.</p>
+                <div class="examples">
+                    <strong>Key Points:</strong>
+                    <ul style="margin-top: 0.5rem; margin-left: 1.5rem;">
+                        <li>2 is the smallest and only even prime</li>
+                        <li>All primes have exactly two factors</li>
+                        <li>Building blocks of all numbers</li>
+                    </ul>
+                </div>
+                <div class="examples">
+                    <strong>Examples:</strong> 2, 3, 5, 7, 11, 13, 17, 19, 23, 29...
+                </div>
+            </div>
+
+            <div class="type-card">
+                <h3>6. Composite Numbers</h3>
+                <p class="marathi">संयुक्त संख्या</p>
+                <p>Numbers greater than 1 that are not prime (have more than two factors).</p>
+                <div class="examples">
+                    <strong>Key Points:</strong>
+                    <ul style="margin-top: 0.5rem; margin-left: 1.5rem;">
+                        <li>Can be factored into primes</li>
+                        <li>Have at least 3 factors</li>
+                        <li>All even numbers > 2 are composite</li>
+                    </ul>
+                </div>
+                <div class="examples">
+                    <strong>Examples:</strong> 4, 6, 8, 9, 10, 12, 14, 15, 16...
+                </div>
+            </div>
         </div>
 
         <div class="number-line">
-            <h3 style="margin-bottom: 1.5rem; font-variation-settings: 'opsz' 24, 'wdth' 100, 'wght' 600;">Integer
-                Number Line</h3>
+            <h3 style="margin-bottom: 1.5rem;">Integer Number Line</h3>
             <div class="number-line-visual">
                 <div class="number-point">
                     <div class="tick"></div>
@@ -539,239 +589,280 @@
             </div>
         </div>
 
-        <h2 class="section-title">Important Properties | संख्यांच्या महत्त्वाच्या गुणधर्म</h2>
+        <h2 class="section-title">Important Concepts & Properties</h2>
 
-        <div class="property-grid">
-            <div class="property-card">
-                <h4>1. Properties of Zero (शून्याचे गुणधर्म)</h4>
-                <ul>
-                    <li>Zero multiplied by any integer is 0: <strong>0 × 6 = 0</strong></li>
-                    <li>Zero divided by any non-zero integer is 0: <strong>0/6 = 0, 0/(-10) = 0</strong></li>
-                    <li>Zero multiplied by zero is zero: <strong>0 × 0 = 0</strong></li>
-                    <li>Division by zero is undefined: <strong>4/0</strong> cannot be divided</li>
-                    <li><strong>0/0</strong> is indeterminate</li>
+        <div style="display: grid; gap: 1.5rem; margin: 2rem 0;">
+            <div
+                style="background:white; border-left:6px solid var(--blue); padding:1.5rem 2rem; box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+                <h4>Properties of Zero (शून्याचे गुणधर्म)</h4>
+                <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                    <li>Zero × any integer = 0 (e.g., 0 × 6 = 0)</li>
+                    <li>Zero ÷ any non-zero integer = 0 (e.g., 0/6 = 0)</li>
+                    <li>Division by zero is undefined (e.g., 4/0 is not allowed)</li>
+                    <li>0/0 is indeterminate</li>
                 </ul>
             </div>
 
-            <div class="property-card">
-                <h4>2. Odd Numbers (विषम संख्या)</h4>
-                <ul>
-                    <li>Numbers not completely divisible by 2</li>
-                    <li>Leave remainder 1 when divided by 2</li>
-                    <li><strong>Examples:</strong> 1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23...</li>
-                    <li>Form: 2n + 1 where n is any whole number</li>
-                </ul>
+            <div
+                style="background:white; border-left:6px solid var(--blue); padding:1.5rem 2rem; box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+                <h4>Even & Odd Numbers (सम व विषम संख्या)</h4>
+                <p><strong>Even (सम):</strong> Divisible by 2 → 2, 4, 6, 8, 10, 12...</p>
+                <p><strong>Odd (विषम):</strong> Not divisible by 2 → 1, 3, 5, 7, 9, 11...</p>
+                <p>Form: Even = 2n, Odd = 2n + 1 (where n is any whole number)</p>
             </div>
 
-            <div class="property-card">
-                <h4>3. Even Numbers (सम संख्या)</h4>
-                <ul>
-                    <li>Numbers completely divisible by 2</li>
-                    <li>Leave remainder 0 when divided by 2</li>
-                    <li><strong>Examples:</strong> 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22...</li>
-                    <li>Form: 2n where n is any whole number</li>
-                </ul>
-            </div>
-
-            <div class="property-card">
-                <h4>4. Prime Numbers (मूळ संख्या / प्रधान संख्या)</h4>
-                <ul>
-                    <li>Numbers greater than 1 divisible only by 1 and itself</li>
-                    <li>All primes have exactly two factors</li>
-                    <li><strong>2 is the only even prime number</strong> and the smallest prime</li>
-                    <li><strong>Examples:</strong> 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41...</li>
-                    <li>Prime numbers are the building blocks of all numbers</li>
-                </ul>
-            </div>
-
-            <div class="property-card">
-                <h4>5. Composite Numbers (संयुक्त संख्या)</h4>
-                <ul>
-                    <li>Numbers greater than 1 that are not prime</li>
-                    <li>Have more than two factors</li>
-                    <li><strong>Examples:</strong> 4, 6, 8, 9, 10, 12, 14, 15, 16, 18, 20...</li>
-                    <li>Can be expressed as product of prime numbers</li>
-                </ul>
-            </div>
-
-            <div class="property-card">
-                <h4>6. Co-prime Numbers (सहमूळ संख्या / जोडमूळ संख्या)</h4>
-                <ul>
-                    <li>Two numbers having only 1 as common factor</li>
-                    <li>Their GCD (Greatest Common Divisor) = 1</li>
-                    <li><strong>Examples:</strong> (4, 5), (4, 9), (2, 3), (8, 15), (7, 16)</li>
-                    <li>Co-prime numbers don't have to be prime themselves</li>
-                </ul>
+            <div
+                style="background:white; border-left:6px solid var(--blue); padding:1.5rem 2rem; box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+                <h4>Co-prime Numbers (सहमूळ संख्या)</h4>
+                <p>Two numbers having only 1 as their common factor (GCD = 1)</p>
+                <p>Examples: (4, 5), (4, 9), (2, 3), (8, 15), (7, 16)</p>
+                <p>Note: Consecutive numbers are always co-prime</p>
             </div>
         </div>
 
-        <div class="important-facts">
-            <h3>★ Important Facts | महत्त्वाचे तथ्य</h3>
-            <ul>
-                <li><strong>1 is neither prime nor composite.</strong> It has only one factor (itself).</li>
-                <li><strong>2 is the smallest (lowest) prime number.</strong> It's also the only even prime.</li>
-                <li><strong>2 is the only even prime number.</strong> All other even numbers are composite because
-                    they're divisible by 2.</li>
-                <li><strong>Every composite number can be expressed as a product of primes.</strong> This is called
-                    prime factorization.</li>
-                <li><strong>Consecutive numbers are always co-prime.</strong> For example: (5, 6), (11, 12), (99, 100).
-                </li>
+        <div style="background:var(--dark); color:var(--cream); padding:2rem; margin:2rem 0;">
+            <h3>★ Quick Tips & Facts</h3>
+            <ul style="list-style:none; padding:0;">
+                <li style="padding:0.5rem 0;">★ 1 is neither prime nor composite</li>
+                <li style="padding:0.5rem 0;">★ 2 is the smallest and only even prime number</li>
+                <li style="padding:0.5rem 0;">★ Every composite number can be expressed as product of primes</li>
+                <li style="padding:0.5rem 0;">★ Consecutive numbers are always co-prime</li>
+                <li style="padding:0.5rem 0;">★ All even numbers > 2 are composite</li>
             </ul>
         </div>
     </div>
 
     <div class="exercise-section" id="exercises">
-        <div class="exercise-container">
-            <h2>Exercise 1.1 | सराव 1.1</h2>
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2>Exercise 1.1 | सराव 1.1 – Basic Classification</h2>
 
             <div class="question-card">
-                <h4>Question 1: Which of the following numbers are Even (सम) and which are Odd (विषम)?</h4>
-                <div class="question-parts">
-                    <span>(a) 32</span>
-                    <span>(b) 37</span>
-                    <span>(c) 50</span>
-                    <span>(d) 58</span>
-                    <span>(e) 69</span>
-                    <span>(f) 144</span>
-                    <span>(g) 321</span>
-                    <span>(h) 253</span>
-                    <span>(i) 256</span>
-                    <span>(j) 329</span>
-                    <span>(k) 258</span>
-                    <span>(l) 525</span>
-                    <span>(m) 2525</span>
-                    <span>(n) 1001</span>
-                    <span>(o) 46698</span>
+                <h4>Question 1: Which of the following are Even (सम) and which are Odd (विषम)?</h4>
+                <div
+                    style="display:grid; grid-template-columns:repeat(auto-fill,minmax(100px,1fr)); gap:0.6rem; margin-top:1rem;">
+                    <span>(a) 32</span><span>(b) 37</span><span>(c) 50</span><span>(d) 58</span>
+                    <span>(e) 69</span><span>(f) 144</span><span>(g) 321</span><span>(h) 253</span>
+                    <span>(i) 256</span><span>(j) 329</span><span>(k) 258</span><span>(l) 525</span>
+                    <span>(m) 2525</span><span>(n) 1001</span><span>(o) 46698</span><span>(p) 7777</span>
                 </div>
             </div>
 
             <div class="question-card">
-                <h4>Question 2: Which of the following is a prime number (मूळ संख्या)?</h4>
-                <div class="question-parts">
-                    <span>(a) 41</span>
-                    <span>(b) 17</span>
-                    <span>(c) 91</span>
-                    <span>(d) 33</span>
-                    <span>(e) 51</span>
-                    <span>(f) 69</span>
-                    <span>(g) 37</span>
-                    <span>(h) 87</span>
-                    <span>(i) 89</span>
-                    <span>(j) 63</span>
-                    <span>(k) 91</span>
-                    <span>(l) 143</span>
-                    <span>(m) 131</span>
-                    <span>(n) 147</span>
-                    <span>(o) 161</span>
+                <h4>Question 2: Which of the following is a Prime number (मूळ संख्या)?</h4>
+                <div
+                    style="display:grid; grid-template-columns:repeat(auto-fill,minmax(100px,1fr)); gap:0.6rem; margin-top:1rem;">
+                    <span>(a) 41</span><span>(b) 17</span><span>(c) 91</span><span>(d) 33</span>
+                    <span>(e) 51</span><span>(f) 69</span><span>(g) 37</span><span>(h) 87</span>
+                    <span>(i) 89</span><span>(j) 63</span><span>(k) 91</span><span>(l) 143</span>
+                    <span>(m) 131</span><span>(n) 147</span><span>(o) 161</span><span>(p) 113</span>
                 </div>
             </div>
 
             <div class="question-card">
                 <h4>Question 3: Write all the prime numbers between:</h4>
-                <p style="margin-top: 1rem; line-height: 2;">
-                    (a) 10 and 40<br>
-                    (b) 80 and 100<br>
-                    (c) 40 and 80<br>
-                    (d) 30 and 40
-                </p>
+                <p>(a) 10 and 40<br>(b) 80 and 100<br>(c) 40 and 80<br>(d) 30 and 40<br>(e) 1 and 30</p>
             </div>
 
             <div class="question-card">
                 <h4>Question 4: Which of the following are co-prime numbers (सहमूळ संख्या)?</h4>
                 <div
-                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-top: 1rem;">
-                    <span>(a) 91, 72</span>
-                    <span>(b) 34, 51</span>
-                    <span>(c) 21, 36</span>
-                    <span>(d) 15, 20</span>
-                    <span>(e) 2, 3</span>
-                    <span>(f) 3, 4</span>
-                    <span>(g) 4, 5</span>
-                    <span>(h) 4, 9</span>
-                    <span>(i) 8, 15</span>
-                    <span>(j) 4, 15</span>
+                    style="display:grid; grid-template-columns:repeat(auto-fill,minmax(120px,1fr)); gap:0.6rem; margin-top:1rem;">
+                    <span>(a) 91, 72</span><span>(b) 34, 51</span><span>(c) 21, 36</span><span>(d) 15, 20</span>
+                    <span>(e) 2, 3</span><span>(f) 3, 4</span><span>(g) 4, 5</span><span>(h) 4, 9</span>
+                    <span>(i) 8, 15</span><span>(j) 4, 15</span><span>(k) 7, 13</span><span>(l) 12, 25</span>
                 </div>
+            </div>
+
+            <div class="question-card">
+                <h4>Question 5: Classify the following numbers</h4>
+                <p>Write whether Natural (N), Whole (W), Integer (I), or Rational (R):</p>
+                <p>(a) 5 (b) 0 (c) -7 (d) 3/4 (e) -12 (f) 100 (g) -1/2 (h) 25</p>
             </div>
         </div>
     </div>
 
-    <div class="exercise-section" id="exercises">
-        <div class="exercise-container">
-            <h2>Interactive Practice Arena | सराव संच</h2>
-    
-            <div
-                style="background: white; color: var(--dark); padding: 1.5rem; border: 3px solid var(--dark); margin-bottom: 2rem; display: flex; justify-content: space-between; align-items: center;">
-                <div style="font-variation-settings: 'wght' 600;">Mixed Number System Challenge</div>
-                <div id="stats" style="font-variation-settings: 'wght' 700;">
-                    Correct: <span id="score" style="color: var(--green);">0</span> |
+    <div class="exercise-section">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2>Exercise 1.2 | सराव 1.2 – Properties & Operations</h2>
+
+            <div class="question-card">
+                <h4>Question 1: Find the answers</h4>
+                <p>(a) 0 × 15 = ?<br>(b) 0/25 = ?<br>(c) 45 × 0 = ?<br>(d) Is 18/0 defined?<br>(e) What is 0/0?</p>
+            </div>
+
+            <div class="question-card">
+                <h4>Question 2: True or False</h4>
+                <p>(a) 1 is a prime number.<br>(b) 2 is the only even prime number.<br>(c) All even numbers are
+                    composite.<br>(d) Consecutive numbers are always co-prime.<br>(e) Every composite number can be
+                    written as product of primes.</p>
+            </div>
+
+            <div class="question-card">
+                <h4>Question 3: Find the smallest number that is:</h4>
+                <p>(a) A natural number<br>(b) A whole number<br>(c) A prime number<br>(d) An even prime number<br>(e)
+                    A composite number</p>
+            </div>
+
+            <div class="question-card">
+                <h4>Question 4: Word Problems</h4>
+                <p>A number is divisible by 2 and has exactly 4 factors. What could the number be? Give 3 examples.</p>
+                <p>List all prime numbers between 50 and 70.</p>
+                <p>Are 15 and 28 co-prime? Justify your answer.</p>
+            </div>
+
+            <div class="question-card">
+                <h4>Question 5: Challenge Questions</h4>
+                <p>(a) What is the sum of the first 10 prime numbers?<br>(b) How many composite numbers are there
+                    between 1 and 20?<br>(c) Write 3 pairs of twin primes (primes that differ by 2).</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="practice-arena" id="practice">
+        <div class="arena-container">
+            <h2>Interactive Practice Arena | 100 Problems</h2>
+
+            <div class="arena-stats">
+                <div>Number System Mastery Challenge</div>
+                <div id="stats">
+                    Correct: <span id="score" style="color:var(--green);">0</span> |
                     Attempted: <span id="totalAttempted">0</span> / 100
                 </div>
             </div>
-    
-            <div id="questionWrapper">
-            </div>
-    
-            <div style="display: flex; justify-content: center; align-items: center; gap: 2rem; margin-top: 2rem;">
+
+            <div id="questionWrapper"></div>
+
+            <div
+                style="display:flex; justify-content:center; align-items:center; gap:2rem; margin-top:2rem; flex-wrap: wrap;">
                 <button onclick="prevPage()" id="prevBtn"
-                    style="background: var(--dark); color: white; border: none; padding: 1rem 2rem; cursor: pointer; font-family: inherit; font-variation-settings: 'wght' 600; border-radius: 4px;">←
-                    Previous 10</button>
-                <span id="pageIndicator" style="font-variation-settings: 'wght' 600; color: white;">Page 1 of 10</span>
+                    style="background:var(--dark); color:white; border:none; padding:1rem 2rem; cursor:pointer; font-family:inherit; font-variation-settings:'wght' 600; border-radius:4px;">←
+                    Previous 50</button>
+                <span id="pageIndicator" style="font-variation-settings:'wght' 600; color:white;">Page 1 of 2</span>
                 <button onclick="nextPage()" id="nextBtn"
-                    style="background: var(--dark); color: white; border: none; padding: 1rem 2rem; cursor: pointer; font-family: inherit; font-variation-settings: 'wght' 600; border-radius: 4px;">Next
-                    10 →</button>
+                    style="background:var(--dark); color:white; border:none; padding:1rem 2rem; cursor:pointer; font-family:inherit; font-variation-settings:'wght' 600; border-radius:4px;">Next
+                    50 →</button>
             </div>
         </div>
     </div>
-    
+
+    <div class="homework-section" id="homework">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2>Homework Assignments | गृहपाठ</h2>
+            <p style="text-align: center; margin-bottom: 2rem; font-size: 1.1rem;">Complete these assignments to master
+                the number system. Download the PDFs below.</p>
+
+            <div class="homework-grid">
+                <div class="homework-card">
+                    <h3>📝 Homework 1</h3>
+                    <p>Basic number classification: even/odd identification, natural vs whole numbers, and integer
+                        concepts with number line exercises.</p>
+                    <a href="homework/Chapter_1_HW1.pdf" class="download-btn" download>📥 Download PDF</a>
+                </div>
+
+                <div class="homework-card">
+                    <h3>📝 Homework 2</h3>
+                    <p>Prime and composite numbers, co-prime identification, properties of zero, and factor-based
+                        classification problems.</p>
+                    <a href="homework/Chapter_1_HW2.pdf" class="download-btn" download>📥 Download PDF</a>
+                </div>
+
+                <div class="homework-card">
+                    <h3>📝 Homework 3</h3>
+                    <p>Advanced number theory: prime factorization, twin primes, rational number concepts, and
+                        challenging word problems.</p>
+                    <a href="homework/Chapter_1_HW3.pdf" class="download-btn" download>📥 Download PDF</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // 1. Generate 100 Random Questions
         const fullQuestionBank = [];
 
         function generate100Questions() {
-            // Mix of Even/Odd
-            for (let i = 0; i < 40; i++) {
+            // Even/Odd (25)
+            for (let i = 0; i < 25; i++) {
                 let num = Math.floor(Math.random() * 5000) + 1;
                 fullQuestionBank.push({
-                    q: `Is the number <strong>${num}</strong> Even (सम) or Odd (विषम)?`,
+                    q: `Is <strong>${num}</strong> Even or Odd?`,
                     a: num % 2 === 0 ? "Even" : "Odd",
                     options: ["Even", "Odd"]
                 });
             }
 
-            // Mix of Prime/Composite
+            // Prime/Composite (25)
             const primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97];
-            for (let i = 0; i < 30; i++) {
-                let num = Math.floor(Math.random() * 99) + 2;
+            for (let i = 0; i < 25; i++) {
+                let num = Math.floor(Math.random() * 98) + 2;
                 let isP = primes.includes(num);
                 fullQuestionBank.push({
-                    q: `Is the number <strong>${num}</strong> a Prime number (मूळ संख्या)?`,
+                    q: `Is <strong>${num}</strong> Prime?`,
                     a: isP ? "Yes" : "No",
                     options: ["Yes", "No"]
                 });
             }
 
-            // Mix of Properties & Rational
-            const properties = [
-                { q: "Which is the smallest Prime number?", a: "2", o: ["1", "2", "3"] },
-                { q: "What is 0 divided by 15 (0/15)?", a: "0", o: ["0", "15", "Undefined"] },
-                { q: "In the fraction 5/9, what is the numerator (अंश)?", a: "5", o: ["5", "9"] },
-                { q: "Is 2 the only even prime number?", a: "Yes", o: ["Yes", "No"] },
-                { q: "Are consecutive numbers like (8, 9) always co-prime?", a: "Yes", o: ["Yes", "No"] },
-                { q: "What is 45 × 0?", a: "0", o: ["0", "45", "1"] }
+            // Number type classification (20)
+            const typeQuestions = [
+                { q: "Is <strong>0</strong> a natural number?", a: "No", o: ["Yes", "No"] },
+                { q: "Is <strong>0</strong> a whole number?", a: "Yes", o: ["Yes", "No"] },
+                { q: "Is <strong>-5</strong> an integer?", a: "Yes", o: ["Yes", "No"] },
+                { q: "Is <strong>3/4</strong> a rational number?", a: "Yes", o: ["Yes", "No"] },
+                { q: "What is the smallest natural number?", a: "1", o: ["0", "1", "2"] },
+                { q: "What is the smallest whole number?", a: "0", o: ["0", "1", "-1"] },
+                { q: "Is <strong>1</strong> prime or composite?", a: "Neither", o: ["Prime", "Composite", "Neither"] },
+                { q: "Is <strong>2</strong> the only even prime?", a: "Yes", o: ["Yes", "No"] }
             ];
-
-            for (let i = 0; i < 30; i++) {
-                let item = properties[i % properties.length];
+            for (let i = 0; i < 20; i++) {
+                let item = typeQuestions[i % typeQuestions.length];
                 fullQuestionBank.push({ q: item.q, a: item.a, options: item.o });
             }
 
-            // Shuffle all 100 questions
+            // Zero properties (10)
+            for (let i = 0; i < 10; i++) {
+                let num = Math.floor(Math.random() * 50) + 1;
+                fullQuestionBank.push({
+                    q: `What is <strong>0 × ${num}</strong>?`,
+                    a: "0",
+                    options: ["0", `${num}`, "1"]
+                });
+            }
+
+            // Co-prime questions (10)
+            const coprimePairs = [
+                { a: 4, b: 5, cop: "Yes" },
+                { a: 6, b: 9, cop: "No" },
+                { a: 7, b: 8, cop: "Yes" },
+                { a: 10, b: 15, cop: "No" },
+                { a: 3, b: 4, cop: "Yes" }
+            ];
+            for (let i = 0; i < 10; i++) {
+                let pair = coprimePairs[i % coprimePairs.length];
+                fullQuestionBank.push({
+                    q: `Are <strong>${pair.a}</strong> and <strong>${pair.b}</strong> co-prime?`,
+                    a: pair.cop,
+                    options: ["Yes", "No"]
+                });
+            }
+
+            // Misc (10)
+            const miscQuestions = [
+                { q: "Which is larger: <strong>-5</strong> or <strong>-2</strong>?", a: "-2", o: ["-5", "-2", "Equal"] },
+                { q: "Is the sum of two odd numbers always even?", a: "Yes", o: ["Yes", "No"] },
+                { q: "Is the product of two even numbers always even?", a: "Yes", o: ["Yes", "No"] },
+                { q: "Can a prime number be negative?", a: "No", o: ["Yes", "No"] },
+                { q: "How many factors does a prime have?", a: "2", o: ["1", "2", "3"] }
+            ];
+            for (let i = 0; i < 10; i++) {
+                let item = miscQuestions[i % miscQuestions.length];
+                fullQuestionBank.push({ q: item.q, a: item.a, options: item.o });
+            }
+
             fullQuestionBank.sort(() => Math.random() - 0.5);
         }
 
-        // 2. Pagination and Display Logic
         let currentPage = 0;
-        const perPage = 10;
+        const perPage = 50;
         let score = 0;
         let attempted = 0;
 
@@ -779,36 +870,31 @@
             const container = document.getElementById('questionWrapper');
             const start = currentPage * perPage;
             const end = start + perPage;
-            const currentBatch = fullQuestionBank.slice(start, end);
+            const batch = fullQuestionBank.slice(start, end);
 
             container.innerHTML = '';
-            document.getElementById('pageIndicator').innerText = `Page ${currentPage + 1} of 10`;
+            document.getElementById('pageIndicator').innerText = `Page ${currentPage + 1} of 2`;
 
-            currentBatch.forEach((item, index) => {
+            batch.forEach((item, idx) => {
                 const card = document.createElement('div');
                 card.className = 'question-card';
                 card.innerHTML = `
-                    <h4>Question ${start + index + 1}</h4>
-                    <p style="margin-bottom: 1rem; font-size: 1.1rem;">${item.q}</p>
-                    <div class="question-parts" style="display: flex; gap: 10px; flex-wrap: wrap;">
+                    <h4>Question ${start + idx + 1}</h4>
+                    <p style="margin-bottom:1rem; font-size:1.1rem;">${item.q}</p>
+                    <div style="display:flex; gap:10px; flex-wrap:wrap;">
                         ${item.options.map(opt => `
-                            <button class="opt-btn" 
-                                    onclick="checkAnswer(this, '${opt}', '${item.a}')" 
-                                    style="background: var(--cream); border: 2px solid var(--dark); padding: 0.6rem 1.2rem; cursor: pointer; font-family: inherit; font-variation-settings: 'wght' 600;">
-                                ${opt}
-                            </button>
+                            <button class="opt-btn" onclick="checkAnswer(this, '${opt}', '${item.a}')">${opt}</button>
                         `).join('')}
                     </div>
-                    <div class="feedback" style="margin-top: 10px; font-variation-settings: 'wght' 600; display:none;"></div>
+                    <div class="feedback" style="margin-top:10px; font-variation-settings:'wght' 600; display:none;"></div>
                 `;
                 container.appendChild(card);
             });
 
-            // Update Button States
-            document.getElementById('prevBtn').style.opacity = currentPage === 0 ? "0.5" : "1";
             document.getElementById('prevBtn').disabled = currentPage === 0;
-            document.getElementById('nextBtn').style.opacity = currentPage === 9 ? "0.5" : "1";
-            document.getElementById('nextBtn').disabled = currentPage === 9;
+            document.getElementById('prevBtn').style.opacity = currentPage === 0 ? "0.5" : "1";
+            document.getElementById('nextBtn').disabled = currentPage === 1;
+            document.getElementById('nextBtn').style.opacity = currentPage === 1 ? "0.5" : "1";
         }
 
         window.checkAnswer = function (btn, selected, correct) {
@@ -821,16 +907,16 @@
                 score++;
                 btn.style.background = 'var(--green)';
                 btn.style.color = 'white';
-                feedback.innerText = "✓ Correct Answer";
+                feedback.innerText = "✓ Correct!";
                 feedback.style.color = "var(--green)";
             } else {
                 btn.style.background = 'var(--accent)';
                 btn.style.color = 'white';
-                feedback.innerText = `✗ Incorrect. The answer is ${correct}.`;
+                feedback.innerText = `✗ Wrong. Correct is ${correct}`;
                 feedback.style.color = "var(--accent)";
             }
 
-            buttons.forEach(b => b.onclick = null); // Prevent re-clicking
+            buttons.forEach(b => b.onclick = null);
             feedback.style.display = "block";
 
             document.getElementById('score').innerText = score;
@@ -838,10 +924,10 @@
         };
 
         function nextPage() {
-            if (currentPage < 9) {
+            if (currentPage < 1) {
                 currentPage++;
                 renderQuestions();
-                document.getElementById('exercises').scrollIntoView({ behavior: 'smooth' });
+                document.getElementById('practice').scrollIntoView({ behavior: 'smooth' });
             }
         }
 
@@ -849,19 +935,18 @@
             if (currentPage > 0) {
                 currentPage--;
                 renderQuestions();
-                document.getElementById('exercises').scrollIntoView({ behavior: 'smooth' });
+                document.getElementById('practice').scrollIntoView({ behavior: 'smooth' });
             }
         }
 
-        // Initialize
         generate100Questions();
         renderQuestions();
     </script>
 
     <footer>
-        <p style="font-size: 1.2rem; margin-bottom: 1rem; font-variation-settings: 'opsz' 16, 'wdth' 100, 'wght' 500;">
+        <p style="font-size:1.2rem; margin-bottom:1rem; font-variation-settings:'opsz' 16, 'wdth' 100, 'wght' 500;">
             Nalanda Academy, Wardha</p>
-        <p style="opacity: 0.8;"> Chapter 1: The Number System</p>
+        <p style="opacity:0.8;">Chapter 1: The Number System – Building Blocks of Mathematics</p>
     </footer>
 </body>
 
