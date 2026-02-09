@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 21: Percentages | Nalanda Academy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --cream: #FFF8E7;
+            --dark: #1a1a1a;
+            --accent: #FF6B35;
+            --blue: #4A90E2;
+            --purple: #9B59B6;
+            --green: #27AE60;
+            --orange: #E67E22;
+            --red: #E74C3C;
+            --yellow: #F39C12;
+        }
+
+        body {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            background: var(--cream);
+            color: var(--dark);
+            line-height: 1.7;
+            font-variation-settings: 'opsz' 16, 'wdth' 100, 'wght' 400;
+        }
+
+        .header {
+            background: var(--dark);
+            color: var(--cream);
+            padding: 1.5rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-variation-settings: 'opsz' 24, 'wdth' 100, 'wght' 600;
+        }
+
+        .nav-links a {
+            color: var(--cream);
+            text-decoration: none;
+            margin-left: 2rem;
+            font-variation-settings: 'opsz' 16, 'wdth' 100, 'wght' 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .chapter-hero {
+            background: linear-gradient(135deg, var(--orange) 0%, #D35400 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .chapter-number {
+            font-size: 1.2rem;
+            font-variation-settings: 'opsz' 16, 'wdth' 100, 'wght' 500;
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+        }
+
+        .chapter-title {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-variation-settings: 'opsz' 96, 'wdth' 85, 'wght' 700;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .chapter-subtitle {
+            font-size: 1.3rem;
+            font-variation-settings: 'opsz' 16, 'wdth' 100, 'wght' 400;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .intro-box {
+            background: white;
+            padding: 2.5rem;
+            border: 3px solid var(--dark);
+            box-shadow: 8px 8px 0 var(--dark);
+            margin-bottom: 3rem;
+        }
+
+        .intro-box p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .highlight {
+            background: var(--orange);
+            color: white;
+            padding: 0.2rem 0.5rem;
+            font-variation-settings: 'opsz' 16, 'wdth' 100, 'wght' 600;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-variation-settings: 'opsz' 48, 'wdth' 85, 'wght' 700;
+            margin: 3rem 0 2rem;
+            color: var(--orange);
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100px;
+            height: 4px;
+            background: var(--accent);
+        }
+
+        .concept-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .concept-card {
+            background: white;
+            border: 3px solid var(--orange);
+            padding: 2rem;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .concept-card:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 8px 8px 0 var(--orange);
+        }
+
+        .concept-card h3 {
+            font-size: 1.5rem;
+            font-variation-settings: 'opsz' 24, 'wdth' 100, 'wght' 600;
+            color: var(--orange);
+            margin-bottom: 0.5rem;
+        }
+
+        .concept-card .marathi {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .examples {
+            background: var(--cream);
+            padding: 1rem;
+            margin-top: 1rem;
+            border-left: 4px solid var(--orange);
+        }
+
+        .visual-box {
+            background: white;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 3px solid var(--dark);
+            text-align: center;
+        }
+
+        .percentage-bar {
+            background: #eee;
+            height: 50px;
+            border: 2px solid var(--dark);
+            position: relative;
+            margin: 1.5rem 0;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .bar-fill {
+            height: 100%;
+            background: var(--orange);
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-variation-settings: 'wght' 700;
+            transition: width 0.3s;
+        }
+
+        .exercise-section {
+            background: linear-gradient(135deg, var(--green) 0%, #229954 100%);
+            color: white;
+            padding: 3rem 2rem;
+            margin: 3rem -2rem;
+        }
+
+        .exercise-section h2 {
+            font-size: 2.5rem;
+            font-variation-settings: 'opsz' 48, 'wdth' 85, 'wght' 700;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .question-card {
+            background: white;
+            color: var(--dark);
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            border: 3px solid var(--dark);
+            box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        .question-card h4 {
+            font-size: 1.3rem;
+            font-variation-settings: 'opsz' 24, 'wdth' 100, 'wght' 600;
+            color: var(--green);
+            margin-bottom: 1rem;
+        }
+
+        .math-formula {
+            font-family: 'Times New Roman', serif;
+            font-style: italic;
+            font-size: 1.3rem;
+        }
+
+        .practice-arena {
+            background: linear-gradient(135deg, var(--purple) 0%, #8E44AD 100%);
+            color: white;
+            padding: 3rem 2rem;
+            margin: 3rem 0;
+        }
+
+        .practice-arena h2 {
+            font-size: 2.5rem;
+            font-variation-settings: 'opsz' 48, 'wdth' 85, 'wght' 700;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .arena-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .arena-stats {
+            background: white;
+            color: var(--dark);
+            padding: 1.5rem;
+            border: 3px solid var(--dark);
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .arena-stats div:first-child {
+            font-variation-settings: 'wght' 600;
+        }
+
+        .arena-stats #stats {
+            font-variation-settings: 'wght' 700;
+        }
+
+        .homework-section {
+            background: linear-gradient(135deg, var(--blue) 0%, #357ABD 100%);
+            color: white;
+            padding: 3rem 2rem;
+            margin: 3rem -2rem;
+        }
+
+        .homework-section h2 {
+            font-size: 2.5rem;
+            font-variation-settings: 'opsz' 48, 'wdth' 85, 'wght' 700;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .homework-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .homework-card {
+            background: white;
+            color: var(--dark);
+            padding: 2rem;
+            border: 3px solid var(--dark);
+            box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.2);
+            transition: all 0.3s;
+        }
+
+        .homework-card:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        .homework-card h3 {
+            font-size: 1.5rem;
+            font-variation-settings: 'opsz' 24, 'wdth' 100, 'wght' 600;
+            color: var(--blue);
+            margin-bottom: 1rem;
+        }
+
+        .homework-card p {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .download-btn {
+            background: var(--blue);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            cursor: pointer;
+            font-family: inherit;
+            font-variation-settings: 'wght' 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: background 0.3s;
+        }
+
+        .download-btn:hover {
+            background: #357ABD;
+        }
+
+        footer {
+            background: var(--dark);
+            color: var(--cream);
+            padding: 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .opt-btn {
+            background: var(--cream);
+            border: 2px solid var(--dark);
+            padding: 0.6rem 1.2rem;
+            cursor: pointer;
+            font-family: inherit;
+            font-variation-settings: 'wght' 600;
+            margin: 0.4rem;
+            transition: all 0.2s;
+        }
+
+        .opt-btn:hover {
+            background: var(--orange);
+            color: white;
+            border-color: var(--orange);
+        }
+
+        .formula-box {
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+            border: 3px solid var(--dark);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            box-shadow: 4px 4px 0 var(--dark);
+        }
+
+        .formula-box h4 {
+            color: var(--orange);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .property-list {
+            background: white;
+            border-left: 6px solid var(--orange);
+            padding: 1.5rem 2rem;
+            margin: 1rem 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: white;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            border: 2px solid var(--dark);
+            padding: 1rem;
+            text-align: left;
+        }
+
+        .comparison-table th {
+            background: var(--orange);
+            color: white;
+            font-variation-settings: 'wght' 600;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: var(--cream);
+        }
+
+        @media (max-width: 768px) {
+            .chapter-hero {
+                padding: 2rem 1rem;
+            }
+
+            .container {
+                padding: 2rem 1rem;
+            }
+
+            .exercise-section,
+            .practice-arena,
+            .homework-section {
+                margin: 2rem -1rem;
+            }
+
+            .nav-links a {
+                margin-left: 1rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">Nalanda Academy Mathematics</div>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="#exercises">Exercises</a>
+                <a href="#practice">Practice Arena</a>
+                <a href="#homework">Homework</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="chapter-hero">
+        <div class="chapter-number">CHAPTER 21</div>
+        <h1 class="chapter-title">Percentages</h1>
+        <p class="chapter-subtitle">टक्केवारी / Parts per Hundred</p>
+    </div>
+
+    <div class="container">
+        <div class="intro-box">
+            <p>A <span class="highlight">percentage</span> is a way to express a number as a <strong>fraction of
+                    100</strong>. The word "percent" comes from Latin "per centum" meaning "per hundred".</p>
+            <p>Percentages are everywhere in daily life — discounts in shops, exam scores, tax rates, interest rates,
+                statistics in news, and growth rates in business. Understanding percentages is essential for making
+                informed decisions!</p>
+            <p>This chapter covers converting between fractions, decimals, and percentages; calculating percentage
+                increase/decrease; profit and loss; simple and compound interest; and real-world applications — with
+                <strong>100+ practice problems</strong> to master these concepts.
+            </p>
+        </div>
+
+        <h2 class="section-title">Understanding Percentages | टक्केवारी समजून घेणे</h2>
+
+        <div class="visual-box">
+            <h3 style="margin-bottom: 1.5rem;">What is a Percentage?</h3>
+            <div class="formula-box">
+                <p style="font-size: 1.2rem;"><strong>% = "per 100" or "out of 100"</strong></p>
+                <p style="margin-top: 1rem;">50% means 50 out of 100 = 50/100 = 1/2 = 0.5</p>
+            </div>
+
+            <div style="max-width: 600px; margin: 2rem auto;">
+                <p style="margin-bottom: 1rem;"><strong>Visual: 75% shaded</strong></p>
+                <div class="percentage-bar">
+                    <div class="bar-fill" style="width: 75%;">75%</div>
+                </div>
+
+                <p style="margin: 2rem 0 1rem;"><strong>Visual: 40% shaded</strong></p>
+                <div class="percentage-bar">
+                    <div class="bar-fill" style="width: 40%;">40%</div>
+                </div>
+
+                <p style="margin: 2rem 0 1rem;"><strong>Visual: 100% shaded</strong></p>
+                <div class="percentage-bar">
+                    <div class="bar-fill" style="width: 100%;">100%</div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">Basic Conversions | मूलभूत रूपांतरणे</h2>
+
+        <div class="concept-grid">
+            <div class="concept-card">
+                <h3>1. Fraction → Percentage</h3>
+                <p class="marathi">अपूर्णांक → टक्केवारी</p>
+                <p>Multiply by 100 and add % sign</p>
+                <div class="formula-box" style="margin-top: 1rem;">
+                    <p><strong>Fraction × 100 = %</strong></p>
+                </div>
+                <div class="examples">
+                    <strong>Examples:</strong><br>
+                    • 1/4 = (1/4) × 100% = 25%<br>
+                    • 3/5 = (3/5) × 100% = 60%<br>
+                    • 7/10 = (7/10) × 100% = 70%
+                </div>
+            </div>
+
+            <div class="concept-card">
+                <h3>2. Percentage → Fraction</h3>
+                <p class="marathi">टक्केवारी → अपूर्णांक</p>
+                <p>Divide by 100 and simplify</p>
+                <div class="formula-box" style="margin-top: 1rem;">
+                    <p><strong>% ÷ 100 = Fraction</strong></p>
+                </div>
+                <div class="examples">
+                    <strong>Examples:</strong><br>
+                    • 25% = 25/100 = 1/4<br>
+                    • 50% = 50/100 = 1/2<br>
+                    • 75% = 75/100 = 3/4
+                </div>
+            </div>
+
+            <div class="concept-card">
+                <h3>3. Decimal → Percentage</h3>
+                <p class="marathi">दशांश → टक्केवारी</p>
+                <p>Multiply by 100 and add % sign</p>
+                <div class="formula-box" style="margin-top: 1rem;">
+                    <p><strong>Decimal × 100 = %</strong></p>
+                </div>
+                <div class="examples">
+                    <strong>Examples:</strong><br>
+                    • 0.25 = 0.25 × 100% = 25%<br>
+                    • 0.5 = 0.5 × 100% = 50%<br>
+                    • 1.2 = 1.2 × 100% = 120%
+                </div>
+            </div>
+
+            <div class="concept-card">
+                <h3>4. Percentage → Decimal</h3>
+                <p class="marathi">टक्केवारी → दशांश</p>
+                <p>Divide by 100 (move decimal 2 places left)</p>
+                <div class="formula-box" style="margin-top: 1rem;">
+                    <p><strong>% ÷ 100 = Decimal</strong></p>
+                </div>
+                <div class="examples">
+                    <strong>Examples:</strong><br>
+                    • 30% = 30 ÷ 100 = 0.30<br>
+                    • 7.5% = 7.5 ÷ 100 = 0.075<br>
+                    • 150% = 150 ÷ 100 = 1.5
+                </div>
+            </div>
+        </div>
+
+        <div class="visual-box">
+            <h3 style="margin-bottom: 1.5rem;">Common Percentage Equivalents - Memorize These!</h3>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Fraction</th>
+                        <th>Decimal</th>
+                        <th>Percentage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1/2</td>
+                        <td>0.5</td>
+                        <td>50%</td>
+                    </tr>
+                    <tr>
+                        <td>1/4</td>
+                        <td>0.25</td>
+                        <td>25%</td>
+                    </tr>
+                    <tr>
+                        <td>3/4</td>
+                        <td>0.75</td>
+                        <td>75%</td>
+                    </tr>
+                    <tr>
+                        <td>1/5</td>
+                        <td>0.2</td>
+                        <td>20%</td>
+                    </tr>
+                    <tr>
+                        <td>1/10</td>
+                        <td>0.1</td>
+                        <td>10%</td>
+                    </tr>
+                    <tr>
+                        <td>1/3</td>
+                        <td>0.333...</td>
+                        <td>33.33%</td>
+                    </tr>
+                    <tr>
+                        <td>2/3</td>
+                        <td>0.666...</td>
+                        <td>66.67%</td>
+                    </tr>
+                    <tr>
+                        <td>1/8</td>
+                        <td>0.125</td>
+                        <td>12.5%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2 class="section-title">Finding Percentages | टक्केवारी शोधणे</h2>
+
+        <div class="property-list">
+            <h4>Formula: Finding x% of a number</h4>
+            <p style="font-size: 1.2rem; margin: 1rem 0;"><strong>x% of N = (x/100) × N</strong></p>
+            <p><strong>Example 1:</strong> Find 20% of 500</p>
+            <p>= (20/100) × 500 = 0.2 × 500 = 100</p>
+            <p style="margin-top: 1rem;"><strong>Example 2:</strong> Find 15% of 80</p>
+            <p>= (15/100) × 80 = 0.15 × 80 = 12</p>
+        </div>
+
+        <div class="property-list">
+            <h4>Formula: What percentage is A of B?</h4>
+            <p style="font-size: 1.2rem; margin: 1rem 0;"><strong>Percentage = (A/B) × 100%</strong></p>
+            <p><strong>Example 1:</strong> What % is 30 of 150?</p>
+            <p>= (30/150) × 100% = (1/5) × 100% = 20%</p>
+            <p style="margin-top: 1rem;"><strong>Example 2:</strong> What % is 45 of 60?</p>
+            <p>= (45/60) × 100% = (3/4) × 100% = 75%</p>
+        </div>
+
+        <div class="property-list">
+            <h4>Formula: Find the whole when percentage is known</h4>
+            <p style="font-size: 1.2rem; margin: 1rem 0;"><strong>Whole = (Part ÷ Percentage) × 100</strong></p>
+            <p><strong>Example:</strong> 25% of what number is 40?</p>
+            <p>Whole = (40 ÷ 25) × 100 = 1.6 × 100 = 160</p>
+        </div>
+
+        <h2 class="section-title">Percentage Increase & Decrease</h2>
+
+        <div class="concept-grid">
+            <div class="concept-card">
+                <h3>Percentage Increase</h3>
+                <p class="marathi">टक्केवारी वाढ</p>
+                <div class="formula-box" style="margin-top: 1rem;">
+                    <p><strong>% Increase = [(New - Old) / Old] × 100</strong></p>
+                </div>
+                <div class="examples">
+                    <strong>Example:</strong><br>
+                    Price increased from ₹500 to ₹600<br>
+                    Increase = 600 - 500 = 100<br>
+                    % Increase = (100/500) × 100 = 20%
+                </div>
+            </div>
+
+            <div class="concept-card">
+                <h3>Percentage Decrease</h3>
+                <p class="marathi">टक्केवारी घट</p>
+                <div class="formula-box" style="margin-top: 1rem;">
+                    <p><strong>% Decrease = [(Old - New) / Old] × 100</strong></p>
+                </div>
+                <div class="examples">
+                    <strong>Example:</strong><br>
+                    Price decreased from ₹800 to ₹600<br>
+                    Decrease = 800 - 600 = 200<br>
+                    % Decrease = (200/800) × 100 = 25%
+                </div>
+            </div>
+
+            <div class="concept-card">
+                <h3>Finding New Value</h3>
+                <p class="marathi">नवीन मूल्य शोधणे</p>
+                <div class="formula-box" style="margin-top: 1rem;">
+                    <p><strong>After x% increase:</strong><br>
+                        New = Old × (1 + x/100)</p>
+                    <p style="margin-top: 0.5rem;"><strong>After x% decrease:</strong><br>
+                        New = Old × (1 - x/100)</p>
+                </div>
+                <div class="examples">
+                    <strong>Example:</strong><br>
+                    Increase ₹500 by 20%<br>
+                    = 500 × (1 + 20/100)<br>
+                    = 500 × 1.2 = ₹600
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">Profit, Loss & Discount</h2>
+
+        <div class="property-list">
+            <h4>Profit and Loss Formulas</h4>
+            <p><strong>Cost Price (CP):</strong> Price at which item is purchased</p>
+            <p><strong>Selling Price (SP):</strong> Price at which item is sold</p>
+            <p style="margin-top: 1rem;"><strong>Profit = SP - CP</strong> (when SP > CP)</p>
+            <p><strong>Loss = CP - SP</strong> (when CP > SP)</p>
+            <p style="margin-top: 1rem;"><strong>Profit % = (Profit/CP) × 100</strong></p>
+            <p><strong>Loss % = (Loss/CP) × 100</strong></p>
+        </div>
+
+        <div class="concept-grid">
+            <div class="concept-card">
+                <h3>Profit Example</h3>
+                <p class="marathi">नफा उदाहरण</p>
+                <p>CP = ₹1000, SP = ₹1200</p>
+                <p>Profit = 1200 - 1000 = ₹200</p>
+                <p>Profit % = (200/1000) × 100 = 20%</p>
+            </div>
+
+            <div class="concept-card">
+                <h3>Loss Example</h3>
+                <p class="marathi">तोटा उदाहरण</p>
+                <p>CP = ₹800, SP = ₹600</p>
+                <p>Loss = 800 - 600 = ₹200</p>
+                <p>Loss % = (200/800) × 100 = 25%</p>
+            </div>
+
+            <div class="concept-card">
+                <h3>Discount</h3>
+                <p class="marathi">सवलत</p>
+                <p><strong>Discount = Marked Price - Selling Price</strong></p>
+                <p><strong>Discount % = (Discount/MP) × 100</strong></p>
+                <div class="examples">
+                    <strong>Example:</strong><br>
+                    MP = ₹1000, Discount = 20%<br>
+                    Discount = 20% of 1000 = ₹200<br>
+                    SP = 1000 - 200 = ₹800
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">Simple & Compound Interest</h2>
+
+        <div class="concept-grid">
+            <div class="concept-card">
+                <h3>Simple Interest (SI)</h3>
+                <p class="marathi">साधे व्याज</p>
+                <div class="formula-box" style="margin-top: 1rem;">
+                    <p><strong>SI = (P × R × T) / 100</strong></p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">
+                        P = Principal (initial amount)<br>
+                        R = Rate of interest per year<br>
+                        T = Time in years
+                    </p>
+                </div>
+                <div class="examples">
+                    <strong>Example:</strong><br>
+                    P = ₹5000, R = 10%, T = 2 years<br>
+                    SI = (5000 × 10 × 2) / 100 = ₹1000<br>
+                    Amount = P + SI = ₹6000
+                </div>
+            </div>
+
+            <div class="concept-card">
+                <h3>Compound Interest (CI)</h3>
+                <p class="marathi">चक्रवाढ व्याज</p>
+                <div class="formula-box" style="margin-top: 1rem;">
+                    <p><strong>A = P(1 + R/100)ᵀ</strong></p>
+                    <p><strong>CI = A - P</strong></p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">
+                        A = Final Amount<br>
+                        Interest compounds yearly
+                    </p>
+                </div>
+                <div class="examples">
+                    <strong>Example:</strong><br>
+                    P = ₹1000, R = 10%, T = 2 years<br>
+                    A = 1000(1.1)² = ₹1210<br>
+                    CI = 1210 - 1000 = ₹210
+                </div>
+            </div>
+        </div>
+
+        <div style="background:var(--dark); color:var(--cream); padding:2rem; margin:2rem 0;">
+            <h3>★ Quick Tips & Facts</h3>
+            <ul style="list-style:none; padding:0;">
+                <li style="padding:0.5rem 0;">★ 100% = the whole quantity (everything)</li>
+                <li style="padding:0.5rem 0;">★ 50% = half, 25% = quarter, 75% = three-quarters</li>
+                <li style="padding:0.5rem 0;">★ Percentages > 100% mean more than the original</li>
+                <li style="padding:0.5rem 0;">★ To find 10% quickly: divide by 10</li>
+                <li style="padding:0.5rem 0;">★ To find 1%: divide by 100</li>
+                <li style="padding:0.5rem 0;">★ Successive discounts are NOT additive!</li>
+                <li style="padding:0.5rem 0;">★ CI > SI when time > 1 year</li>
+            </ul>
+        </div>
+
+        <div class="formula-box">
+            <h4>Quick Calculation Tricks</h4>
+            <p><strong>Finding 15%:</strong> Find 10% + half of 10% (5%)</p>
+            <p><strong>Finding 25%:</strong> Divide by 4</p>
+            <p><strong>Finding 20%:</strong> Divide by 5</p>
+            <p><strong>Finding 12.5%:</strong> Divide by 8</p>
+            <p><strong>Successive % change:</strong> a% then b% = (a + b + ab/100)%</p>
+        </div>
+    </div>
+
+    <div class="exercise-section" id="exercises">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2>Exercise 21.1 | सराव 21.1 – Basic Conversions & Calculations</h2>
+
+            <div class="question-card">
+                <h4>Question 1: Convert to percentages</h4>
+                <p>(a) 3/4<br>(b) 2/5<br>(c) 7/10<br>(d) 0.35<br>(e) 0.08<br>(f) 1.5</p>
+            </div>
+
+            <div class="question-card">
+                <h4>Question 2: Convert to fractions (in simplest form)</h4>
+                <p>(a) 40%<br>(b) 65%<br>(c) 12.5%<br>(d) 33⅓%<br>(e) 125%<br>(f) 0.5%</p>
+            </div>
+
+            <div class="question-card">
+                <h4>Question 3: Convert to decimals</h4>
+                <p>(a) 45%<br>(b) 8%<br>(c) 150%<br>(d) 2.5%<br>(e) 99%<br>(f) 0.1%</p>
+            </div>
+
+            <div class="question-card">
+                <h4>Question 4: Find the value</h4>
+                <p>(a) 20% of 500<br>(b) 15% of 80<br>(c) 35% of 200<br>(d) 12.5% of 400<br>(e) 7.5% of 600<br>(f)
+                    125% of 80</p>
+            </div>
+
+            <div class="question-card">
+                <h4>Question 5: What percentage?</h4>
+                <p>(a) What % is 25 of 100?<br>(b) What % is 30 of 150?<br>(c) What % is 45 of 60?<br>(d) What % is 8
+                    of 40?<br>(e) What % is 75 of 50?</p>
+            </div>
+
+            <div class="question-card">
+                <h4>Question 6: Find the whole</h4>
+                <p>(a) 20% of what number is 40?<br>(b) 25% of what number is 60?<br>(c) 10% of what number is
+                    15?<br>(d) 15% of what number is 30?</p>
+            </div>
+
+            <div class="question-card">
+                <h4>Question 7: Percentage increase/decrease</h4>
+                <p>(a) Increase 200 by 15%<br>(b) Decrease 500 by 20%<br>(c) A price increased from ₹400 to ₹500. Find
+                    % increase.<br>(d) Population decreased from 10000 to 8000. Find % decrease.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="exercise-section">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2>Exercise 21.2 | सराव 21.2 – Profit, Loss, Discount & Interest</h2>
+
+            <div class="question-card">
+                <h4>Question 1: Profit and Loss</h4>
+                <p>(a) CP = ₹600, SP = ₹750. Find profit %.<br>(b) CP = ₹800, SP = ₹600. Find loss %.<br>(c) CP = ₹1200,
+                    Profit = 25%. Find SP.<br>(d) SP = ₹900, Loss = 10%. Find CP.</p>
+            </div>
+
+            <div class="question-card">
+                <h4>Question 2: Discount problems</h4>
+                <p>(a) Marked Price = ₹2000, Discount = 15%. Find selling price.<br>(b) A shirt marked at ₹800 is sold
+                    for ₹640. Find discount %.<br>(c) After 20% discount, SP = ₹1600. Find marked price.</p>
+            </div>
+
+            <div class="question-card">
+                <h4>Question 3: Simple Interest</h4>
+                <p>(a) P = ₹5000, R = 8%, T = 3 years. Find SI and Amount.<br>(b) P = ₹10000, R = 12%, T = 2 years.
+                    Find SI.<br>(c) SI = ₹600, P = ₹3000, T = 2 years. Find R.<br>(d) SI = ₹800, P = ₹4000, R = 10%.
+                    Find T.</p>
+            </div>
+
+            <div class="question-card">
+                <h4>Question 4: Compound Interest</h4>
+                <p>(a) P = ₹2000, R = 10%, T = 2 years. Find CI.<br>(b) P = ₹5000, R = 8%, T = 3 years. Find amount and
+                    CI.<br>(c) Compare CI and SI on ₹10000 at 10% for 2 years.</p>
+            </div>
+
+            <div class="question-card">
+                <h4>Question 5: Word problems</h4>
+                <p>(a) A student scored 432 marks out of 600. Find percentage.<br>(b) In an election, a candidate got
+                    60% votes and won by 4000 votes. Find total votes.<br>(c) 30% of students are girls. If there are
+                    420 boys, find total students.<br>(d) After two successive discounts of 10% and 20%, final price is
+                    ₹1440. Find original price.</p>
+            </div>
+
+            <div class="question-card">
+                <h4>Question 6: Mixed problems</h4>
+                <p>(a) A shopkeeper marks goods 40% above CP and gives 20% discount. Find profit %.<br>(b) Population
+                    increases 10% each year. If current population is 10000, find after 2 years.<br>(c) Value of
+                    machine depreciates 15% per year. Original value ₹50000. Find after 2 years.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="practice-arena" id="practice">
+        <div class="arena-container">
+            <h2>Interactive Practice Arena | 100 Problems</h2>
+
+            <div class="arena-stats">
+                <div>Percentages Mastery Challenge</div>
+                <div id="stats">
+                    Correct: <span id="score" style="color:var(--green);">0</span> |
+                    Attempted: <span id="totalAttempted">0</span> / 100
+                </div>
+            </div>
+
+            <div id="questionWrapper"></div>
+
+            <div
+                style="display:flex; justify-content:center; align-items:center; gap:2rem; margin-top:2rem; flex-wrap: wrap;">
+                <button onclick="prevPage()" id="prevBtn"
+                    style="background:var(--dark); color:white; border:none; padding:1rem 2rem; cursor:pointer; font-family:inherit; font-variation-settings:'wght' 600; border-radius:4px;">←
+                    Previous 50</button>
+                <span id="pageIndicator" style="font-variation-settings:'wght' 600; color:white;">Page 1 of 2</span>
+                <button onclick="nextPage()" id="nextBtn"
+                    style="background:var(--dark); color:white; border:none; padding:1rem 2rem; cursor:pointer; font-family:inherit; font-variation-settings:'wght' 600; border-radius:4px;">Next
+                    50 →</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="homework-section" id="homework">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2>Homework Assignments | गृहपाठ</h2>
+            <p style="text-align: center; margin-bottom: 2rem; font-size: 1.1rem;">Complete these assignments to master
+                percentages. Download the PDFs below.</p>
+
+            <div class="homework-grid">
+                <div class="homework-card">
+                    <h3>📝 Homework 1</h3>
+                    <p>Basic percentage conversions, finding percentages, percentage of quantities, and simple word
+                        problems involving percentages.</p>
+                    <a href="homework/Chapter_21_HW1.pdf" class="download-btn" download>📥 Download PDF</a>
+                </div>
+
+                <div class="homework-card">
+                    <h3>📝 Homework 2</h3>
+                    <p>Percentage increase/decrease, profit and loss calculations, discount problems, and simple
+                        interest applications.</p>
+                    <a href="homework/Chapter_21_HW2.pdf" class="download-btn" download>📥 Download PDF</a>
+                </div>
+
+                <div class="homework-card">
+                    <h3>📝 Homework 3</h3>
+                    <p>Compound interest, successive percentage changes, advanced word problems, and real-world
+                        applications of percentages.</p>
+                    <a href="homework/Chapter_21_HW3.pdf" class="download-btn" download>📥 Download PDF</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const fullQuestionBank = [];
+
+        function generate100Questions() {
+            // Fraction to percentage (15)
+            const fractions = [
+                { f: "1/4", a: "25%" },
+                { f: "1/2", a: "50%" },
+                { f: "3/4", a: "75%" },
+                { f: "1/5", a: "20%" },
+                { f: "2/5", a: "40%" },
+                { f: "3/5", a: "60%" },
+                { f: "4/5", a: "80%" },
+                { f: "1/10", a: "10%" },
+                { f: "7/10", a: "70%" },
+                { f: "1/8", a: "12.5%" }
+            ];
+            for (let i = 0; i < 15; i++) {
+                let item = fractions[i % 10];
+                fullQuestionBank.push({
+                    q: `Convert ${item.f} to percentage`,
+                    a: item.a,
+                    options: [item.a, `${parseInt(item.a) + 5}%`, `${parseInt(item.a) - 5}%`]
+                });
+            }
+
+            // Percentage to fraction (10)
+            const percents = [
+                { p: "25%", a: "1/4" },
+                { p: "50%", a: "1/2" },
+                { p: "75%", a: "3/4" },
+                { p: "20%", a: "1/5" },
+                { p: "40%", a: "2/5" },
+                { p: "10%", a: "1/10" },
+                { p: "30%", a: "3/10" },
+                { p: "60%", a: "3/5" }
+            ];
+            for (let i = 0; i < 10; i++) {
+                let item = percents[i % 8];
+                fullQuestionBank.push({
+                    q: `Convert ${item.p} to simplest fraction`,
+                    a: item.a,
+                    options: [item.a, "1/3", "2/3"].filter((v, i, a) => a.indexOf(v) === i).slice(0, 3)
+                });
+            }
+
+            // Finding percentages (20)
+            for (let i = 0; i < 20; i++) {
+                let percent = [10, 20, 25, 50][Math.floor(Math.random() * 4)];
+                let num = Math.floor(Math.random() * 10 + 1) * 100;
+                let ans = (percent / 100) * num;
+                fullQuestionBank.push({
+                    q: `${percent}% of ${num} = ?`,
+                    a: `${ans}`,
+                    options: [`${ans}`, `${ans + 10}`, `${ans - 10}`]
+                });
+            }
+
+            // What percentage (15)
+            for (let i = 0; i < 15; i++) {
+                let part = Math.floor(Math.random() * 50 + 10);
+                let whole = part * [2, 4, 5, 10][Math.floor(Math.random() * 4)];
+                let ans = Math.round((part / whole) * 100);
+                fullQuestionBank.push({
+                    q: `What % is ${part} of ${whole}?`,
+                    a: `${ans}%`,
+                    options: [`${ans}%`, `${ans + 5}%`, `${ans - 5}%`]
+                });
+            }
+
+            // Percentage increase/decrease (15)
+            for (let i = 0; i < 15; i++) {
+                let old = Math.floor(Math.random() * 500 + 100);
+                let percent = [10, 20, 25, 50][Math.floor(Math.random() * 4)];
+                let isIncrease = i % 2 === 0;
+                let ans = isIncrease ? old * (1 + percent / 100) : old * (1 - percent / 100);
+                fullQuestionBank.push({
+                    q: `${isIncrease ? 'Increase' : 'Decrease'} ${old} by ${percent}%`,
+                    a: `${ans}`,
+                    options: [`${ans}`, `${Math.round(ans * 1.1)}`, `${Math.round(ans * 0.9)}`]
+                });
+            }
+
+            // Profit/Loss percentage (10)
+            for (let i = 0; i < 10; i++) {
+                let cp = Math.floor(Math.random() * 500 + 100);
+                let percent = [10, 20, 25][Math.floor(Math.random() * 3)];
+                let sp = cp * (1 + percent / 100);
+                fullQuestionBank.push({
+                    q: `CP = ${cp}, SP = ${Math.round(sp)}. Profit % = ?`,
+                    a: `${percent}%`,
+                    options: [`${percent}%`, `${percent + 5}%`, `${percent - 5}%`]
+                });
+            }
+
+            // Simple Interest (10)
+            for (let i = 0; i < 10; i++) {
+                let p = [1000, 2000, 5000][Math.floor(Math.random() * 3)];
+                let r = [5, 10, 15, 20][Math.floor(Math.random() * 4)];
+                let t = Math.floor(Math.random() * 3 + 1);
+                let si = (p * r * t) / 100;
+                fullQuestionBank.push({
+                    q: `SI on ₹${p} at ${r}% for ${t} years?`,
+                    a: `₹${si}`,
+                    options: [`₹${si}`, `₹${si + 100}`, `₹${si - 100}`]
+                });
+            }
+
+            // True/False (5)
+            const tfQs = [
+                { q: "50% is equal to 1/2", a: "True" },
+                { q: "25% is equal to 1/3", a: "False" },
+                { q: "100% means the whole", a: "True" },
+                { q: "150% is less than 1", a: "False" },
+                { q: "10% of 100 is 10", a: "True" }
+            ];
+            tfQs.forEach(item => {
+                fullQuestionBank.push({
+                    q: item.q,
+                    a: item.a,
+                    options: ["True", "False"]
+                });
+            });
+
+            fullQuestionBank.sort(() => Math.random() - 0.5);
+        }
+
+        let currentPage = 0;
+        const perPage = 50;
+        let score = 0;
+        let attempted = 0;
+
+        function renderQuestions() {
+            const container = document.getElementById('questionWrapper');
+            const start = currentPage * perPage;
+            const end = start + perPage;
+            const batch = fullQuestionBank.slice(start, end);
+
+            container.innerHTML = '';
+            document.getElementById('pageIndicator').innerText = `Page ${currentPage + 1} of 2`;
+
+            batch.forEach((item, idx) => {
+                const card = document.createElement('div');
+                card.className = 'question-card';
+                card.innerHTML = `
+                    <h4>Question ${start + idx + 1}</h4>
+                    <p style="margin-bottom:1rem; font-size:1.1rem;">${item.q}</p>
+                    <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                        ${item.options.map(opt => `
+                            <button class="opt-btn" onclick="checkAnswer(this, '${opt.replace(/'/g, "\\'")}', '${item.a.replace(/'/g, "\\'")}')">${opt}</button>
+                        `).join('')}
+                    </div>
+                    <div class="feedback" style="margin-top:10px; font-variation-settings:'wght' 600; display:none;"></div>
+                `;
+                container.appendChild(card);
+            });
+
+            document.getElementById('prevBtn').disabled = currentPage === 0;
+            document.getElementById('prevBtn').style.opacity = currentPage === 0 ? "0.5" : "1";
+            document.getElementById('nextBtn').disabled = currentPage === 1;
+            document.getElementById('nextBtn').style.opacity = currentPage === 1 ? "0.5" : "1";
+        }
+
+        window.checkAnswer = function (btn, selected, correct) {
+            const card = btn.closest('.question-card');
+            const feedback = card.querySelector('.feedback');
+            const buttons = card.querySelectorAll('.opt-btn');
+
+            attempted++;
+            if (selected === correct) {
+                score++;
+                btn.style.background = 'var(--green)';
+                btn.style.color = 'white';
+                feedback.innerText = "✓ Correct!";
+                feedback.style.color = "var(--green)";
+            } else {
+                btn.style.background = 'var(--accent)';
+                btn.style.color = 'white';
+                feedback.innerText = `✗ Wrong. Correct is ${correct}`;
+                feedback.style.color = "var(--accent)";
+            }
+
+            buttons.forEach(b => b.onclick = null);
+            feedback.style.display = "block";
+
+            document.getElementById('score').innerText = score;
+            document.getElementById('totalAttempted').innerText = attempted;
+        };
+
+        function nextPage() {
+            if (currentPage < 1) {
+                currentPage++;
+                renderQuestions();
+                document.getElementById('practice').scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function prevPage() {
+            if (currentPage > 0) {
+                currentPage--;
+                renderQuestions();
+                document.getElementById('practice').scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        generate100Questions();
+        renderQuestions();
+    </script>
+
+    <footer>
+        <p style="font-size:1.2rem; margin-bottom:1rem; font-variation-settings:'opsz' 16, 'wdth' 100, 'wght' 500;">
+            Nalanda Academy, Wardha</p>
+        <p style="opacity:0.8;">Chapter 21: Percentages – Master Parts per Hundred</p>
+    </footer>
+</body>
+
+</html>
