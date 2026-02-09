@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 24: Functions and Relations | Nalanda Academy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --cream: #FFF8E7;
+            --dark: #1a1a1a;
+            --accent: #FF6B35;
+            --blue: #4A90E2;
+            --purple: #9B59B6;
+            --green: #27AE60;
+            --orange: #E67E22;
+            --teal: #16A085;
+            --red: #E74C3C;
+        }
+
+        body {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            background: var(--cream);
+            color: var(--dark);
+            line-height: 1.7;
+            font-variation-settings: 'opsz' 16, 'wdth' 100, 'wght' 400;
+        }
+
+        .header {
+            background: var(--dark);
+            color: var(--cream);
+            padding: 1.5rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-variation-settings: 'opsz' 24, 'wdth' 100, 'wght' 600;
+        }
+
+        .nav-links a {
+            color: var(--cream);
+            text-decoration: none;
+            margin-left: 2rem;
+            font-variation-settings: 'opsz' 16, 'wdth' 100, 'wght' 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .chapter-hero {
+            background: linear-gradient(135deg, var(--teal) 0%, #138D75 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .chapter-number {
+            font-size: 1.2rem;
+            font-variation-settings: 'opsz' 16, 'wdth' 100, 'wght' 500;
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+        }
+
+        .chapter-title {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-variation-settings: 'opsz' 96, 'wdth' 85, 'wght' 700;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .chapter-subtitle {
+            font-size: 1.3rem;
+            font-variation-settings: 'opsz' 16, 'wdth' 100, 'wght' 400;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .intro-box {
+            background: white;
+            padding: 2.5rem;
+            border: 3px solid var(--dark);
+            box-shadow: 8px 8px 0 var(--dark);
+            margin-bottom: 3rem;
+        }
+
+        .intro-box p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .highlight {
+            background: var(--teal);
+            color: white;
+            padding: 0.2rem 0.5rem;
+            font-variation-settings: 'opsz' 16, 'wdth' 100, 'wght' 600;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-variation-settings: 'opsz' 48, 'wdth' 85, 'wght' 700;
+            margin: 3rem 0 2rem;
+            color: var(--teal);
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100px;
+            height: 4px;
+            background: var(--accent);
+        }
+
+        .concept-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .concept-card {
+            background: white;
+            border: 3px solid var(--teal);
+            padding: 2rem;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .concept-card:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 8px 8px 0 var(--teal);
+        }
+
+        .concept-card h3 {
+            font-size: 1.5rem;
+            font-variation-settings: 'opsz' 24, 'wdth' 100, 'wght' 600;
+            color: var(--teal);
+            margin-bottom: 0.5rem;
+        }
+
+        .concept-card .marathi {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .examples {
+            background: var(--cream);
+            padding: 1rem;
+            margin-top: 1rem;
+            border-left: 4px solid var(--teal);
+        }
+
+        .visual-box {
+            background: white;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 3px solid var(--dark);
+            text-align: center;
+        }
+
+        .mapping-diagram {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .set-box {
+            background: var(--cream);
+            border: 2px solid var(--teal);
+            padding: 1.5rem;
+            border-radius: 8px;
+            min-width: 120px;
+        }
+
+        .set-box h4 {
+            color: var(--teal);
+            margin-bottom: 1rem;
+        }
+
+        .element {
+            background: white;
+            border: 2px solid var(--dark);
+            padding: 0.5rem 1rem;
+            margin: 0.5rem 0;
+            border-radius: 4px;
+        }
+
+        .exercise-section {
+            background: linear-gradient(135deg, var(--green) 0%, #229954 100%);
+            color: white;
+            padding: 3rem 2rem;
+            margin: 3rem -2rem;
+        }
+
+        .exercise-section h2 {
+            font-size: 2.5rem;
+            font-variation-settings: 'opsz' 48, 'wdth' 85, 'wght' 700;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .question-card {
+            background: white;
+            color: var(--dark);
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            border: 3px solid var(--dark);
+            box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        .question-card h4 {
+            font-size: 1.3rem;
+            font-variation-settings: 'opsz' 24, 'wdth' 100, 'wght' 600;
+            color: var(--green);
+            margin-bottom: 1rem;
+        }
+
+        .math-formula {
+            font-family: 'Times New Roman', serif;
+            font-style: italic;
+            font-size: 1.3rem;
+        }
+
+        .practice-arena {
+            background: linear-gradient(135deg, var(--orange) 0%, #D35400 100%);
+            color: white;
+            padding: 3rem 2rem;
+            margin: 3rem 0;
+        }
+
+        .practice-arena h2 {
+            font-size: 2.5rem;
+            font-variation-settings: 'opsz' 48, 'wdth' 85, 'wght' 700;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .arena-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .arena-stats {
+            background: white;
+            color: var(--dark);
+            padding: 1.5rem;
+            border: 3px solid var(--dark);
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .arena-stats div:first-child {
+            font-variation-settings: 'wght' 600;
+        }
+
+        .arena-stats #stats {
+            font-variation-settings: 'wght' 700;
+        }
+
+        .homework-section {
+            background: linear-gradient(135deg, var(--blue) 0%, #357ABD 100%);
+            color: white;
+            padding: 3rem 2rem;
+            margin: 3rem -2rem;
+        }
+
+        .homework-section h2 {
+            font-size: 2.5rem;
+            font-variation-settings: 'opsz' 48, 'wdth' 85, 'wght' 700;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .homework-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .homework-card {
+            background: white;
+            color: var(--dark);
+            padding: 2rem;
+            border: 3px solid var(--dark);
+            box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.2);
+            transition: all 0.3s;
+        }
+
+        .homework-card:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        .homework-card h3 {
+            font-size: 1.5rem;
+            font-variation-settings: 'opsz' 24, 'wdth' 100, 'wght' 600;
+            color: var(--blue);
+            margin-bottom: 1rem;
+        }
+
+        .homework-card p {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .download-btn {
+            background: var(--blue);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            cursor: pointer;
+            font-family: inherit;
+            font-variation-settings: 'wght' 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: background 0.3s;
+        }
+
+        .download-btn:hover {
+            background: #357ABD;
+        }
+
+        footer {
+            background: var(--dark);
+            color: var(--cream);
+            padding: 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .opt-btn {
+            background: var(--cream);
+            border: 2px solid var(--dark);
+            padding: 0.6rem 1.2rem;
+            cursor: pointer;
+            font-family: inherit;
+            font-variation-settings: 'wght' 600;
+            margin: 0.4rem;
+            transition: all 0.2s;
+        }
+
+        .opt-btn:hover {
+            background: var(--teal);
+            color: white;
+            border-color: var(--teal);
+        }
+
+        .formula-box {
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+            border: 3px solid var(--dark);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            box-shadow: 4px 4px 0 var(--dark);
+        }
+
+        .formula-box h4 {
+            color: var(--teal);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .property-list {
+            background: white;
+            border-left: 6px solid var(--teal);
+            padding: 1.5rem 2rem;
+            margin: 1rem 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .chapter-hero {
+                padding: 2rem 1rem;
+            }
+
+            .container {
+                padding: 2rem 1rem;
+            }
+
+            .exercise-section,
+            .practice-arena,
+            .homework-section {
+                margin: 2rem -1rem;
+            }
+
+            .nav-links a {
+                margin-left: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .mapping-diagram {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">Nalanda Academy Mathematics</div>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="#exercises">Exercises</a>
+                <a href="#practice">Practice Arena</a>
+                <a href="#homework">Homework</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="chapter-hero">
+        <div class="chapter-number">CHAPTER 24</div>
+        <h1 class="chapter-title">Functions and Relations</h1>
+        <p class="chapter-subtitle">फलन आणि संबंध / Mappings Between Sets</p>
+    </div>
+
+    <div class="container">
+        <div class="intro-box">
+            <p>A <span class="highlight">relation</span> is a correspondence between elements of two sets. A <span
+                    class="highlight">function</span> is a special type of relation where each element in the first set
+                (domain) maps to exactly one element in the second set (codomain).</p>
+            <p>Functions are fundamental to mathematics and appear everywhere in science, engineering, economics, and
+                daily life — from calculating distances to predicting outcomes.</p>
+            <p>This chapter covers relations, functions, domain and range, types of functions (one-one, onto,
+                bijective),
+                composition of functions, and inverse functions — with <strong>100+ practice problems</strong> to master
+                these concepts.</p>
+        </div>
+
+        <h2 class="section-title">What are Relations? | संबंध काय आहेत?</h2>
+
+        <div class="visual-box">
+            <h3 style="margin-bottom: 1.5rem;">Relation Definition</h3>
+            <p style="font-size: 1.1rem; margin-bottom: 1rem;">A <strong>relation R</strong> from set A to set B is a
+                subset of the Cartesian product A × B.</p>
+            <div class="formula-box">
+                <p><strong>R ⊆ A × B</strong></p>
+                <p style="margin-top: 0.5rem;">If (a, b) ∈ R, we say "a is related to b" and write <strong>a R
+                        b</strong>
+                </p>
+            </div>
+
+            <div class="mapping-diagram">
+                <div class="set-box">
+                    <h4>Set A</h4>
+                    <div class="element">1</div>
+                    <div class="element">2</div>
+                    <div class="element">3</div>
+                </div>
+                <div style="font-size: 2rem; color: var(--teal);">→</div>
+                <div class="set-box">
+                    <h4>Set B</h4>
+                    <div class="element">a</div>
+                    <div class="element">b</div>
+                    <div class="element">c</div>
+                </div>
+            </div>
+
+            <p style="margin-top: 1rem;"><strong>Example:</strong> R = {(1,a), (2,b), (2,c), (3,a)}</p>
+            <p style="margin-top: 0.5rem;"><em>Note: Element 2 is related to both b and c - this is allowed in
+                    relations!</em></p>
+        </div>
+
+        <h2 class="section-title">Types of Relations | संबंधांचे प्रकार</h2>
+
+        <div class="concept-grid">
+            <div class="concept-card">
+                <h3>1. Empty Relation</h3>
+                <p class="marathi">रिक्त संबंध</p>
+                <p>R = ∅ (no element is related)</p>
+                <div class="examples">
+                    <strong>Example:</strong> A = {1, 2, 3}<br>
+                    R = {} (empty set)
+                </div>
+            </div>
+
+            <div class="concept-card">
+                <h3>2. Universal Relation</h3>
+                <p class="marathi">सार्वत्रिक संबंध</p>
+                <p>R = A × A (every element related to every element)</p>
+                <div class="examples">
+                    <strong>Example:</strong> A = {1, 2}<br>
+                    R = {(1,1), (1,2), (2,1), (2,2)}
+                </div>
+            </div>
+
+            <div class="concept-card">
+                <h3>3. Identity Relation</h3>
+                <p class="marathi">तत्समक संबंध</p>
+                <p>Each element is related only to itself</p>
+                <p>R = {(a, a) : a ∈ A}</p>
+                <div class="examples">
+                    <strong>Example:</strong> A = {1, 2, 3}<br>
+                    R = {(1,1), (2,2), (3,3)}
+                </div>
+            </div>
+
+            <div class="concept-card">
+                <h3>4. Reflexive Relation</h3>
+                <p class="marathi">स्वतःशी संबंधित</p>
+                <p>Every element is related to itself</p>
+                <p>(a, a) ∈ R for all a ∈ A</p>
+                <div class="examples">
+                    <strong>Example:</strong> "is equal to" on ℝ<br>
+                    Every number equals itself
+                </div>
+            </div>
+
+            <div class="concept-card">
+                <h3>5. Symmetric Relation</h3>
+                <p class="marathi">सममित संबंध</p>
+                <p>If a R b, then b R a</p>
+                <p>(a, b) ∈ R ⟹ (b, a) ∈ R</p>
+                <div class="examples">
+                    <strong>Example:</strong> "is sibling of"<br>
+                    If A is sibling of B, then B is sibling of A
+                </div>
+            </div>
+
+            <div class="concept-card">
+                <h3>6. Transitive Relation</h3>
+                <p class="marathi">संक्रामक संबंध</p>
+                <p>If a R b and b R c, then a R c</p>
+                <div class="examples">
+                    <strong>Example:</strong> "is ancestor of"<br>
+                    If A is ancestor of B, and B is ancestor of C,<br>
+                    then A is ancestor of C
+                </div>
+            </div>
+
+            <div class="concept-card">
+                <h3>7. Antisymmetric Relation</h3>
+                <p class="marathi">प्रतिसममित संबंध</p>
+                <p>If a R b and b R a, then a = b</p>
+                <div class="examples">
+                    <strong>Example:</strong> "is less than or equal to" (≤)<br>
+                    If x ≤ y and y ≤ x, then x = y
+                </div>
+            </div>
+
+            <div class="concept-card">
+                <h3>8. Equivalence Relation</h3>
+                <p class="marathi">तुल्यता संबंध</p>
+                <p>Reflexive + Symmetric + Transitive</p>
+                <div class="examples">
+                    <strong>Examples:</strong><br>
+                    • "is equal to"<br>
+                    • "has same remainder when divided by n"<br>
+                    • "is congruent to" (in geometry)
+                </div>
+            </div>
+        </div>
+
+        <div class="visual-box">
+            <h3 style="margin-bottom: 1.5rem;">Real-World Relation Examples</h3>
+            <div style="text-align: left; max-width: 800px; margin: 0 auto;">
+                <div
+                    style="background: var(--cream); padding: 1.5rem; margin: 1rem 0; border-left: 4px solid var(--teal);">
+                    <h4 style="color: var(--teal); margin-bottom: 0.5rem;">Family Relations</h4>
+                    <p><strong>"is parent of":</strong> Not reflexive, not symmetric, not transitive</p>
+                    <p><strong>"is relative of":</strong> Reflexive, symmetric, transitive (equivalence relation)</p>
+                </div>
+
+                <div
+                    style="background: var(--cream); padding: 1.5rem; margin: 1rem 0; border-left: 4px solid var(--teal);">
+                    <h4 style="color: var(--teal); margin-bottom: 0.5rem;">Mathematical Relations</h4>
+                    <p><strong>"is divisor of" on ℕ:</strong> Reflexive, antisymmetric, transitive</p>
+                    <p><strong>"is perpendicular to" (lines):</strong> Symmetric, not reflexive, not transitive</p>
+                </div>
+
+                <div
+                    style="background: var(--cream); padding: 1.5rem; margin: 1rem 0; border-left: 4px solid var(--teal);">
+                    <h4 style="color: var(--teal); margin-bottom: 0.5rem;">Social Relations</h4>
+                    <p><strong>"is friend of":</strong> Symmetric (typically), not transitive</p>
+                    <p><strong>"lives in same city as":</strong> Reflexive, symmetric, transitive (equivalence)</p>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">Representing Relations</h2>
+
+        <div class="concept-grid">
+            <div class="concept-card">
+                <h3>1. Set Notation</h3>
+                <p class="marathi">संच संज्ञा</p>
+                <p>List all ordered pairs</p>
+                <div class="examples">
+                    <strong>Example:</strong><br>
+                    A = {1, 2, 3}, B = {x, y}<br>
+                    R = {(1,x), (2,x), (3,y)}
+                </div>
+            </div>
+
+            <div class="concept-card">
+                <h3>2. Arrow Diagram</h3>
+                <p class="marathi">बाण आकृती</p>
+                <p>Draw arrows from elements of A to B</p>
+                <div class="examples">
+                    <strong>Visual representation</strong> showing mappings between two sets with directed arrows
+                </div>
+            </div>
+
+            <div class="concept-card">
+                <h3>3. Matrix Representation</h3>
+                <p class="marathi">मॅट्रिक्स प्रतिनिधित्व</p>
+                <p>Use 1 if related, 0 if not</p>
+                <div class="examples">
+                    <strong>Example:</strong> 3×2 matrix<br>
+                    Rows = A elements<br>
+                    Columns = B elements
+                </div>
+            </div>
+
+            <div class="concept-card">
+                <h3>4. Graph/Digraph</h3>
+                <p class="marathi">आलेख</p>
+                <p>Points with directed edges</p>
+                <div class="examples">
+                    <strong>For relations on same set</strong><br>
+                    Vertices = elements<br>
+                    Edges = relations
+                </div>
+            </div>
+        </div>
+
+        <div class="formula-box">
+            <h4>Testing Relation Properties</h4>
+            <p><strong>Reflexive Test:</strong> Check if (a, a) ∈ R for all a ∈ A</p>
+            <p><strong>Symmetric Test:</strong> If (a, b) ∈ R, verify if (b, a) ∈ R</p>
+            <p><strong>Transitive Test:</strong> If (a, b) ∈ R and (b, c) ∈ R, check if (a, c) ∈ R</p>
+            <p><strong>Antisymmetric Test:</strong> If (a, b) ∈ R and (b, a) ∈ R, verify if a = b</p>
+        </div>
+
+        <div
+            style="background: white; padding: 2rem; margin: 2rem 0; border: 3px solid var(--teal); box-shadow: 6px 6px 0 var(--teal);">
+            <h3 style="color: var(--teal); margin-bottom: 1rem;">Relation vs Function - Key Difference</h3>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1rem;">
+                <div>
+                    <h4 style="color: var(--accent); margin-bottom: 0.5rem;">Relation</h4>
+                    <p>• One element in A can map to multiple elements in B</p>
+                    <p>• Some elements in A may not map to anything</p>
+                    <p>• Example: {(1,a), (1,b), (2,c)}</p>
+                    <p style="margin-top: 0.5rem;"><em>Element 1 maps to both a and b ✓</em></p>
+                </div>
+                <div>
+                    <h4 style="color: var(--green); margin-bottom: 0.5rem;">Function</h4>
+                    <p>• Each element in A maps to exactly ONE element in B</p>
+                    <p>• Every element in A must map to something</p>
+                    <p>• Example: {(1,a), (2,b), (3,c)}</p>
+                    <p style="margin-top: 0.5rem;"><em>Each input has exactly one output ✓</em></p>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">What are Functions? | फलन काय आहेत?</h2>
+
+        <div class="concept-grid">
+            <div class="concept-card">
+                <h3>Function Definition</h3>
+                <p class="marathi">फलनाची व्याख्या</p>
+                <p>A relation f from A to B is a <strong>function</strong> if:</p>
+                <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                    <li>Every element in A has an image in B</li>
+                    <li>No element in A has more than one image in B</li>
+                </ul>
+                <div class="examples">
+                    <strong>Notation:</strong> f: A → B or y = f(x)
+                </div>
+            </div>
+
+            <div class="concept-card">
+                <h3>Domain & Codomain</h3>
+                <p class="marathi">क्षेत्र आणि सहक्षेत्र</p>
+                <p><strong>Domain (A):</strong> Set of all input values (x)</p>
+                <p><strong>Codomain (B):</strong> Set containing all possible outputs</p>
+                <p><strong>Range:</strong> Actual output values (subset of B)</p>
+                <div class="examples">
+                    <strong>Example:</strong> f(x) = x²<br>
+                    Domain: ℝ, Range: [0, ∞)
+                </div>
+            </div>
+
+            <div class="concept-card">
+                <h3>Vertical Line Test</h3>
+                <p class="marathi">उभी रेषा चाचणी</p>
+                <p>A graph represents a function if any vertical line intersects it at most once.</p>
+                <div class="examples">
+                    <strong>Function:</strong> y = x² ✓<br>
+                    <strong>Not a function:</strong> x² + y² = 1 ✗
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">Types of Functions | फलनांचे प्रकार</h2>
+
+        <div class="concept-grid">
+            <div class="concept-card">
+                <h3>1. One-One (Injective)</h3>
+                <p class="marathi">एक-एकी फलन</p>
+                <p>Different inputs → Different outputs</p>
+                <p>If f(x₁) = f(x₂), then x₁ = x₂</p>
+                <div class="examples">
+                    <strong>Example:</strong> f(x) = 2x + 3<br>
+                    <strong>Counter-example:</strong> f(x) = x² (not one-one)
+                </div>
+            </div>
+
+            <div class="concept-card">
+                <h3>2. Onto (Surjective)</h3>
+                <p class="marathi">आच्छादी फलन</p>
+                <p>Every element in codomain has a pre-image</p>
+                <p>Range = Codomain</p>
+                <div class="examples">
+                    <strong>Example:</strong> f: ℝ → ℝ, f(x) = x + 1<br>
+                    Every real number is achieved
+                </div>
+            </div>
+
+            <div class="concept-card">
+                <h3>3. Bijective</h3>
+                <p class="marathi">एकैकी आच्छादी</p>
+                <p>Both one-one AND onto</p>
+                <p>Perfect one-to-one correspondence</p>
+                <div class="examples">
+                    <strong>Example:</strong> f(x) = 3x - 5<br>
+                    Has an inverse function
+                </div>
+            </div>
+
+            <div class="concept-card">
+                <h3>4. Identity Function</h3>
+                <p class="marathi">तत्समक फलन</p>
+                <p>f(x) = x for all x</p>
+                <p>Maps each element to itself</p>
+                <div class="examples">
+                    <strong>Example:</strong> I: A → A, I(x) = x
+                </div>
+            </div>
+
+            <div class="concept-card">
+                <h3>5. Constant Function</h3>
+                <p class="marathi">स्थिर फलन</p>
+                <p>f(x) = c for all x (constant c)</p>
+                <p>All inputs give same output</p>
+                <div class="examples">
+                    <strong>Example:</strong> f(x) = 7<br>
+                    Range = {7}
+                </div>
+            </div>
+
+            <div class="concept-card">
+                <h3>6. Composite Function</h3>
+                <p class="marathi">संयुक्त फलन</p>
+                <p>(f ∘ g)(x) = f(g(x))</p>
+                <p>Apply g first, then f</p>
+                <div class="examples">
+                    <strong>Example:</strong> f(x) = x², g(x) = x+1<br>
+                    (f ∘ g)(x) = (x+1)²
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">Important Properties & Formulas</h2>
+
+        <div class="property-list">
+            <h4>Function Composition Properties</h4>
+            <p><strong>1. Associative:</strong> (f ∘ g) ∘ h = f ∘ (g ∘ h)</p>
+            <p><strong>2. NOT Commutative:</strong> Generally f ∘ g ≠ g ∘ f</p>
+            <p><strong>3. Identity:</strong> f ∘ I = I ∘ f = f</p>
+        </div>
+
+        <div class="property-list">
+            <h4>Inverse Function</h4>
+            <p>If f: A → B is bijective, then there exists f⁻¹: B → A such that:</p>
+            <p><strong>(f ∘ f⁻¹)(x) = x and (f⁻¹ ∘ f)(x) = x</strong></p>
+            <p><strong>Example:</strong> f(x) = 2x + 3 → f⁻¹(x) = (x - 3)/2</p>
+        </div>
+
+        <div class="property-list">
+            <h4>Domain & Range Rules</h4>
+            <ul style="margin-left: 1.5rem;">
+                <li><strong>Polynomial:</strong> Domain = ℝ</li>
+                <li><strong>Rational (p/q):</strong> Domain = ℝ excluding zeros of q(x)</li>
+                <li><strong>√f(x):</strong> Domain where f(x) ≥ 0</li>
+                <li><strong>1/f(x):</strong> Domain where f(x) ≠ 0</li>
+            </ul>
+        </div>
+
+        <div style="background:var(--dark); color:var(--cream); padding:2rem; margin:2rem 0;">
+            <h3>★ Quick Tips & Facts</h3>
+            <ul style="list-style:none; padding:0;">
+                <li style="padding:0.5rem 0;">★ Every function is a relation, but not every relation is a function</li>
+                <li style="padding:0.5rem 0;">★ Horizontal line test checks if function is one-one</li>
+                <li style="padding:0.5rem 0;">★ Only bijective functions have inverses</li>
+                <li style="padding:0.5rem 0;">★ For f ∘ g to exist, range of g must be subset of domain of f</li>
+                <li style="padding:0.5rem 0;">★ f(x) = xⁿ (n odd) is bijective on ℝ</li>
+                <li style="padding:0.5rem 0;">★ f(x) = xⁿ (n even) is not one-one on ℝ</li>
+            </ul>
+        </div>
+
+        <div class="formula-box">
+            <h4>Common Function Examples</h4>
+            <p><strong>Linear:</strong> f(x) = ax + b (bijective if a ≠ 0)</p>
+            <p><strong>Quadratic:</strong> f(x) = ax² + bx + c (not one-one on ℝ)</p>
+            <p><strong>Absolute:</strong> f(x) = |x| (not one-one, onto ℝ⁺)</p>
+            <p><strong>Greatest Integer:</strong> f(x) = ⌊x⌋ (onto ℤ, not one-one)</p>
+            <p><strong>Exponential:</strong> f(x) = aˣ (one-one and onto ℝ⁺)</p>
+            <p><strong>Logarithmic:</strong> f(x) = log_a(x) (bijective from ℝ⁺ to ℝ)</p>
+        </div>
+    </div>
+
+    <div class="exercise-section" id="exercises">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2>Exercise 24.1 | सराव 24.1 – Relations & Basic Functions</h2>
+
+            <div class="question-card">
+                <h4>Question 1: Determine if the relation is reflexive, symmetric, or transitive</h4>
+                <p>On set A = {1, 2, 3, 4}:</p>
+                <p>(a) R = {(1,1), (2,2), (3,3), (4,4), (1,2), (2,1)}</p>
+                <p>(b) R = {(1,2), (2,3), (1,3), (4,4)}</p>
+                <p>(c) R = {(1,1), (2,2), (3,3), (4,4), (1,2), (2,3), (1,3)}</p>
+                <p>(d) R = "is less than or equal to" on ℕ</p>
+            </div>
+
+            <div class="question-card">
+                <h4>Question 2: Identify if the following are functions</h4>
+                <p>(a) R = {(1, 2), (2, 3), (3, 4)} from A = {1, 2, 3} to B = {2, 3, 4, 5}</p>
+                <p>(b) R = {(1, 2), (1, 3), (2, 4)} from A = {1, 2} to B = {2, 3, 4}</p>
+                <p>(c) R = {(a, x), (b, y), (c, z)} from A = {a, b, c} to B = {x, y, z}</p>
+                <p>(d) The relation "is father of" from set of all people to itself</p>
+            </div>
+
+            <div class="question-card">
+                <h4>Question 3: Check if the relation is an equivalence relation</h4>
+                <p>(a) R = "has the same remainder when divided by 5" on ℤ</p>
+                <p>(b) R = "is perpendicular to" on set of all lines</p>
+                <p>(c) R = {(1,1), (2,2), (3,3), (1,2), (2,1)} on A = {1, 2, 3}</p>
+                <p>(d) R = "lives in the same city as" on set of all people</p>
+            </div>
+
+            <div class="question-card">
+                <h4>Question 4: Find domain and range</h4>
+                <p>(a) R = {(1,2), (2,4), (3,6), (4,8)}</p>
+                <p>(b) f(x) = x² - 4</p>
+                <p>(c) f(x) = 1/(x - 2)</p>
+                <p>(d) f(x) = √(x - 5)</p>
+                <p>(e) f(x) = |x - 3|</p>
+            </div>
+
+            <div class="question-card">
+                <h4>Question 5: Represent the relation using arrow diagram</h4>
+                <p>A = {1, 2, 3}, B = {a, b, c}</p>
+                <p>(a) R = {(1, a), (2, b), (3, c)}</p>
+                <p>(b) R = {(1, a), (2, a), (3, b)}</p>
+                <p>Is each relation a function? Why or why not?</p>
+            </div>
+
+            <div class="question-card">
+                <h4>Question 6: Function composition</h4>
+                <p>If f(x) = 2x + 1 and g(x) = x² - 1, find:</p>
+                <p>(a) (f ∘ g)(x)</p>
+                <p>(b) (g ∘ f)(x)</p>
+                <p>(c) (f ∘ g)(2)</p>
+                <p>(d) (g ∘ f)(3)</p>
+            </div>
+
+            <div class="question-card">
+                <h4>Question 7: Real-world relations</h4>
+                <p>Classify the following relations as reflexive, symmetric, transitive, or none:</p>
+                <p>(a) "is taller than" on set of all people</p>
+                <p>(b) "is married to" (assuming monogamy)</p>
+                <p>(c) "is ancestor of" on set of all people</p>
+                <p>(d) "has the same birthday as"</p>
+            </div>
+
+            <div class="question-card">
+                <h4>Question 8: Determine the type</h4>
+                <p>State whether the following functions are one-one, onto, or bijective:</p>
+                <p>(a) f: ℝ → ℝ, f(x) = 3x - 5</p>
+                <p>(b) f: ℝ → ℝ, f(x) = x²</p>
+                <p>(c) f: ℕ → ℕ, f(x) = x + 1</p>
+                <p>(d) f: [-1, 1] → [0, 1], f(x) = x²</p>
+            </div>
+
+            <div class="question-card">
+                <h4>Question 9: Find the inverse</h4>
+                <p>(a) f(x) = 5x - 3</p>
+                <p>(b) f(x) = (x + 2)/3</p>
+                <p>(c) f(x) = x³</p>
+                <p>(d) f(x) = 2ˣ</p>
+            </div>
+
+            <div class="question-card">
+                <h4>Question 10: Matrix representation of relation</h4>
+                <p>Given A = {1, 2, 3} and B = {x, y}, if R = {(1,x), (2,x), (2,y), (3,y)}</p>
+                <p>(a) Write the matrix representation of R</p>
+                <p>(b) Is R a function? Explain.</p>
+                <p>(c) Find the domain and range of R</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="exercise-section">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2>Exercise 24.2 | सराव 24.2 – Advanced Functions</h2>
+
+            <div class="question-card">
+                <h4>Question 1: Composite functions</h4>
+                <p>If f(x) = √x and g(x) = x² - 1, find:</p>
+                <p>(a) Domain of f ∘ g</p>
+                <p>(b) Domain of g ∘ f</p>
+                <p>(c) (f ∘ g)(5)</p>
+                <p>(d) (g ∘ f)(9)</p>
+            </div>
+
+            <div class="question-card">
+                <h4>Question 2: Verify the property</h4>
+                <p>If f(x) = x + 2, g(x) = 2x, h(x) = x², verify:</p>
+                <p>(a) (f ∘ g) ∘ h = f ∘ (g ∘ h)</p>
+                <p>(b) f ∘ g ≠ g ∘ f</p>
+            </div>
+
+            <div class="question-card">
+                <h4>Question 3: Prove one-one and onto</h4>
+                <p>(a) Show that f: ℝ → ℝ, f(x) = 4x - 7 is bijective</p>
+                <p>(b) Show that f: ℝ⁺ → ℝ⁺, f(x) = 1/x is bijective</p>
+                <p>(c) Show that f: ℝ → ℝ, f(x) = x³ - 2x is one-one</p>
+            </div>
+
+            <div class="question-card">
+                <h4>Question 4: Word problems</h4>
+                <p>(a) A function converts temperature from Celsius to Fahrenheit: F = (9/5)C + 32. Find the inverse
+                    function.</p>
+                <p>(b) The cost C of producing n items is C(n) = 5n + 100. If revenue R(n) = 12n, find the profit
+                    function P(n).</p>
+                <p>(c) If distance d = 60t (t in hours), express time as a function of distance.</p>
+            </div>
+
+            <div class="question-card">
+                <h4>Question 5: Special functions</h4>
+                <p>(a) Find the range of f(x) = sin(x)</p>
+                <p>(b) Find domain of f(x) = 1/√(4 - x²)</p>
+                <p>(c) Find f(f(x)) if f(x) = 1 - x</p>
+                <p>(d) If f(x) = x², find all x where f(x) = f(x + 1)</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="practice-arena" id="practice">
+        <div class="arena-container">
+            <h2>Interactive Practice Arena | 100 Problems</h2>
+
+            <div class="arena-stats">
+                <div>Functions & Relations Mastery Challenge</div>
+                <div id="stats">
+                    Correct: <span id="score" style="color:var(--green);">0</span> |
+                    Attempted: <span id="totalAttempted">0</span> / 100
+                </div>
+            </div>
+
+            <div id="questionWrapper"></div>
+
+            <div
+                style="display:flex; justify-content:center; align-items:center; gap:2rem; margin-top:2rem; flex-wrap: wrap;">
+                <button onclick="prevPage()" id="prevBtn"
+                    style="background:var(--dark); color:white; border:none; padding:1rem 2rem; cursor:pointer; font-family:inherit; font-variation-settings:'wght' 600; border-radius:4px;">←
+                    Previous 50</button>
+                <span id="pageIndicator" style="font-variation-settings:'wght' 600; color:white;">Page 1 of 2</span>
+                <button onclick="nextPage()" id="nextBtn"
+                    style="background:var(--dark); color:white; border:none; padding:1rem 2rem; cursor:pointer; font-family:inherit; font-variation-settings:'wght' 600; border-radius:4px;">Next
+                    50 →</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="homework-section" id="homework">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2>Homework Assignments | गृहपाठ</h2>
+            <p style="text-align: center; margin-bottom: 2rem; font-size: 1.1rem;">Complete these assignments to master
+                functions and relations. Download the PDFs below.</p>
+
+            <div class="homework-grid">
+                <div class="homework-card">
+                    <h3>📝 Homework 1</h3>
+                    <p>Relations, identifying functions, finding domain and range, basic function evaluation, and
+                        understanding different types of functions.</p>
+                    <a href="homework/Chapter_24_HW1.pdf" class="download-btn" download>📥 Download PDF</a>
+                </div>
+
+                <div class="homework-card">
+                    <h3>📝 Homework 2</h3>
+                    <p>Function composition, one-one and onto verification, finding inverse functions, and composite
+                        function properties.</p>
+                    <a href="homework/Chapter_24_HW2.pdf" class="download-btn" download>📥 Download PDF</a>
+                </div>
+
+                <div class="homework-card">
+                    <h3>📝 Homework 3</h3>
+                    <p>Advanced function problems, bijective functions, graphical analysis, word problems, and
+                        real-world applications of functions.</p>
+                    <a href="homework/Chapter_24_HW3.pdf" class="download-btn" download>📥 Download PDF</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const fullQuestionBank = [];
+
+        function generate100Questions() {
+            // Function identification (15)
+            const relations = [
+                { r: "{(1,a), (2,b), (3,c)}", ans: "Yes" },
+                { r: "{(1,a), (1,b), (2,c)}", ans: "No" },
+                { r: "{(1,2), (2,2), (3,2)}", ans: "Yes" },
+                { r: "{(a,1), (b,2)}", ans: "Yes" },
+                { r: "{(x,y), (x,z)}", ans: "No" }
+            ];
+            for (let i = 0; i < 15; i++) {
+                let rel = relations[i % 5];
+                fullQuestionBank.push({
+                    q: `Is ${rel.r} a function?`,
+                    a: rel.ans,
+                    options: ["Yes", "No", "Maybe"]
+                });
+            }
+
+            // Domain questions (15)
+            const domainQs = [
+                { f: "x² - 1", ans: "All real numbers", opts: ["All real numbers", "x ≥ 0", "x > 1"] },
+                { f: "1/(x-3)", ans: "x ≠ 3", opts: ["x ≠ 3", "x > 3", "All real numbers"] },
+                { f: "√(x+2)", ans: "x ≥ -2", opts: ["x ≥ -2", "x > 0", "x ≥ 0"] },
+                { f: "1/√x", ans: "x > 0", opts: ["x > 0", "x ≥ 0", "All real numbers"] },
+                { f: "√(4-x²)", ans: "-2 ≤ x ≤ 2", opts: ["-2 ≤ x ≤ 2", "x ≥ 0", "All real numbers"] }
+            ];
+            for (let i = 0; i < 15; i++) {
+                let q = domainQs[i % 5];
+                fullQuestionBank.push({
+                    q: `Domain of f(x) = ${q.f}?`,
+                    a: q.ans,
+                    options: q.opts
+                });
+            }
+
+            // Type identification (15)
+            const typeQs = [
+                { f: "f(x) = 2x + 1", ans: "Bijective" },
+                { f: "f(x) = x²", ans: "Not one-one" },
+                { f: "f(x) = 5", ans: "Constant" },
+                { f: "f(x) = x", ans: "Identity" },
+                { f: "f(x) = |x|", ans: "Not one-one" }
+            ];
+            for (let i = 0; i < 15; i++) {
+                let q = typeQs[i % 5];
+                fullQuestionBank.push({
+                    q: `Type of ${q.f}?`,
+                    a: q.ans,
+                    options: ["Bijective", "Not one-one", "Constant", "Identity"].filter(o => o === q.ans || Math.random() > 0.5).slice(0, 3)
+                });
+            }
+
+            // Composition (15)
+            for (let i = 0; i < 15; i++) {
+                let a = Math.floor(Math.random() * 5) + 1;
+                let b = Math.floor(Math.random() * 5) + 1;
+                let x = Math.floor(Math.random() * 5) + 1;
+                let gx = a * x + b;
+                let result = 2 * gx;
+                fullQuestionBank.push({
+                    q: `If f(x) = 2x, g(x) = ${a}x + ${b}, find (f ∘ g)(${x})`,
+                    a: `${result}`,
+                    options: [`${result}`, `${result + 1}`, `${result - 2}`]
+                });
+            }
+
+            // Range questions (10)
+            const rangeQs = [
+                { f: "x² + 1", ans: "y ≥ 1" },
+                { f: "|x|", ans: "y ≥ 0" },
+                { f: "sin(x)", ans: "[-1, 1]" },
+                { f: "2ˣ", ans: "y > 0" },
+                { f: "constant 7", ans: "{7}" }
+            ];
+            for (let i = 0; i < 10; i++) {
+                let q = rangeQs[i % 5];
+                fullQuestionBank.push({
+                    q: `Range of f(x) = ${q.f}?`,
+                    a: q.ans,
+                    options: [q.ans, "All reals", "y > 0"].filter((v, i, a) => a.indexOf(v) === i).slice(0, 3)
+                });
+            }
+
+            // Inverse functions (10)
+            const inverseQs = [
+                { f: "3x - 2", ans: "(x+2)/3" },
+                { f: "x/5", ans: "5x" },
+                { f: "x + 7", ans: "x - 7" },
+                { f: "2x + 1", ans: "(x-1)/2" },
+                { f: "x³", ans: "∛x" }
+            ];
+            for (let i = 0; i < 10; i++) {
+                let q = inverseQs[i % 5];
+                fullQuestionBank.push({
+                    q: `Inverse of f(x) = ${q.f}?`,
+                    a: q.ans,
+                    options: [q.ans, "x + 1", "2x"].filter((v, i, a) => a.indexOf(v) === i).slice(0, 3)
+                });
+            }
+
+            // True/False (10)
+            const tfQs = [
+                { q: "Every function is a relation", ans: "True" },
+                { q: "Every relation is a function", ans: "False" },
+                { q: "Constant function is onto", ans: "False" },
+                { q: "Identity is bijective", ans: "True" },
+                { q: "f ∘ g = g ∘ f always", ans: "False" },
+                { q: "Bijective has inverse", ans: "True" },
+                { q: "f(x) = x² is one-one on ℝ", ans: "False" },
+                { q: "Linear function is bijective", ans: "True" },
+                { q: "Range ⊆ Codomain", ans: "True" },
+                { q: "f(x) = |x| is bijective", ans: "False" }
+            ];
+            tfQs.forEach(item => {
+                fullQuestionBank.push({
+                    q: item.q,
+                    a: item.ans,
+                    options: ["True", "False"]
+                });
+            });
+
+            // Evaluation problems (10)
+            for (let i = 0; i < 10; i++) {
+                let a = Math.floor(Math.random() * 5) + 1;
+                let b = Math.floor(Math.random() * 5) + 1;
+                let x = Math.floor(Math.random() * 5) + 1;
+                let result = a * x + b;
+                fullQuestionBank.push({
+                    q: `If f(x) = ${a}x + ${b}, find f(${x})`,
+                    a: `${result}`,
+                    options: [`${result}`, `${result + 1}`, `${result - 1}`]
+                });
+            }
+
+            fullQuestionBank.sort(() => Math.random() - 0.5);
+        }
+
+        let currentPage = 0;
+        const perPage = 50;
+        let score = 0;
+        let attempted = 0;
+
+        function renderQuestions() {
+            const container = document.getElementById('questionWrapper');
+            const start = currentPage * perPage;
+            const end = start + perPage;
+            const batch = fullQuestionBank.slice(start, end);
+
+            container.innerHTML = '';
+            document.getElementById('pageIndicator').innerText = `Page ${currentPage + 1} of 2`;
+
+            batch.forEach((item, idx) => {
+                const card = document.createElement('div');
+                card.className = 'question-card';
+                card.innerHTML = `
+                    <h4>Question ${start + idx + 1}</h4>
+                    <p style="margin-bottom:1rem; font-size:1.1rem;">${item.q}</p>
+                    <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                        ${item.options.map(opt => `
+                            <button class="opt-btn" onclick="checkAnswer(this, '${opt.replace(/'/g, "\\'")}', '${item.a.replace(/'/g, "\\'")}')">${opt}</button>
+                        `).join('')}
+                    </div>
+                    <div class="feedback" style="margin-top:10px; font-variation-settings:'wght' 600; display:none;"></div>
+                `;
+                container.appendChild(card);
+            });
+
+            document.getElementById('prevBtn').disabled = currentPage === 0;
+            document.getElementById('prevBtn').style.opacity = currentPage === 0 ? "0.5" : "1";
+            document.getElementById('nextBtn').disabled = currentPage === 1;
+            document.getElementById('nextBtn').style.opacity = currentPage === 1 ? "0.5" : "1";
+        }
+
+        window.checkAnswer = function (btn, selected, correct) {
+            const card = btn.closest('.question-card');
+            const feedback = card.querySelector('.feedback');
+            const buttons = card.querySelectorAll('.opt-btn');
+
+            attempted++;
+            if (selected === correct) {
+                score++;
+                btn.style.background = 'var(--green)';
+                btn.style.color = 'white';
+                feedback.innerText = "✓ Correct!";
+                feedback.style.color = "var(--green)";
+            } else {
+                btn.style.background = 'var(--accent)';
+                btn.style.color = 'white';
+                feedback.innerText = `✗ Wrong. Correct is ${correct}`;
+                feedback.style.color = "var(--accent)";
+            }
+
+            buttons.forEach(b => b.onclick = null);
+            feedback.style.display = "block";
+
+            document.getElementById('score').innerText = score;
+            document.getElementById('totalAttempted').innerText = attempted;
+        };
+
+        function nextPage() {
+            if (currentPage < 1) {
+                currentPage++;
+                renderQuestions();
+                document.getElementById('practice').scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function prevPage() {
+            if (currentPage > 0) {
+                currentPage--;
+                renderQuestions();
+                document.getElementById('practice').scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        generate100Questions();
+        renderQuestions();
+    </script>
+
+    <footer>
+        <p style="font-size:1.2rem; margin-bottom:1rem; font-variation-settings:'opsz' 16, 'wdth' 100, 'wght' 500;">
+            Nalanda Academy, Wardha</p>
+        <p style="opacity:0.8;">Chapter 24: Functions and Relations – Master Mappings Between Sets</p>
+    </footer>
+</body>
+
+</html>
